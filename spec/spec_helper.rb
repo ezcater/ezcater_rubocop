@@ -1,5 +1,6 @@
 require "bundler/setup"
 require "ez_rubocop"
+require "rspec"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

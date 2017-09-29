@@ -1,20 +1,23 @@
-# EzRubocop
+# ez_rubocop
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/ez_rubocop`. To experiment with that code, run `bin/console` for an interactive prompt.
+ezCater custom cops, and eventually shared rubocop configuration.
 
-TODO: Delete this and the text above, and describe your gem
+[RuboCop](https://github.com/bbatsov/rubocop) is a static code analyzer that 
+can enforce style conventions as well as identify common problems.
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'ez_rubocop'
+group :development do
+  gem "ez_rubocop", require: false
+end
 ```
 
 And then execute:
 
-    $ bundle
+    $ bundle install
 
 Or install it yourself as:
 
@@ -22,7 +25,26 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Run `rubocop` for an entire project:
+
+    $ bundle exec rubocop
+
+See the `rubocop` command-line for additional options including auto-generating
+configuration for existing offenses and auto-correction.
+
+## Versioning
+
+This gem is versioned based on the MAJOR.MINOR version of `rubocop`. The first
+release of the `ez_rubocop` gem was v0.49.0.
+
+The patch version for this gem does _not_ correspond to the patch version of
+`rubocop`. The patch version for this gem will change any time that one of its
+configurations is modified _or_ its dependency on `rubocop` is changed to require
+a different patch version.
+
+This gem also includes a dependency on `rubocop-rspec` that will be updated to
+the latest compatible version each time that the MAJOR.MINOR version of `rubocop`
+is updated.
 
 ## Development
 
@@ -32,7 +54,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/ez_rubocop.
+Bug reports and pull requests are welcome on GitHub at https://github.com/ezcater/ez_rubocop.
 
 ## License
 
