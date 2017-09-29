@@ -1,4 +1,4 @@
-# ez_rubocop
+# ezcater_rubocop
 
 ezCater custom cops, and eventually shared rubocop configuration.
 
@@ -11,7 +11,7 @@ Add this line to your application's Gemfile:
 
 ```ruby
 group :development do
-  gem "ez_rubocop", require: false
+  gem "ezcater_rubocop", require: false
 end
 ```
 
@@ -21,7 +21,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install ez_rubocop
+    $ gem install ezcater_rubocop
 
 ## Usage
 
@@ -35,7 +35,7 @@ configuration for existing offenses and auto-correction.
 ## Versioning
 
 This gem is versioned based on the MAJOR.MINOR version of `rubocop`. The first
-release of the `ez_rubocop` gem was v0.49.0.
+release of the `ezcater_rubocop` gem was v0.49.0.
 
 The patch version for this gem does _not_ correspond to the patch version of
 `rubocop`. The patch version for this gem will change any time that one of its
@@ -54,7 +54,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/ezcater/ez_rubocop.
+Bug reports and pull requests are welcome on GitHub at https://github.com/ezcater/ezcater_rubocop.
 
 ## License
 

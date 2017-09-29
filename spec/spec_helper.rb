@@ -1,5 +1,5 @@
 require "bundler/setup"
-require "ez_rubocop"
+require "ezcater_rubocop"
 require "rspec"
 
 RSpec.configure do |config|

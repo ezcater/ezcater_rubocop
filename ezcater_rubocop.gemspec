@@ -2,17 +2,17 @@
 
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "ez_rubocop/version"
+require "ezcater_rubocop/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "ez_rubocop"
-  spec.version       = EzRubocop::VERSION
+  spec.name          = "ezcater_rubocop"
+  spec.version       = EzcaterRubocop::VERSION
   spec.authors       = ["ezCater, Inc"]
   spec.email         = ["engineering@ezcater.com"]
 
   spec.summary       = "ezCater custom cops and shared configuration"
   spec.description   = spec.summary
-  spec.homepage      = "https://github.com/ezcater/ez_rubocop"
+  spec.homepage      = "https://github.com/ezcater/ezcater_rubocop"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'

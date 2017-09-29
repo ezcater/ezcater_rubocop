@@ -1,4 +1,4 @@
-# ez_rubocop
+# ezcater_rubocop
 
 # v0.49.0 (unreleased)
 - Initial release
