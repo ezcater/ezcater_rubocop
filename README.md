@@ -2,7 +2,7 @@
 
 ezCater custom cops, and eventually shared rubocop configuration.
 
-[RuboCop](https://github.com/bbatsov/rubocop) is a static code analyzer that 
+[RuboCop](https://github.com/bbatsov/rubocop) is a static code analyzer that
 can enforce style conventions as well as identify common problems.
 
 ## Installation
@@ -45,6 +45,9 @@ a different patch version.
 This gem also includes a dependency on `rubocop-rspec` that will be updated to
 the latest compatible version each time that the MAJOR.MINOR version of `rubocop`
 is updated.
+
+## Custom Cops
+1. [RspecRequireFeatureFlagMock](https://github.com/ezcater/ezcater_rubocop/blob/master/lib/rubocop/cop/ezcater/rspec_require_feature_flag_mock.rb) - Enforces consumers to user custom `mock_feature_flag` helpers when writing tests that require turning `FeatureFlag` functionality on and off.
 
 ## Development
 
