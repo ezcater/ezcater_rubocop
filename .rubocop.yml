@@ -1,3 +1,18 @@
+AllCops:
+  DisplayCopNames: true
+
+Metrics/AbcSize:
+  Enabled: false
+
+Metrics/BlockLength:
+  Exclude:
+  - "spec/**/*.rb"
+
+Metrics/MethodLength:
+  Enabled: true
+  CountComments: false
+  Max: 25
+
 Metrics/LineLength:
   Max: 120
 

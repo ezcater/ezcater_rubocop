@@ -12,7 +12,7 @@ describe RuboCop::Cop::Salsify::RspecDotNotSelfDot, :config do
       inspect_source(cop, source)
       expect(cop.highlights).to eq(['"self.class_method"'])
       expect(cop.messages).to eq(msgs)
-      expect(autocorrect_source(cop, source)).to eq(source.sub('self.', '.'))
+      expect(autocorrect_source(cop, source)).to eq(source.sub("self.", "."))
     end
 
     it "corrects #{name} with `self.class_method` and metadata" do
@@ -20,7 +20,7 @@ describe RuboCop::Cop::Salsify::RspecDotNotSelfDot, :config do
       inspect_source(cop, source)
       expect(cop.highlights).to eq(['"self.class_method"'])
       expect(cop.messages).to eq(msgs)
-      expect(autocorrect_source(cop, source)).to eq(source.sub('self.', '.'))
+      expect(autocorrect_source(cop, source)).to eq(source.sub("self.", "."))
     end
 
     it "accepts #{name} with `.class_method`" do

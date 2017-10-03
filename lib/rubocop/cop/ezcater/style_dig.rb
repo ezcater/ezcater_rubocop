@@ -21,19 +21,18 @@ module RuboCop
 
         minimum_target_ruby_version 2.3
 
-        MSG = 'Use `dig` for nested access.'.freeze
+        MSG = "Use `dig` for nested access.".freeze
 
         def_node_matcher :nested_access_match, <<-PATTERN
           (send (send (send _receiver !:[]) :[] _) :[] _)
         PATTERN
 
         def on_send(node)
-          if nested_access_match(node) && !conditional_assignment?(node)
-            match_node = node
-            # walk to outermost access node
-            match_node = match_node.parent while access_node?(match_node.parent)
-            add_offense(match_node, :expression, MSG)
-          end
+          return unless nested_access_match(node) && !conditional_assignment?(node)
+          match_node = node
+          # walk to outermost access node
+          match_node = match_node.parent while access_node?(match_node.parent)
+          add_offense(match_node, :expression, MSG)
         end
 
         def autocorrect(node)
