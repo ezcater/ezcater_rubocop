@@ -2,7 +2,7 @@
 
 module RuboCop
   module Cop
-    module Salsify
+    module Ezcater
       # Use `dig` for deeply nested access.
       #
       # @example

@@ -2,7 +2,7 @@
 
 module RuboCop
   module Cop
-    module Salsify
+    module Ezcater
       # Use ".<class method>" instead of "self.<class method>" in RSpec example
       # group descriptions.
       #

@@ -1,7 +1,7 @@
 # encoding utf-8
 # frozen_string_literal: true
 
-describe RuboCop::Cop::Salsify::RspecDotNotSelfDot, :config do
+RSpec.describe RuboCop::Cop::Ezcater::RspecDotNotSelfDot, :config do
   subject(:cop) { described_class.new(config) }
 
   let(:msgs) { [described_class::MSG] }
