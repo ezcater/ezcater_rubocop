@@ -2,6 +2,7 @@ require "bundler/setup"
 require "ezcater_rubocop"
 require "rspec"
 require "rubocop/rspec/support"
+require "pry"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
