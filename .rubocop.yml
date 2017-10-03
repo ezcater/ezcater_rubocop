@@ -6,6 +6,7 @@ Metrics/AbcSize:
 
 Metrics/BlockLength:
   Exclude:
+  - "*.gemspec"
   - "spec/**/*.rb"
 
 Metrics/MethodLength:
