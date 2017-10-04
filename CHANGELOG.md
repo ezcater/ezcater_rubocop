@@ -1,7 +1,7 @@
 # ezcater_rubocop
 
-# v0.49.0 (unreleased)
+# v0.49.0
 - Initial release.
-- Add `Ezcater/RequireFeatureFlagMock` cop.
+- Add `Ezcater/RspecRequireFeatureFlagMock` cop.
 - Add `Ezcater/RspecDotNotSelfDot` cop.
 - Add `Ezcater/StyleDig` cop.
