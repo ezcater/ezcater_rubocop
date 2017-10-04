@@ -1,0 +1,16 @@
+Ezcater/RspecDotNotSelfDot:
+  Description: 'Enforce ".<class method>" instead of "self.<class method>" for example group description.'
+  Enabled: true
+  Include:
+    - '**/*_spec.rb'
+
+Ezcater/RspecRequireFeatureFlagMock:
+  Description: 'Enforce use of `mock_feature_flag` helpers instead of mocking `FeatureFlag.is_active?` directly.'
+  Enabled: true
+  Include:
+    - '**/*_spec.rb'
+
+Ezcater/StyleDig:
+  Description: 'Recommend `dig` for deeply nested access.'
+  Enabled: true
+  AutoCorrect: false
