@@ -26,6 +26,11 @@ jobs:
           paths:
             - vendor/bundle
 
+      # Run Rubocop
+      - run:
+          name: RuboCop
+          command: bundle exec rubocop
+
       # Run rspec in parallel
       - type: shell
         command: |
