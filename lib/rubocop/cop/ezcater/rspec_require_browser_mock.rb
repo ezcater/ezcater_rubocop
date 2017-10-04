@@ -12,14 +12,13 @@ module RuboCop
       #   mock_custom_browser
       #   mock_ezcater_app(device: "My Device", version: "1.2.3", language: "en=US,en")
       #   mock_chrome_browser(device: "My Device", version: "1.2.3", language: "en=US,en")
-      #   mock_custom_browser(user_agent: "My Custom Agent", language: "en=US,en"
+      #   mock_custom_browser(user_agent: "My Custom Agent", language: "en=US,en")
       #
       #   # bad
       #   allow(Browser).to receive...
       #   allow(EzBrowser).to receive...
       class RspecRequireBrowserMock < Cop
-        EZ_BROWSER_MSG = "Use the mocks provided by `BrowserHelpers` instead of mocking `allow(EzBrowser)`".freeze
-        BROWSER_MSG = "Use the mocks provided by `BrowserHelpers` instead of mocking `allow(Browser)`".freeze
+        MSG = "Use the mocks provided by `BrowserHelpers` instead of mocking `%s`".freeze
 
         def_node_matcher :browser_const?, <<~PATTERN
           (const _ {:Browser, :EzBrowser})
@@ -38,7 +37,7 @@ module RuboCop
 
           # Finish tree navigation to full line for highlighting
           match_node = match_node.parent while match_node.parent
-          add_offense(match_node, :expression, RspecRequireBrowserMock.const_get("#{StringManipulator.underscore(node.source).upcase}_MSG"))
+          add_offense(match_node, :expression, MSG % node.source)
         end
 
         private

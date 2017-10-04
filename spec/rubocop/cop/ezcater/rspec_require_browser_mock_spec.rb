@@ -1,29 +1,21 @@
 require "spec_helper"
 
 RSpec.shared_examples_for "a browser class that should be mocked" do |klass|
-  let(:message_constant) { described_class.const_get("#{StringManipulator.underscore(klass).upcase}_MSG") }
+  let(:error_message) { described_class::MSG % klass }
 
   context "when the class is '#{klass}'" do
     it "registers an offense when attempting to directly mock #{klass}" do
-      inspect_source(
-        cop,
-        "allow(#{klass}).to received(:new).with(\"My User Agent\", language: \"en=US,en\")"
-      )
-      expect(cop.messages).to eq([message_constant])
-      expect(cop.highlights).to eq([
-        "allow(#{klass}).to received(:new).with(\"My User Agent\", language: \"en=US,en\")"
-      ])
+      source = "allow(#{klass}).to receive(:new).with(\"My User Agent\", language: \"en=US,en\")"
+      inspect_source(cop, source)
+      expect(cop.messages).to eq([error_message])
+      expect(cop.highlights).to eq([source])
     end
 
     it "registers an offense when attempting to directly mock #{klass} when badly formatted" do
-      inspect_source(
-        cop,
-        "allow    (   #{klass}   ).to received(:new).with(\"My User Agent\", language: \"en=US,en\")"
-      )
-      expect(cop.messages).to eq([message_constant])
-      expect(cop.highlights).to eq(
-        ["allow    (   #{klass}   ).to received(:new).with(\"My User Agent\", language: \"en=US,en\")"]
-      )
+      source = "allow    (   #{klass}   ).to receive(:new).with(\"My User Agent\", language: \"en=US,en\")"
+      inspect_source(cop, source)
+      expect(cop.messages).to eq([error_message])
+      expect(cop.highlights).to eq([source])
     end
   end
 end

@@ -1,6 +1,5 @@
 require "ezcater_rubocop/version"
 require "rubocop-rspec"
-require "string_manipulator"
 
 # Because RuboCop doesn't yet support plugins, we have to monkey patch in a
 # bit of our configuration. Based on approach from rubocop-rspec:
