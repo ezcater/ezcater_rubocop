@@ -1,8 +1,7 @@
 module RuboCop
   module Cop
     module Ezcater
-      # Enforce usage of our `mock_feature_flag` helpers over explicit usage
-      # of allow(FeatureFlag) mocking.
+      # Enforce use of `mock_feature_flag` helper instead of mocking `FeatureFlag.is_active?` directly.
       #
       # @example
       #

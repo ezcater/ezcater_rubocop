@@ -4,6 +4,12 @@ Ezcater/RspecDotNotSelfDot:
   Include:
     - '**/*_spec.rb'
 
+Ezcater/RspecRequireBrowserMock:
+  Description: 'Enforce use of `mock_ezcater_app`, `mock_chrome_browser` & `mock_custom_browser` helpers instead of mocking `Browser` or `EzBrowser` directly.'
+  Enabled: true
+  Include:
+    - '**/*_spec.rb'
+
 Ezcater/RspecRequireFeatureFlagMock:
   Description: 'Enforce use of `mock_feature_flag` helpers instead of mocking `FeatureFlag.is_active?` directly.'
   Enabled: true
