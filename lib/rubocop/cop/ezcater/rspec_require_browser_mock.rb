@@ -25,7 +25,7 @@ module RuboCop
         PATTERN
 
         def on_const(node)
-          return unless browser_const?(node)
+          return unless browser_const?(node) && node.descendants.empty?
 
           # Walk to send node where method = :allow
           match_node = node
