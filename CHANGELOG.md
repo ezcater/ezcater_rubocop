@@ -1,6 +1,6 @@
 # ezcater_rubocop
 
-# v0.49.1 (unreleased)
+# v0.49.1
 - Add `Ezcater/RspecRequireBrowserMock` cop.
 
 # v0.49.0
