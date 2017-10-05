@@ -17,6 +17,12 @@ RSpec.shared_examples_for "a browser class that should be mocked" do |klass|
       expect(cop.messages).to eq([error_message])
       expect(cop.highlights).to eq([source])
     end
+
+    it "accepts usage of #{klass} when nested beneath another constant" do
+      source = "allow(SomeOtherClass::#{klass}).to receive(:new).with(\"My User Agent\", language: \"en=US,en\")"
+      inspect_source(cop, source)
+      expect(cop.offenses).to be_empty
+    end
   end
 end
 
