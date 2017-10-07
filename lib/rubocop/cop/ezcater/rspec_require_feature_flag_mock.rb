@@ -43,7 +43,7 @@ module RuboCop
         end
 
         def allow_send_node?(node)
-          node && node.send_type? && node.method_name == :allow
+          node&.send_type? && node.method_name == :allow
         end
       end
     end

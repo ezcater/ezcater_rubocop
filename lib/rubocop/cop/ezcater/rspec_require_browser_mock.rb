@@ -21,7 +21,7 @@ module RuboCop
         MSG = "Use the mocks provided by `BrowserHelpers` instead of mocking `%s`".freeze
 
         def_node_matcher :browser_const?, <<~PATTERN
-          (const _ {:Browser, :EzBrowser})
+          (const _ {:Browser :EzBrowser})
         PATTERN
 
         def on_const(node)
@@ -47,7 +47,7 @@ module RuboCop
         end
 
         def allow_send_node?(node)
-          node && node.send_type? && node.method_name == :allow
+          node&.send_type? && node.method_name == :allow
         end
       end
     end
