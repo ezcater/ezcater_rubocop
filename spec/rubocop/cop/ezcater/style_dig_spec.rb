@@ -65,4 +65,24 @@ RSpec.describe RuboCop::Cop::Ezcater::StyleDig, :config, :ruby23 do
     expect(cop.messages).to eq(msgs)
     expect(autocorrect_source(source)).to eq("blah ||= foo.dig(bar, baz)")
   end
+
+  it "accepts nested access for increment" do
+    source = "foo[bar][baz] += 1"
+    inspect_source(source)
+    expect(cop.offenses).to be_empty
+  end
+
+  it "accepts nested access for assignment" do
+    source = "foo[bar][baz] = 0"
+    inspect_source(source)
+    expect(cop.offenses).to be_empty
+  end
+
+  it "corrects nested access with append" do
+    source = "foo[bar][baz] << 1"
+    inspect_source(source)
+    expect(cop.highlights).to eq(["foo[bar][baz]"])
+    expect(cop.messages).to eq(msgs)
+    expect(autocorrect_source(source)).to eq("foo.dig(bar, baz) << 1")
+  end
 end
