@@ -4,15 +4,15 @@ jobs:
     parallelism: 1
     working_directory: ~/ezcater
     docker:
-      - image: circleci/ruby:2.3.3
+      - image: circleci/ruby:2.4.1
     steps:
       - checkout
 
       # Restore bundle cache
       - restore_cache:
           keys:
-            - ruby-cache-{{ .Branch }}-{{ checksum "Gemfile" }}-{{ checksum "ezcater_rubocop.gemspec" }}
-            - ruby-cache-{{ .Branch }}-
+            - ruby-cache-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile" }}-{{ checksum "ezcater_rubocop.gemspec" }}
+            - ruby-cache-{{ arch }}-{{ .Branch }}-
             - ruby-cache-
 
       # Bundle install dependencies

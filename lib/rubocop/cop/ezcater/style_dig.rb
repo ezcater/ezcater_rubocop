@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 module RuboCop
   module Cop
     module Ezcater
@@ -37,10 +35,10 @@ module RuboCop
 
         def autocorrect(node)
           access_node = node
-          source_args = [access_node.method_args.first.source]
+          source_args = [access_node.first_argument.source]
           while access_node?(access_node.children.first)
             access_node = access_node.children.first
-            source_args << access_node.method_args.first.source
+            source_args << access_node.first_argument.source
           end
           root_node = access_node.children.first
 
@@ -55,11 +53,11 @@ module RuboCop
         private
 
         def conditional_assignment?(node)
-          node.parent && node.parent.or_asgn_type? && (node.parent.children.first == node)
+          node.parent&.or_asgn_type? && (node.parent.children.first == node)
         end
 
         def access_node?(node)
-          node && node.send_type? && node.method_name == :[]
+          node&.send_type? && node.method_name == :[]
         end
       end
     end
