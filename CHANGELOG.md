@@ -1,7 +1,10 @@
 # ezcater_rubocop
 
+# v0.49.3
+- Do not apply `Ezcater/StyleDig` to access using a range.
+
 # v0.49.2
-- Do no apply `Ezcater/StyleDig` to assignments to with nested access.
+- Do not apply `Ezcater/StyleDig` to assignments to with nested access.
 
 # v0.49.1
 - Add `Ezcater/RspecRequireBrowserMock` cop.

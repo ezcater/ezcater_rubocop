@@ -85,4 +85,30 @@ RSpec.describe RuboCop::Cop::Ezcater::StyleDig, :config, :ruby23 do
     expect(cop.messages).to eq(msgs)
     expect(autocorrect_source(cop, source)).to eq("foo.dig(bar, baz) << 1")
   end
+
+  it "accepts nested access that uses an inclusive range" do
+    source = "foo[bar][0..2]"
+    inspect_source(cop, source)
+    expect(cop.offenses).to be_empty
+  end
+
+  it "accepts nested access that uses an exclusive range" do
+    source = "foo[bar][0...2]"
+    inspect_source(cop, source)
+    expect(cop.offenses).to be_empty
+  end
+
+  it "corrects nested access before the use of an inclusive range" do
+    source = "foo[bar][baz][0..2]"
+    inspect_source(cop, source)
+    expect(cop.messages).to eq(msgs)
+    expect(autocorrect_source(cop, source)).to eq("foo.dig(bar, baz)[0..2]")
+  end
+
+  it "corrects nested access before the use of an exclusive range" do
+    source = "foo[bar][baz][0...2]"
+    inspect_source(cop, source)
+    expect(cop.messages).to eq(msgs)
+    expect(autocorrect_source(cop, source)).to eq("foo.dig(bar, baz)[0...2]")
+  end
 end
