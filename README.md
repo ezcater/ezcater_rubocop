@@ -1,6 +1,6 @@
 # ezcater_rubocop
 
-ezCater custom cops, and eventually shared rubocop configuration.
+ezCater custom cops and shared RuboCop configuration.
 
 [RuboCop](https://github.com/bbatsov/rubocop) is a static code analyzer that
 can enforce style conventions as well as identify common problems.
@@ -15,6 +15,12 @@ group :development do
 end
 ```
 
+Or to your gem's gemspec file:
+
+```ruby
+spec.add_development_dependency "salsify_rubocop"
+```
+
 And then execute:
 
     $ bundle install
@@ -22,6 +28,24 @@ And then execute:
 Or install it yourself as:
 
     $ gem install ezcater_rubocop
+
+## Configuration
+
+To use one of the shared RuboCop configurations from this gem, you must define a
+.rubocop.yml file in your project:
+
+```yaml
+inherit_gem:
+  ezcater_rubocop: conf/rubocop_rails.yml
+```
+
+Further customization of RuboCop for your local project may be added to this file.
+
+### Available Configurations
+
+- **rubocop**: Assumes RSpec is used and requires [rubocop-rspec](https://github.com/backus/rubocop-rspec).
+  This configuration should be used for gems.
+- **rubocop_rails**: For Rails projects, this inherits from the **rubocop** configuration.
 
 ## Usage
 

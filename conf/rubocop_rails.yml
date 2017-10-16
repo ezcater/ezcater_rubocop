@@ -1,0 +1,14 @@
+inherit_from:
+  - ../conf/rubocop.yml
+
+AllCops:
+  TargetRailsVersion: 5.1
+
+Rails:
+  Enabled: true
+
+Rails/RelativeDateConstant:
+  # Auto-correct is broken for this cops in some cases. It replaces the
+  # constant but does not update references to it.
+  AutoCorrect: false
+

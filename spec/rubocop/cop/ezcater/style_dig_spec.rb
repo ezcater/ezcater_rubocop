@@ -2,9 +2,9 @@
 # frozen_string_literal: true
 
 RSpec.describe RuboCop::Cop::Ezcater::StyleDig, :config, :ruby23 do
-  let(:msgs) { [described_class::MSG] }
-
   subject(:cop) { described_class.new(config) }
+
+  let(:msgs) { [described_class::MSG] }
 
   it "accepts non-nested access" do
     source = "ary[0]"
