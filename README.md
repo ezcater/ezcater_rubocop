@@ -18,7 +18,7 @@ end
 Or to your gem's gemspec file:
 
 ```ruby
-spec.add_development_dependency "salsify_rubocop"
+spec.add_development_dependency "ezcater_rubocop"
 ```
 
 And then execute:
