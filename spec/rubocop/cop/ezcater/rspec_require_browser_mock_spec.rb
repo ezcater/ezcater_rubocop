@@ -46,7 +46,7 @@ RSpec.describe RuboCop::Cop::Ezcater::RspecRequireBrowserMock, :config do
     expect(cop.offenses).to be_empty
   end
 
-  it "accepts usage of the mock_ezcater_app helper with options" do
+  it "accepts usage of the mock_chrome_browser helper with options" do
     inspect_source(
       "browser = mock_chrome_browser(device: \"iPhone\", version: \"1.2\", language: \"en=US,en\")"
     )

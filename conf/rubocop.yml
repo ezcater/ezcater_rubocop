@@ -1,0 +1,48 @@
+require: ezcater_rubocop
+
+AllCops:
+  DisplayCopNames: true
+
+Layout/DotPosition:
+  EnforcedStyle: trailing
+
+Metrics/AbcSize:
+  Enabled: false
+
+Metrics/BlockLength:
+  Exclude:
+  - "*.gemspec"
+  - "spec/**/*.rb"
+
+Metrics/CyclomaticComplexity:
+  Enabled: false
+
+Metrics/LineLength:
+  Max: 120
+
+Metrics/MethodLength:
+  Enabled: true
+  CountComments: false
+  Max: 25
+
+Metrics/PerceivedComplexity:
+  Enabled: false
+
+Rails:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+# This cop does not yet support a style to prevent underscores
+Style/NumericLiterals:
+  Enabled: false
+
+Style/SingleLineBlockParams:
+  Enabled: false
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
