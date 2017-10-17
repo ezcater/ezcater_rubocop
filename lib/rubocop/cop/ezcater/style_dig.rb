@@ -22,7 +22,7 @@ module RuboCop
         MSG = "Use `dig` for nested access.".freeze
 
         def_node_matcher :nested_access_match, <<-PATTERN
-          (send (send (send _receiver !:[]) :[] _) :[] _)
+          (send (send (send _receiver !:[]) :[] !{irange erange}) :[] !{irange erange})
         PATTERN
 
         def on_send(node)
@@ -57,7 +57,11 @@ module RuboCop
         end
 
         def access_node?(node)
-          node&.send_type? && node.method_name == :[]
+          node&.send_type? && node.method_name == :[] && !range?(node.first_argument)
+        end
+
+        def range?(node)
+          node.irange_type? || node.erange_type?
         end
       end
     end
