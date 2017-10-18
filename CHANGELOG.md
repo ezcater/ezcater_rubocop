@@ -1,5 +1,9 @@
 # ezcater_rubocop
 
+## v0.50.2 (unreleased)
+- Add `Ezcater/PrivateAttr` custom cop.
+- Configure `RSpec/ExampleLength` with a `Max` value of 25.
+
 ## v0.50.1
 - Add shared configuration.
 - Do not apply `Ezcater/StyleDig` to access using a range.
