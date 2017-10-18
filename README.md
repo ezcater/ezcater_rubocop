@@ -56,6 +56,17 @@ Run `rubocop` for an entire project:
 See the `rubocop` command-line for additional options including auto-generating
 configuration for existing offenses and auto-correction.
 
+### Circle Script
+
+This gem contains a script, `circle_rubocop.rb`, that can be used to run RuboCop in CI.
+
+The behavior of the script is that all files are checked on master or if the rubocop
+configuration has changed. On non-master branches, only the files added or changed on
+the branch are checked.
+
+For non-master branches, `[rubocop skip]` can be included in the commit message to skip
+running rubocop.
+
 ## Versioning
 
 This gem is versioned based on the MAJOR.MINOR version of `rubocop`. The first
