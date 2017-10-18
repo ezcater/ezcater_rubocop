@@ -54,20 +54,10 @@ module RuboCop
 
         private
 
-        def clear
-          @access_affected_calls = {}
-        end
-
         def check_node(node)
           return unless node&.begin_type?
 
-          clear
           check_scope(node)
-
-          @access_affected_calls.each do |method_name, (send_node, visibility)|
-            add_offense(send_node, :expression,
-                        format_message(visibility, method_name))
-          end
         end
 
         def format_message(visibility, method_name)
@@ -84,19 +74,16 @@ module RuboCop
           if node.send_type?
             if node.access_modifier? && !node.method?(:module_function)
               current_visibility = node.method_name
-            elsif ACCESS_AFFECTED_METHODS.include?(node.method_name)
-              add_access_affected_call(node, current_visibility) if current_visibility != :public
+            elsif ACCESS_AFFECTED_METHODS.include?(node.method_name) && current_visibility != :public
+              add_offense(node,
+                          :expression,
+                          format_message(current_visibility, node.method_name))
             end
-
           elsif node.kwbegin_type?
             check_scope(node, current_visibility)
           end
 
           current_visibility
-        end
-
-        def add_access_affected_call(node, current_visibility)
-          @access_affected_calls[node.method_name] = [node, current_visibility]
         end
       end
     end
