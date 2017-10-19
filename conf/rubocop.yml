@@ -31,6 +31,9 @@ Metrics/PerceivedComplexity:
 Rails:
   Enabled: false
 
+RSpec/ExampleLength:
+  Max: 25
+
 Style/FrozenStringLiteralComment:
   Enabled: false
 
