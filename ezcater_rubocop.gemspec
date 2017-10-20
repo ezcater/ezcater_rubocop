@@ -22,11 +22,22 @@ Gem::Specification.new do |spec|
       "public gem pushes."
   end
 
+  excluded_files = %w[.circleci/config.yml
+                      .gitignore
+                      .rspec
+                      .rubocop.yml
+                      .ruby-gemset
+                      .ruby-version
+                      .travis.yml
+                      bin/console
+                      bin/setup
+                      Rakefile]
+
   spec.files = `git ls-files -z`.split("\x0").reject do |f|
     f.match(%r{^(test|spec|features)/})
-  end
-  spec.bindir        = "exe"
-  spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
+  end - excluded_files
+  spec.bindir = "bin"
+  spec.executables << "circle_rubocop.rb"
   spec.require_paths = ["lib"]
 
   spec.add_development_dependency "bundler", "~> 1.15"

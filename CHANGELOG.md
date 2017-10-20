@@ -1,8 +1,9 @@
 # ezcater_rubocop
 
-## v0.50.2 (unreleased)
+## v0.50.2
 - Add `Ezcater/PrivateAttr` custom cop.
 - Configure `RSpec/ExampleLength` with a `Max` value of 25.
+- Add `circle_rubocop.rb` script.
 
 ## v0.50.1
 - Add shared configuration.
