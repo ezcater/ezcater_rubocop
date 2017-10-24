@@ -34,6 +34,9 @@ Rails:
 RSpec/ExampleLength:
   Max: 25
 
+RSpec/MultipleExpectations:
+  Max: 5
+
 Style/FrozenStringLiteralComment:
   Enabled: false
 
