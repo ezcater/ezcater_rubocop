@@ -1,5 +1,8 @@
 # ezcater_rubocop
 
+## v0.50.3
+- Configure `RSpec/MultipleExpectations` with a `Max` value of 5.
+
 ## v0.50.2
 - Add `Ezcater/PrivateAttr` custom cop.
 - Configure `RSpec/ExampleLength` with a `Max` value of 25.
