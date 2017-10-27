@@ -3,7 +3,7 @@
 RSpec.describe RuboCop::Cop::Ezcater::PrivateAttr do
   subject(:cop) { described_class.new }
 
-  %i[private protected].each do |access_modifier|
+  %i(private protected).each do |access_modifier|
     described_class::ATTR_METHODS.each do |method_name|
       context "when `#{access_modifier}` is applied to `#{method_name}`" do
         it "registers an offense" do

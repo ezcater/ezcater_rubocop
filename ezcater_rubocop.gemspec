@@ -22,7 +22,7 @@ Gem::Specification.new do |spec|
       "public gem pushes."
   end
 
-  excluded_files = %w[.circleci/config.yml
+  excluded_files = %w(.circleci/config.yml
                       .gitignore
                       .rspec
                       .rubocop.yml
@@ -31,7 +31,7 @@ Gem::Specification.new do |spec|
                       .travis.yml
                       bin/console
                       bin/setup
-                      Rakefile]
+                      Rakefile)
 
   spec.files = `git ls-files -z`.split("\x0").reject do |f|
     f.match(%r{^(test|spec|features)/})

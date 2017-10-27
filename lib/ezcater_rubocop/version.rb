@@ -1,3 +1,3 @@
 module EzcaterRubocop
-  VERSION = "0.50.3".freeze
+  VERSION = "0.50.4".freeze
 end
