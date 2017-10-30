@@ -36,11 +36,11 @@ module RuboCop
       #     end
       #   end
       class PrivateAttr < Cop
-        ATTR_METHODS = %i[attr_accessor
+        ATTR_METHODS = %i(attr_accessor
                           attr_reader
-                          attr_writer].freeze
+                          attr_writer).freeze
 
-        ACCESS_AFFECTED_METHODS = (ATTR_METHODS + %i[alias_method]).to_set.freeze
+        ACCESS_AFFECTED_METHODS = (ATTR_METHODS + %i(alias_method)).to_set.freeze
 
         MSG = "Use `%s_%s` instead".freeze
 

@@ -1,5 +1,8 @@
 # ezcater_rubocop
 
+## v0.50.4
+- Configure `Style/PercentLiteralDelimiters` to prefer parentheses.
+
 ## v0.50.3
 - Configure `RSpec/MultipleExpectations` with a `Max` value of 5.
 
