@@ -1,5 +1,8 @@
 # ezcater_rubocop
 
+## v0.50.5
+- Configure `RSpec/NestedGroups` with a `Max` value of 5.
+
 ## v0.50.4
 - Configure `Style/PercentLiteralDelimiters` to prefer parentheses.
 
