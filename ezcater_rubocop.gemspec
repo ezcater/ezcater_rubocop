@@ -46,6 +46,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rspec_junit_formatter"
   spec.add_development_dependency "pry-byebug"
 
-  spec.add_runtime_dependency "rubocop", "~> 0.50.0"
-  spec.add_runtime_dependency "rubocop-rspec", "~> 1.18.0"
+  spec.add_runtime_dependency "rubocop", "~> 0.51.0"
+  spec.add_runtime_dependency "rubocop-rspec", "~> 1.20.0"
 end
