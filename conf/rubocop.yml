@@ -31,6 +31,9 @@ Metrics/PerceivedComplexity:
 Rails:
   Enabled: false
 
+RSpec/ContextWording:
+  Enabled: false
+
 RSpec/ExampleLength:
   Max: 25
 
@@ -61,6 +64,10 @@ Style/PercentLiteralDelimiters:
 
 Style/SingleLineBlockParams:
   Enabled: false
+
+Style/StderrPuts:
+  Exclude:
+    - "bin/yarn"
 
 Style/StringLiterals:
   EnforcedStyle: double_quotes
