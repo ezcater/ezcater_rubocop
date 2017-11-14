@@ -7,6 +7,9 @@ AllCops:
 Rails:
   Enabled: true
 
+Rails/FilePath:
+  Enabled: false
+
 Rails/RelativeDateConstant:
   # Auto-correct is broken for this cops in some cases. It replaces the
   # constant but does not update references to it.

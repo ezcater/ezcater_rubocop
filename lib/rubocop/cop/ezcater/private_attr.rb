@@ -76,8 +76,8 @@ module RuboCop
               current_visibility = node.method_name
             elsif ACCESS_AFFECTED_METHODS.include?(node.method_name) && current_visibility != :public
               add_offense(node,
-                          :expression,
-                          format_message(current_visibility, node.method_name))
+                          location: :expression,
+                          message: format_message(current_visibility, node.method_name))
             end
           elsif node.kwbegin_type?
             check_scope(node, current_visibility)
