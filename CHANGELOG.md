@@ -1,5 +1,14 @@
 # ezcater_rubocop
 
+## v0.51.1
+- Disable `Rails/FilePath` cop.
+- Disable `Style/EmptyLiteral` cop.
+
+## v0.51.0
+- Update to rubocop v0.51.0 and rubocop-rspec v1.20.0.
+- Disable new cop `RSpec/ContextWording`.
+- Disable `Style/StderrPuts` for `bin/yarn`.
+
 ## v0.50.5
 - Configure `RSpec/NestedGroups` with a `Max` value of 5.
 

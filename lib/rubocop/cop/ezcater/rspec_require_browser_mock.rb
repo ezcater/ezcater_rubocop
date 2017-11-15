@@ -37,7 +37,7 @@ module RuboCop
 
           # Finish tree navigation to full line for highlighting
           match_node = match_node.parent while match_node.parent
-          add_offense(match_node, :expression, MSG % node.source)
+          add_offense(match_node, location: :expression, message: MSG % node.source)
         end
 
         private

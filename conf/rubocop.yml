@@ -43,6 +43,9 @@ RSpec/MultipleExpectations:
 RSpec/NestedGroups:
   Max: 5
 
+Style/EmptyLiteral:
+  Enabled: false
+
 Style/FrozenStringLiteralComment:
   Enabled: false
 
