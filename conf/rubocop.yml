@@ -65,6 +65,9 @@ Style/PercentLiteralDelimiters:
     '%w': '()'
     '%W': '()'
 
+Style/RaiseArgs:
+  EnforcedStyle: compact
+
 Style/SingleLineBlockParams:
   Enabled: false
 
