@@ -1,5 +1,8 @@
 # ezcater_rubocop
 
+## v0.51.2
+- Configure `Style/RaiseArgs` to use the `compact` style.
+
 ## v0.51.1
 - Disable `Rails/FilePath` cop.
 - Disable `Style/EmptyLiteral` cop.
