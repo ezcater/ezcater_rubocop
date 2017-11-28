@@ -34,6 +34,13 @@ Rails:
 RSpec/ContextWording:
   Enabled: false
 
+RSpec/DescribeClass:
+  Exclude:
+  - "spec/requests/**/*.rb"
+  - "spec/features/**/*.rb"
+  - "spec/routing/**/*.rb"
+  - "spec/views/**/*.rb"
+
 RSpec/ExampleLength:
   Max: 25
 

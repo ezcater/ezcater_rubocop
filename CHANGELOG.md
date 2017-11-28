@@ -1,5 +1,9 @@
 # ezcater_rubocop
 
+## v0.51.3
+- Configure `RSpec/DescribeClass` to exclude the spec directories which
+  are excluded by explicit metadata.
+
 ## v0.51.2
 - Configure `Style/RaiseArgs` to use the `compact` style.
 
