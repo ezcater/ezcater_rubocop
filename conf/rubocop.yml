@@ -13,6 +13,7 @@ Metrics/BlockLength:
   Exclude:
   - "*.gemspec"
   - "spec/**/*.rb"
+  - "lib/tasks/**/*.rake"
 
 Metrics/CyclomaticComplexity:
   Enabled: false

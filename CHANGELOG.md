@@ -3,6 +3,7 @@
 ## v0.51.3
 - Configure `RSpec/DescribeClass` to exclude the spec directories which
   are excluded by explicit metadata.
+- Exclude `lib/tasks` for the `Metrics/BlockLength` cop.
 
 ## v0.51.2
 - Configure `Style/RaiseArgs` to use the `compact` style.
