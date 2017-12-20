@@ -1,5 +1,9 @@
 # ezcater_rubocop
 
+## v0.51.4
+- Exclude `Gemfile` for the `Metrics/LineLength` cop.
+- Add `system` to the excluded spec directories for `RSpec/DescribeClass`.
+
 ## v0.51.3
 - Configure `RSpec/DescribeClass` to exclude the spec directories which
   are excluded by explicit metadata.

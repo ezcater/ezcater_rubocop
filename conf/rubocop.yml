@@ -20,6 +20,8 @@ Metrics/CyclomaticComplexity:
 
 Metrics/LineLength:
   Max: 120
+  Exclude:
+  - "Gemfile"
 
 Metrics/MethodLength:
   Enabled: true
@@ -41,6 +43,7 @@ RSpec/DescribeClass:
   - "spec/features/**/*.rb"
   - "spec/routing/**/*.rb"
   - "spec/views/**/*.rb"
+  - "spec/system/**/*.rb"
 
 RSpec/ExampleLength:
   Max: 25
