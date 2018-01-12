@@ -1,5 +1,8 @@
 # ezcater_rubocop
 
+# v0.49.4
+- Add `Ezcater/RspecRequireGqlErrorHelpers` cop.
+
 # v0.49.3
 - Do not apply `Ezcater/StyleDig` to access using a range.
 
