@@ -1,5 +1,8 @@
 # ezcater_rubocop
 
+## v0.51.5
+- Add `Ezcater/RspecRequireGqlErrorHelpers` cop.
+
 ## v0.51.4
 - Exclude `Gemfile` for the `Metrics/LineLength` cop.
 - Add `system` to the excluded spec directories for `RSpec/DescribeClass`.
