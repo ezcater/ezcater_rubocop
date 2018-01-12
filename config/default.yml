@@ -16,6 +16,10 @@ Ezcater/RspecRequireFeatureFlagMock:
   Include:
     - '**/*_spec.rb'
 
+Ezcater/RspecRequireGqlErrorHelpers:
+  Description: 'Use the helpers provided by `GQLErrors` instead of raising `GraphQL::ExecutionError` directly.'
+  Enabled: true
+
 Ezcater/StyleDig:
   Description: 'Recommend `dig` for deeply nested access.'
   Enabled: true
