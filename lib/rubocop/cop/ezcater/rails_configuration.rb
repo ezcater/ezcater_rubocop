@@ -11,7 +11,7 @@ module RuboCop
 
         def on_send(node)
           rails_application_config(node) do
-            add_offense(node, location: :expression, message: MSG)
+            add_offense(node, :expression, MSG)
           end
         end
 
