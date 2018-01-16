@@ -2,6 +2,10 @@ Ezcater/PrivateAttr:
   Description: 'Require methods from the private_attr gem'
   Enabled: true
 
+Ezcater/RailsConfiguration:
+  Description: 'Enforce the use of `Rails.configuration` instead of `Rails.application.config`.'
+  Enabled: true
+
 Ezcater/RspecDotNotSelfDot:
   Description: 'Enforce ".<class method>" instead of "self.<class method>" for example group description.'
   Enabled: true

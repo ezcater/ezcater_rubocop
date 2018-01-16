@@ -1,6 +1,7 @@
 # ezcater_rubocop
 
 ## v0.51.6
+- Add `Ezcater/RailsConfiguration` cop.
 - Exclude `config/environments/*.rb` for the `Metrics/BlockLength` cop.
 
 ## v0.51.5
