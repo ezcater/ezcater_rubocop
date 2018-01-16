@@ -14,6 +14,7 @@ Metrics/BlockLength:
   - "*.gemspec"
   - "spec/**/*.rb"
   - "lib/tasks/**/*.rake"
+  - "config/environments/*.rb"
 
 Metrics/CyclomaticComplexity:
   Enabled: false
