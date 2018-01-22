@@ -1,5 +1,8 @@
 # ezcater_rubocop
 
+## v0.51.7
+- Rename `Ezcater/RspecRequireGqlErrorHelpers` cop to `Ezcater/RequireGqlErrorHelpers`.
+
 ## v0.51.6
 - Add `Ezcater/RailsConfiguration` cop.
 - Exclude `config/environments/*.rb` for the `Metrics/BlockLength` cop.
