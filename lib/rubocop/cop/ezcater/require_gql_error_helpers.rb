@@ -17,7 +17,7 @@ module RuboCop
       #   # bad
       #   GraphQL::ExecutionError.new("An error occurred")
       #   GraphQL::ExecutionError.new("You can't access this", options: { status_code: 401 })
-      class RspecRequireGqlErrorHelpers < Cop
+      class RequireGqlErrorHelpers < Cop
         MSG = "Use the helpers provided by `GQLErrors` instead of raising `GraphQL::ExecutionError` directly.".freeze
 
         def_node_matcher :graphql_const?, <<~PATTERN

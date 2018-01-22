@@ -1,5 +1,8 @@
 # ezcater_rubocop
 
+## v0.49.6
+- Rename `Ezcater/RspecRequireGqlErrorHelpers` cop to `Ezcater/RequireGqlErrorHelpers`.
+
 ## v0.49.5
 - Add `Ezcater/RailsConfiguration` cop.
 
