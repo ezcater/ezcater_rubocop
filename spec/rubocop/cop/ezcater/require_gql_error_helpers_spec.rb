@@ -1,6 +1,6 @@
 require "spec_helper"
 
-RSpec.describe RuboCop::Cop::Ezcater::RspecRequireGqlErrorHelpers, :config do
+RSpec.describe RuboCop::Cop::Ezcater::RequireGqlErrorHelpers, :config do
   subject(:cop) { described_class.new }
 
   let(:error_message) { described_class::MSG }
