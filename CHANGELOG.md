@@ -1,5 +1,8 @@
 # ezcater_rubocop
 
+## v0.51.8 (unreleased)
+- Disable `RSpec/LetSetup` cop.
+
 ## v0.51.7
 - Rename `Ezcater/RspecRequireGqlErrorHelpers` cop to `Ezcater/RequireGqlErrorHelpers`.
 

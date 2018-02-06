@@ -49,6 +49,9 @@ RSpec/DescribeClass:
 RSpec/ExampleLength:
   Max: 25
 
+RSpec/LetSetup:
+  Enabled: false
+
 RSpec/MultipleExpectations:
   Max: 5
 
