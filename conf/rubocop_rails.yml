@@ -15,3 +15,7 @@ Rails/RelativeDateConstant:
   # constant but does not update references to it.
   AutoCorrect: false
 
+Style/MixinUsage:
+  Exclude:
+  - "bin/**/*"
+

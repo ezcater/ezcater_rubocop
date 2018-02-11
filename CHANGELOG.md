@@ -1,5 +1,8 @@
 # ezcater_rubocop
 
+## v0.52.0 (unreleased)
+- Update to rubocop v0.52.1 and rubocop-rspec v1.22.2.
+
 ## v0.51.8
 - Disable `RSpec/LetSetup` cop.
 

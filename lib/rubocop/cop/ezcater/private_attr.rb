@@ -42,7 +42,7 @@ module RuboCop
 
         ACCESS_AFFECTED_METHODS = (ATTR_METHODS + %i(alias_method)).to_set.freeze
 
-        MSG = "Use `%s_%s` instead".freeze
+        MSG = "Use `%<visibility>s_%<method_name>s` instead".freeze
 
         def on_class(node)
           check_node(node.children[2]) # class body
@@ -61,7 +61,7 @@ module RuboCop
         end
 
         def format_message(visibility, method_name)
-          format(MSG, visibility, method_name)
+          format(MSG, visibility: visibility, method_name: method_name)
         end
 
         def check_scope(node, current_visibility = :public)
