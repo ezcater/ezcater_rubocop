@@ -18,7 +18,7 @@ module RuboCop
       #   allow(Browser).to receive...
       #   allow(EzBrowser).to receive...
       class RspecRequireBrowserMock < Cop
-        MSG = "Use the mocks provided by `BrowserHelpers` instead of mocking `%s`".freeze
+        MSG = "Use the mocks provided by `BrowserHelpers` instead of mocking `%<node_source>s`".freeze
 
         def_node_matcher :browser_const?, <<~PATTERN
           (const _ {:Browser :EzBrowser})
@@ -37,7 +37,9 @@ module RuboCop
 
           # Finish tree navigation to full line for highlighting
           match_node = match_node.parent while match_node.parent
-          add_offense(match_node, location: :expression, message: MSG % node.source)
+          add_offense(match_node,
+                      location: :expression,
+                      message: format(MSG, node_source: node.source))
         end
 
         private

@@ -1,7 +1,7 @@
 require "spec_helper"
 
 RSpec.shared_examples_for "a browser class that should be mocked" do |klass|
-  let(:error_message) { described_class::MSG % klass }
+  let(:error_message) { format(described_class::MSG, node_source: klass) }
 
   context "when the class is '#{klass}'" do
     it "registers an offense when attempting to directly mock #{klass}" do
