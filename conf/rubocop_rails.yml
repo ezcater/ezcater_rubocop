@@ -19,3 +19,9 @@ Style/MixinUsage:
   Exclude:
   - "bin/**/*"
 
+Rails/UnknownEnv:
+  Environments:
+    - development
+    - test
+    - staging
+    - production

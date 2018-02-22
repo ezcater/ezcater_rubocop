@@ -1,5 +1,8 @@
 # ezcater_rubocop
 
+## v0.52.1 (unreleased)
+- Allow staging as a rails environment for the Rails/UnknownEnv cop.
+
 ## v0.52.0
 - Update to rubocop v0.52.1 and rubocop-rspec v1.22.2.
 
