@@ -1,5 +1,8 @@
 # ezcater_rubocop
 
+## v0.52.2
+- Disable `Style/IfUnlessModifier` cop.
+
 ## v0.52.1
 - Allow staging as a rails environment for the Rails/UnknownEnv cop.
 
