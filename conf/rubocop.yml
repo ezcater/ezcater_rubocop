@@ -67,6 +67,9 @@ Style/FrozenStringLiteralComment:
 Style/Documentation:
   Enabled: false
 
+Style/IfUnlessModifier:
+  Enabled: false
+
 # This cop does not yet support a style to prevent underscores
 Style/NumericLiterals:
   Enabled: false
