@@ -65,6 +65,9 @@ Style/EmptyLiteral:
 Style/FrozenStringLiteralComment:
   Enabled: false
 
+Style/GuardClause:
+  Enabled: false
+
 Style/Documentation:
   Enabled: false
 

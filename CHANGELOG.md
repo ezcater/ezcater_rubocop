@@ -1,6 +1,7 @@
 # ezcater_rubocop
 
-## v0.52.3 (unreleased)
+## v0.52.3
+- Disable `Style/GuardClause` cop.
 - Exclude `spec/integrations` for `RSpec/DescribeClass`.
 
 ## v0.52.2
