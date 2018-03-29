@@ -45,6 +45,7 @@ RSpec/DescribeClass:
   - "spec/routing/**/*.rb"
   - "spec/views/**/*.rb"
   - "spec/system/**/*.rb"
+  - "spec/integrations/**/*.rb"
 
 RSpec/ExampleLength:
   Max: 25
