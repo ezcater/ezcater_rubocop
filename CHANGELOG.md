@@ -1,5 +1,8 @@
 # ezcater_rubocop
 
+## v0.52.3 (unreleased)
+- Exclude `spec/integrations` for `RSpec/DescribeClass`.
+
 ## v0.52.2
 - Disable `Style/IfUnlessModifier` cop.
 
