@@ -1,5 +1,8 @@
 # ezcater_rubocop
 
+## v0.52.3
+- Disable `Style/GuardClause` cop.
+
 ## v0.52.2
 - Disable `Style/IfUnlessModifier` cop.
 
