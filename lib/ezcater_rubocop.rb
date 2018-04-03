@@ -15,6 +15,7 @@ RuboCop::ConfigLoader.instance_variable_set(:@default_configuration, config)
 require "rubocop/cop/ezcater/private_attr"
 require "rubocop/cop/ezcater/rails_configuration"
 require "rubocop/cop/ezcater/require_gql_error_helpers"
+require "rubocop/cop/ezcater/rspec_match_ordered_array"
 require "rubocop/cop/ezcater/rspec_require_browser_mock"
 require "rubocop/cop/ezcater/rspec_require_feature_flag_mock"
 require "rubocop/cop/ezcater/rspec_dot_not_self_dot"

@@ -1,5 +1,8 @@
 # ezcater_rubocop
 
+## v0.52.5 (unreleased)
+- Add `Ezcater/RspecMatchOrderedArray` cop.
+
 ## v0.52.4
 - Configure `Style/RegexpLiteral` cop with the `AllowInnerSlashes: true` option.
 
