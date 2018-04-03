@@ -90,6 +90,11 @@ Style/PercentLiteralDelimiters:
 Style/RaiseArgs:
   EnforcedStyle: compact
 
+Style/RegexpLiteral:
+  Enabled: true
+  EnforcedStyle: slashes
+  AllowInnerSlashes: true
+
 Style/SingleLineBlockParams:
   Enabled: false
 
