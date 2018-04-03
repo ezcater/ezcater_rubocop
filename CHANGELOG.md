@@ -1,5 +1,8 @@
 # ezcater_rubocop
 
+## v0.52.4
+- Configure `Style/RegexpLiteral` cop with the `AllowInnerSlashes: true` option.
+
 ## v0.52.3
 - Disable `Style/GuardClause` cop.
 - Exclude `spec/integrations` for `RSpec/DescribeClass`.

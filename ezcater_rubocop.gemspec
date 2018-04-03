@@ -34,7 +34,7 @@ Gem::Specification.new do |spec|
                       Rakefile)
 
   spec.files = `git ls-files -z`.split("\x0").reject do |f|
-    f.match(%r{^(test|spec|features)/})
+    f.match(/^(test|spec|features)\//)
   end - excluded_files
   spec.bindir = "bin"
   spec.executables << "circle_rubocop.rb"
