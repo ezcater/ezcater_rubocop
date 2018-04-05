@@ -1,6 +1,6 @@
 # ezcater_rubocop
 
-## v0.52.5 (unreleased)
+## v0.52.5
 - Add `Ezcater/RspecMatchOrderedArray` cop.
 - Fix array equality matcher violations in specs.
 
