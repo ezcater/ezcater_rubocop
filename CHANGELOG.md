@@ -2,6 +2,7 @@
 
 ## v0.52.5 (unreleased)
 - Add `Ezcater/RspecMatchOrderedArray` cop.
+- Fix array equality matcher violations in specs.
 
 ## v0.52.4
 - Configure `Style/RegexpLiteral` cop with the `AllowInnerSlashes: true` option.

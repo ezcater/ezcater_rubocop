@@ -10,16 +10,16 @@ RSpec.describe RuboCop::Cop::Ezcater::RequireGqlErrorHelpers, :config do
     it "registers an offense" do
       source = "GraphQL::ExecutionError.new(\"An error occurred\")"
       inspect_source(source)
-      expect(cop.messages).to eq([error_message])
-      expect(cop.highlights).to eq([expected_source])
+      expect(cop.messages).to match_array([error_message])
+      expect(cop.highlights).to match_array([expected_source])
     end
 
     context "and additional options are provided" do
       it "registers an offense" do
         source = "GraphQL::ExecutionError.new(\"An error occurred\", options: { status_code: 401 })"
         inspect_source(source)
-        expect(cop.messages).to eq([error_message])
-        expect(cop.highlights).to eq([expected_source])
+        expect(cop.messages).to match_array([error_message])
+        expect(cop.highlights).to match_array([expected_source])
       end
     end
   end

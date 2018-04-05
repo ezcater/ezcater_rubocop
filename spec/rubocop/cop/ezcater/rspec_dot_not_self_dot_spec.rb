@@ -10,16 +10,16 @@ RSpec.describe RuboCop::Cop::Ezcater::RspecDotNotSelfDot, :config do
     it "corrects #{name} with `self.class_method`" do
       source = "#{name} \"self.class_method\" do\nend"
       inspect_source(source)
-      expect(cop.highlights).to eq(['"self.class_method"'])
-      expect(cop.messages).to eq(msgs)
+      expect(cop.highlights).to match_array(['"self.class_method"'])
+      expect(cop.messages).to match_array(msgs)
       expect(autocorrect_source(source)).to eq(source.sub("self.", "."))
     end
 
     it "corrects #{name} with `self.class_method` and metadata" do
       source = "#{name} \"self.class_method\", foo: true do\nend"
       inspect_source(source)
-      expect(cop.highlights).to eq(['"self.class_method"'])
-      expect(cop.messages).to eq(msgs)
+      expect(cop.highlights).to match_array(['"self.class_method"'])
+      expect(cop.messages).to match_array(msgs)
       expect(autocorrect_source(source)).to eq(source.sub("self.", "."))
     end
 

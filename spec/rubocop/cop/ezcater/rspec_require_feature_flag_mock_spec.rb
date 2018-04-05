@@ -23,13 +23,13 @@ RSpec.describe RuboCop::Cop::Ezcater::RspecRequireFeatureFlagMock, :config do
 
   it "registers an offense when attempting to directly mock FeatureFlag" do
     inspect_source("allow(FeatureFlag).to receive(:is_active?).and_return(true)")
-    expect(cop.messages).to eq([described_class::MSG])
-    expect(cop.highlights).to eq(["allow(FeatureFlag).to receive(:is_active?).and_return(true)"])
+    expect(cop.messages).to match_array([described_class::MSG])
+    expect(cop.highlights).to match_array(["allow(FeatureFlag).to receive(:is_active?).and_return(true)"])
   end
 
   it "registers an offense when attempting to directly mock FeatureFlag with bad formatting" do
     inspect_source("allow   (    FeatureFlag  ).to receive(:is_active?).and_return(true)")
-    expect(cop.messages).to eq([described_class::MSG])
-    expect(cop.highlights).to eq(["allow   (    FeatureFlag  ).to receive(:is_active?).and_return(true)"])
+    expect(cop.messages).to match_array([described_class::MSG])
+    expect(cop.highlights).to match_array(["allow   (    FeatureFlag  ).to receive(:is_active?).and_return(true)"])
   end
 end

@@ -7,15 +7,15 @@ RSpec.shared_examples_for "a browser class that should be mocked" do |klass|
     it "registers an offense when attempting to directly mock #{klass}" do
       source = "allow(#{klass}).to receive(:new).with(\"My User Agent\", language: \"en=US,en\")"
       inspect_source(source)
-      expect(cop.messages).to eq([error_message])
-      expect(cop.highlights).to eq([source])
+      expect(cop.messages).to match_array([error_message])
+      expect(cop.highlights).to match_array([source])
     end
 
     it "registers an offense when attempting to directly mock #{klass} when badly formatted" do
       source = "allow    (   #{klass}   ).to receive(:new).with(\"My User Agent\", language: \"en=US,en\")"
       inspect_source(source)
-      expect(cop.messages).to eq([error_message])
-      expect(cop.highlights).to eq([source])
+      expect(cop.messages).to match_array([error_message])
+      expect(cop.highlights).to match_array([source])
     end
 
     it "accepts usage of #{klass} when nested beneath another constant" do
