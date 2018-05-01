@@ -1,5 +1,8 @@
 # ezcater_rubocop
 
+## v0.52.6
+- Configure `Style/TrailingCommaInLiteral` with `consistent_comma` style.
+
 ## v0.52.5
 - Add `Ezcater/RspecMatchOrderedArray` cop.
 - Fix array equality matcher violations in specs.
