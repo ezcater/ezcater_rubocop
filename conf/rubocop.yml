@@ -63,7 +63,8 @@ Style/EmptyLiteral:
   Enabled: false
 
 Style/FrozenStringLiteralComment:
-  Enabled: false
+  Enabled: true
+  EnforcedStyle: when_needed
 
 Style/GuardClause:
   Enabled: false
