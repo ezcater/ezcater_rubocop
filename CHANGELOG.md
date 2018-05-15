@@ -1,5 +1,8 @@
 # ezcater_rubocop
 
+## v0.52.7
+- Enable `Style/FrozenStringLiteralComment` with the `when_needed` style.
+
 ## v0.52.6
 - Configure `Style/TrailingCommaInLiteral` with `consistent_comma` style.
 

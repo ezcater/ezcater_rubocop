@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module RuboCop
   module Cop
     module Ezcater
@@ -19,7 +21,7 @@ module RuboCop
 
         minimum_target_ruby_version 2.3
 
-        MSG = "Use `dig` for nested access.".freeze
+        MSG = "Use `dig` for nested access."
 
         def_node_matcher :nested_access_match, <<-PATTERN
           (send (send (send _receiver !:[]) :[] !{irange erange}) :[] !{irange erange})

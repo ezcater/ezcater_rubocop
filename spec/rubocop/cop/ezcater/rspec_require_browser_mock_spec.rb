@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "spec_helper"
 
 RSpec.shared_examples_for "a browser class that should be mocked" do |klass|
