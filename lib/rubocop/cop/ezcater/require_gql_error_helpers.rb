@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module RuboCop
   module Cop
     module Ezcater
@@ -18,7 +20,7 @@ module RuboCop
       #   GraphQL::ExecutionError.new("An error occurred")
       #   GraphQL::ExecutionError.new("You can't access this", options: { status_code: 401 })
       class RequireGqlErrorHelpers < Cop
-        MSG = "Use the helpers provided by `GQLErrors` instead of raising `GraphQL::ExecutionError` directly.".freeze
+        MSG = "Use the helpers provided by `GQLErrors` instead of raising `GraphQL::ExecutionError` directly."
 
         def_node_matcher :graphql_const?, <<~PATTERN
           (const (const _ :GraphQL) :ExecutionError)

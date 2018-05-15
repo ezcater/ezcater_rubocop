@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "ezcater_rubocop/version"
 require "rubocop-rspec"
 

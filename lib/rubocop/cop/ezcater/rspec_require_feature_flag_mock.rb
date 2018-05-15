@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module RuboCop
   module Cop
     module Ezcater
@@ -14,7 +16,7 @@ module RuboCop
       #   allow(FeatureFlag).to receive(:is_active?).with("MyFeatureFlag").and_return(true)
       #   allow(FeatureFlag).to receive(:is_active?).with("MyFeatureFlag", user: current_user).and_return(true)
       class RspecRequireFeatureFlagMock < Cop
-        MSG = "Use the `mock_feature_flag` helper instead of mocking `allow(FeatureFlag)`".freeze
+        MSG = "Use the `mock_feature_flag` helper instead of mocking `allow(FeatureFlag)`"
 
         def_node_matcher :feature_flag_const?, <<~PATTERN
           (const _ :FeatureFlag)

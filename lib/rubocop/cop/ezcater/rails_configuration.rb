@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 module RuboCop
   module Cop
     module Ezcater
       class RailsConfiguration < Cop
-        MSG = "Use `Rails.configuration` instead of `Rails.application.config`.".freeze
-        RAILS_CONFIGURATION = "Rails.configuration".freeze
+        MSG = "Use `Rails.configuration` instead of `Rails.application.config`."
+        RAILS_CONFIGURATION = "Rails.configuration"
 
         def_node_matcher "rails_application_config", <<-PATTERN
           (send (send (const _ :Rails) :application) :config)

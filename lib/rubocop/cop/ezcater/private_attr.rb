@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module RuboCop
   module Cop
     module Ezcater
@@ -42,7 +44,7 @@ module RuboCop
 
         ACCESS_AFFECTED_METHODS = (ATTR_METHODS + %i(alias_method)).to_set.freeze
 
-        MSG = "Use `%<visibility>s_%<method_name>s` instead".freeze
+        MSG = "Use `%<visibility>s_%<method_name>s` instead"
 
         def on_class(node)
           check_node(node.children[2]) # class body

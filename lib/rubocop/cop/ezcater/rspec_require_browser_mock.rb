@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module RuboCop
   module Cop
     module Ezcater
@@ -18,7 +20,7 @@ module RuboCop
       #   allow(Browser).to receive...
       #   allow(EzBrowser).to receive...
       class RspecRequireBrowserMock < Cop
-        MSG = "Use the mocks provided by `BrowserHelpers` instead of mocking `%<node_source>s`".freeze
+        MSG = "Use the mocks provided by `BrowserHelpers` instead of mocking `%<node_source>s`"
 
         def_node_matcher :browser_const?, <<~PATTERN
           (const _ {:Browser :EzBrowser})

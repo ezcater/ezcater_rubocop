@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module RuboCop
   module Cop
     module Ezcater
@@ -13,9 +15,9 @@ module RuboCop
       #   expect(foo).to eq([1, 2, 3])
       #   expect(foo).to eq [1, 2, 3]
       class RspecMatchOrderedArray < Cop
-        MATCH_ORDERED_ARRAY = "match_ordered_array".freeze
+        MATCH_ORDERED_ARRAY = "match_ordered_array"
         MSG = "Use the `match_ordered_array` matcher from ezcater_matchers gem "\
-          "instead of `eq` when comparing collections".freeze
+          "instead of `eq` when comparing collections"
 
         def_node_matcher "eq_array", <<~PATTERN
           (send nil? :eq (array ...))
