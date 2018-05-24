@@ -1,0 +1,7 @@
+inherit_from:
+  - ../conf/rubocop.yml
+
+AllCops:
+  Exclude:
+    - 'vendor/bundle/**/*'
+    - 'gemfiles/vendor/**/*' 

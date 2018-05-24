@@ -1,5 +1,8 @@
 # ezcater_rubocop
 
+## v0.52.8
+- Add new configuration `rubocop_gem` for use with gems.
+
 ## v0.52.7
 - Enable `Style/FrozenStringLiteralComment` with the `when_needed` style.
 
