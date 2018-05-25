@@ -45,6 +45,7 @@ Further customization of RuboCop for your local project may be added to this fil
 
 - **rubocop**: Assumes RSpec is used and requires [rubocop-rspec](https://github.com/backus/rubocop-rspec).
   This configuration should be used for gems.
+- **rubocop_gem**: For use in Ruby gem projects, this inherits from the **rubocop** configuration.
 - **rubocop_rails**: For Rails projects, this inherits from the **rubocop** configuration.
 
 ## Usage
