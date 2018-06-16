@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-lib = File.expand_path("../lib", __FILE__)
+lib = File.expand_path("lib", __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "ezcater_rubocop/version"
 
@@ -48,6 +48,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rspec", "~> 3.0"
   spec.add_development_dependency "rspec_junit_formatter"
 
-  spec.add_runtime_dependency "rubocop", "~> 0.52.1"
-  spec.add_runtime_dependency "rubocop-rspec", "~> 1.22.2"
+  spec.add_runtime_dependency "rubocop", "~> 0.57.2"
+  spec.add_runtime_dependency "rubocop-rspec", "~> 1.27.0"
 end
