@@ -48,6 +48,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rspec", "~> 3.0"
   spec.add_development_dependency "rspec_junit_formatter"
 
+  spec.add_runtime_dependency "parser", "< 2.5.0.1"
   spec.add_runtime_dependency "rubocop", "~> 0.57.2"
   spec.add_runtime_dependency "rubocop-rspec", "~> 1.27.0"
 end
