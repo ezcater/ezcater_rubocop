@@ -2,6 +2,8 @@
 
 ## v0.57.0 (unreleased)
 - Update to rubocop v0.57.2 and rubocop-rspec v1.27.0.
+- Disable new cop `Naming/MemoizedInstanceVariableName` until configuration
+  options are available.
 
 ## v0.52.8
 - Add new configuration `rubocop_gem` for use with gems.

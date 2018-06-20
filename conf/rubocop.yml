@@ -32,6 +32,10 @@ Metrics/MethodLength:
 Metrics/PerceivedComplexity:
   Enabled: false
 
+# Disable this cop until configuration options are available (>= 0.58.0)
+Naming/MemoizedInstanceVariableName:
+  Enabled: false
+
 Rails:
   Enabled: false
 
