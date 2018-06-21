@@ -8,6 +8,7 @@
   https://github.com/rubocop-hq/rubocop-rspec/issues/655.
 - Configure `Naming/UncommunicativeMethodParamName` to allow `e, ex, id`
   param names.
+- Exclude appraisal generated gemfiles for gems.
 
 ## v0.52.8
 - Add new configuration `rubocop_gem` for use with gems.
