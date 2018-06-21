@@ -3,6 +3,11 @@ require: ezcater_rubocop
 AllCops:
   DisplayCopNames: true
 
+# This is a useful cop but produces some false positives and can break code:
+# https://github.com/rubocop-hq/rubocop-rspec/issues/655
+FactoryBot/DynamicAttributeDefinedStatically:
+  Enabled: false
+
 Layout/DotPosition:
   EnforcedStyle: trailing
 
@@ -35,6 +40,12 @@ Metrics/PerceivedComplexity:
 # Disable this cop until configuration options are available (>= 0.58.0)
 Naming/MemoizedInstanceVariableName:
   Enabled: false
+
+Naming/UncommunicativeMethodParamName:
+  AllowedNames:
+  - e
+  - ex
+  - id
 
 Rails:
   Enabled: false
