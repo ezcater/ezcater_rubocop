@@ -1,5 +1,15 @@
 # ezcater_rubocop
 
+## v0.57.0 (unreleased)
+- Update to rubocop v0.57.2 and rubocop-rspec v1.27.0.
+- Disable new cop `Naming/MemoizedInstanceVariableName` until configuration
+  options are available.
+- Disable `FactoryBot/DynamicAttributeDefinedStatically` due to
+  https://github.com/rubocop-hq/rubocop-rspec/issues/655.
+- Configure `Naming/UncommunicativeMethodParamName` to allow `e, ex, id`
+  param names.
+- Exclude appraisal generated gemfiles for gems.
+
 ## v0.52.8
 - Add new configuration `rubocop_gem` for use with gems.
 
