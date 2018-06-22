@@ -1,6 +1,6 @@
 # ezcater_rubocop
 
-## v0.57.0 (unreleased)
+## v0.57.0
 - Update to rubocop v0.57.2 and rubocop-rspec v1.27.0.
 - Disable new cop `Naming/MemoizedInstanceVariableName` until configuration
   options are available.
