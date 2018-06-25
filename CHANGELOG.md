@@ -1,5 +1,8 @@
 # ezcater_rubocop
 
+## v0.49.7
+- Fix `Ezcater/RspecRequireHttpStatusMatcher` cop.
+
 ## v0.49.6
 - Rename `Ezcater/RspecRequireGqlErrorHelpers` cop to `Ezcater/RequireGqlErrorHelpers`.
 
