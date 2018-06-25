@@ -1,5 +1,9 @@
 # ezcater_rubocop
 
+## v0.49.7
+- Add `Ezcater/RspecRequireHttpStatusMatcher` cop.
+- Enable `Rails/HttpStatus` cop and enforce symbols.
+
 ## v0.49.6
 - Rename `Ezcater/RspecRequireGqlErrorHelpers` cop to `Ezcater/RequireGqlErrorHelpers`.
 
