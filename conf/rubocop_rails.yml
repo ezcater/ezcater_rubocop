@@ -15,6 +15,9 @@ Rails/RelativeDateConstant:
   # constant but does not update references to it.
   AutoCorrect: false
 
+RSpec/Rails/HttpStatus:
+  EnforcedStyle: symbolic
+
 Style/MixinUsage:
   Exclude:
   - "bin/**/*"
