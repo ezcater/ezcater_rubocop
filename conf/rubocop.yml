@@ -74,6 +74,11 @@ RSpec/MultipleExpectations:
 RSpec/NestedGroups:
   Max: 5
 
+# From rubocop-rspec
+Rails/HttpStatus:
+  Enabled: true
+  EnforcedStyle: symbolic
+
 Style/EmptyLiteral:
   Enabled: false
 
