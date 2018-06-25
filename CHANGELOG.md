@@ -1,5 +1,9 @@
 # ezcater_rubocop
 
+## v0.57.1
+- Add `Ezcater/RspecRequireHttpStatusMatcher` cop.
+- Enable `Rails/HttpStatus` cop and enforce symbols.
+
 ## v0.57.0
 - Update to rubocop v0.57.2 and rubocop-rspec v1.27.0.
 - Disable new cop `Naming/MemoizedInstanceVariableName` until configuration
