@@ -1,5 +1,8 @@
 # ezcater_rubocop
 
+## v0.57.2
+- Fix `Ezcater/RspecRequireHttpStatusMatcher` cop.
+
 ## v0.57.1
 - Add `Ezcater/RspecRequireHttpStatusMatcher` cop.
 - Enable `Rails/HttpStatus` cop and enforce symbols.
