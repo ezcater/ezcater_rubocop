@@ -1,5 +1,8 @@
 # ezcater_rubocop
 
+## v0.57.3
+- Do not use broken parser v2.5.1.1.
+
 ## v0.57.2
 - Fix `Ezcater/RspecRequireHttpStatusMatcher` cop.
 
