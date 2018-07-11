@@ -68,6 +68,10 @@ RSpec/ExampleLength:
 RSpec/LetSetup:
   Enabled: false
 
+RSpec/MessageExpectation:
+  Enabled: true
+  EnforcedStyle: allow
+
 RSpec/MultipleExpectations:
   Max: 5
 
