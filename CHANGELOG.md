@@ -2,7 +2,7 @@
 
 ## v0.58.0
 - Update to rubocop v0.58.1.
-- Enable `Naming/MemoizedInstanceVariableName` with optional leading
+- Enable `Naming/MemoizedInstanceVariableName` with required leading
   underscore.
 
 ## v0.57.4

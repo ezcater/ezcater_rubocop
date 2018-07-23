@@ -38,7 +38,7 @@ Metrics/PerceivedComplexity:
   Enabled: false
 
 Naming/MemoizedInstanceVariableName:
-  EnforcedStyleForLeadingUnderscores: optional
+  EnforcedStyleForLeadingUnderscores: required
 
 Naming/UncommunicativeMethodParamName:
   AllowedNames:
