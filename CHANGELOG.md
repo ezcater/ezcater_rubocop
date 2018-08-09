@@ -1,5 +1,8 @@
 # ezcater_rubocop
 
+## v0.58.1
+- Add `Ezcater/PreventGraphqlEnumPostfix` cop.
+
 ## v0.58.0
 - Update to rubocop v0.58.1.
 - Enable `Naming/MemoizedInstanceVariableName` with required leading
