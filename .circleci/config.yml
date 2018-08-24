@@ -15,6 +15,12 @@ jobs:
             - ruby-cache-{{ arch }}-{{ .Branch }}-
             - ruby-cache-
 
+      - run:
+          name: Setup Code Climate test-reporter
+          command: |
+            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 -o ./cc-test-reporter
+            chmod +x ./cc-test-reporter
+
       # Bundle install dependencies
       - run: gem install bundler --no-document
       - run: bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs=4 --retry=3
@@ -31,16 +37,16 @@ jobs:
           name: RuboCop
           command: bundle exec rubocop
 
-      # Run rspec in parallel
+      # Run rspec
       - type: shell
         command: |
+          ./cc-test-reporter before-build
           bundle exec rspec --profile 10 \
                             --format RspecJunitFormatter \
                             --out test_results/rspec.xml \
                             --format progress
+          ./cc-test-reporter after-build -t simplecov --exit-code $?
 
       # Save test results for timing analysis
       - store_test_results:
           path: test_results
-      - store_test_results:
-          path: tmp/capybara
