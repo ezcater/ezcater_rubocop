@@ -3,11 +3,6 @@ require: ezcater_rubocop
 AllCops:
   DisplayCopNames: true
 
-# This is a useful cop but produces some false positives and can break code:
-# https://github.com/rubocop-hq/rubocop-rspec/issues/655
-FactoryBot/DynamicAttributeDefinedStatically:
-  Enabled: false
-
 Layout/DotPosition:
   EnforcedStyle: trailing
 

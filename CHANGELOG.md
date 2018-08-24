@@ -1,5 +1,9 @@
 # ezcater_rubocop
 
+## v0.58.1
+- Update to `rubocop-rspec` v1.28.0.
+- Remove configuration for removed `FactoryBot/DynamicAttributeDefinedStatically` cop.
+
 ## v0.58.0
 - Update to rubocop v0.58.1.
 - Enable `Naming/MemoizedInstanceVariableName` with required leading
