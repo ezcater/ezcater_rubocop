@@ -48,8 +48,8 @@ module RuboCop
           lambda do |corrector|
             experession_end = node.source.match?(COLON_COLON_REGEXP) ? 3 : 6
             corrector.replace(Parser::Source::Range.new(node.source_range.source_buffer,
-                                                       node.source_range.begin_pos + 1,
-                                                       node.source_range.begin_pos + experession_end), '.')
+                                                        node.source_range.begin_pos + 1,
+                                                        node.source_range.begin_pos + experession_end), ".")
           end
         end
       end
