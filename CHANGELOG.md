@@ -1,5 +1,8 @@
 # ezcater_rubocop
 
+## v0.58.2
+- Updated `Ezcater/RspecDotNotSelfDot` to flag offenses for `::class_method`.
+
 ## v0.58.1
 - Update to `rubocop-rspec` v1.28.0.
 - Remove configuration for removed `FactoryBot/DynamicAttributeDefinedStatically` cop.
