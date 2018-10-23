@@ -3,6 +3,9 @@ require: ezcater_rubocop
 AllCops:
   DisplayCopNames: true
 
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+
 Layout/DotPosition:
   EnforcedStyle: trailing
 
