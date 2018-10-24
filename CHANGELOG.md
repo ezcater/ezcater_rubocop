@@ -1,5 +1,8 @@
 # ezcater_rubocop
 
+## v0.58.3
+- Updated `Layout/MultilineMethodCallIndentation` to `indented`.
+
 ## v0.58.2
 - Updated `Ezcater/RspecDotNotSelfDot` to flag offenses for `::class_method`.
 
