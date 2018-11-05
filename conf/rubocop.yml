@@ -16,9 +16,6 @@ Metrics/BlockLength:
   Exclude:
   - "*.gemspec"
   - "spec/**/*.rb"
-  - "lib/tasks/**/*.rake"
-  - "config/environments/*.rb"
-  - "app/graphql/**/*.rb"
 
 Metrics/CyclomaticComplexity:
   Enabled: false
@@ -133,4 +130,3 @@ Style/TrailingCommaInArrayLiteral:
 
 Style/TrailingCommaInHashLiteral:
   EnforcedStyleForMultiline: consistent_comma
-

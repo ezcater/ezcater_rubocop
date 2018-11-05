@@ -1,8 +1,18 @@
 inherit_from:
   - ../conf/rubocop.yml
 
+inherit_mode:
+  merge:
+    - Exclude
+
 AllCops:
   TargetRailsVersion: 5.1
+
+Metrics/BlockLength:
+  Exclude:
+  - "lib/tasks/**/*.rake"
+  - "config/environments/*.rb"
+  - "app/graphql/**/*.rb"
 
 Rails:
   Enabled: true
