@@ -1,5 +1,8 @@
 # ezcater_rubocop
 
+## v0.58.4
+- Update `Metrics/BlockLength` to exclude `app/graphql/**/*.rb`
+
 ## v0.58.3
 - Updated `Layout/MultilineMethodCallIndentation` to `indented`.
 
