@@ -9,9 +9,9 @@ Metrics/BlockLength:
     merge:
       - Exclude
   Exclude:
-  - "lib/tasks/**/*.rake"
-  - "config/environments/*.rb"
   - "app/graphql/**/*.rb"
+  - "config/environments/*.rb"
+  - "lib/tasks/**/*.rake"
 
 Rails:
   Enabled: true
