@@ -4,6 +4,15 @@ inherit_from:
 AllCops:
   TargetRailsVersion: 5.1
 
+Metrics/BlockLength:
+  inherit_mode:
+    merge:
+      - Exclude
+  Exclude:
+  - "app/graphql/**/*.rb"
+  - "config/environments/*.rb"
+  - "lib/tasks/**/*.rake"
+
 Rails:
   Enabled: true
 

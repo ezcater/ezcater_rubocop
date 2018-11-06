@@ -1,5 +1,9 @@
 # ezcater_rubocop
 
+## v0.58.4
+- Update `Metrics/BlockLength` to exclude `app/graphql/**/*.rb`
+- Move `Metrics/BlockLength` exclusions for `lib/tasks/**/*.rake` and `config/environments/*.rb` into rubocop_rails.yml
+
 ## v0.58.3
 - Updated `Layout/MultilineMethodCallIndentation` to `indented`.
 
