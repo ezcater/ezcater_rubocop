@@ -24,8 +24,8 @@ module RuboCop
       #   end
 
       class RspecDotNotSelfDot < Cop
-        SELF_DOT_REGEXP = /["']self\./
-        COLON_COLON_REGEXP = /["'](\:\:)/
+        SELF_DOT_REGEXP = /["']self\./.freeze
+        COLON_COLON_REGEXP = /["'](\:\:)/.freeze
 
         SELF_DOT_MSG = 'Use ".<class method>" instead of "self.<class method>" for example group description.'
         COLON_COLON_MSG = 'Use ".<class method>" instead of "::<class method>" for example group description.'

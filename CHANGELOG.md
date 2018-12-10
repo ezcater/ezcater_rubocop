@@ -1,6 +1,8 @@
 # ezcater_rubocop
 
 ## Unreleased
+- Update to `rubocop` v0.61.1.
+- Update to `rubocop-rspec` v1.30.1
 
 ## v0.59.0
 - Disable `Style/NegatedIf`.
