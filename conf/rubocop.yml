@@ -94,6 +94,9 @@ Style/Documentation:
 Style/IfUnlessModifier:
   Enabled: false
 
+Style/NegatedIf:
+  Enabled: false
+
 # This cop does not yet support a style to prevent underscores
 Style/NumericLiterals:
   Enabled: false
