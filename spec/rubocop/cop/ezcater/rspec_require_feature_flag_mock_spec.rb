@@ -11,10 +11,10 @@ RSpec.describe RuboCop::Cop::Ezcater::RspecRequireFeatureFlagMock, :config do
   end
 
   it "accepts usage of the mock_feature_flag helper with options" do
-    inspect_source([
-                     "user = create(:user)",
-                     "mock_feature_flag(\"MyFeatureFlag\", { user: user }, true)",
-                   ])
+    inspect_source(<<-RUBY)
+      user = create(:user)
+      mock_feature_flag(\"MyFeatureFlag\", { user: user }, true)
+    RUBY
     expect(cop.offenses).to be_empty
   end
 
