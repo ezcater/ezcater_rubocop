@@ -1,6 +1,6 @@
 # ezcater_rubocop
 
-## Unreleased
+## v0.61.0
 - Update to `rubocop` v0.61.1.
 - Update to `rubocop-rspec` v1.30.1
 
