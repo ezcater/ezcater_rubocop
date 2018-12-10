@@ -1,5 +1,10 @@
 # ezcater_rubocop
 
+## Unreleased
+
+## v0.59.0
+- Disable `Style/NegatedIf`.
+
 ## v0.58.4
 - Update `Metrics/BlockLength` to exclude `app/graphql/**/*.rb`
 - Move `Metrics/BlockLength` exclusions for `lib/tasks/**/*.rake` and
