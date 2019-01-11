@@ -3,6 +3,12 @@ require: ezcater_rubocop
 AllCops:
   DisplayCopNames: true
 
+Layout/IndentHash:
+  EnforcedStyle: consistent
+
+Layout/IndentArray:
+  EnforcedStyle: consistent
+
 Layout/MultilineMethodCallIndentation:
   EnforcedStyle: indented
 
