@@ -1,5 +1,10 @@
 # ezcater_rubocop
 
+# Versioning
+
+NB: This gem is versioned based on the `MAJOR`.`MINOR` version of rubocop. The first release of the
+ezcater_rubocop gem was `v0.49.0`.
+
 ## v0.61.1
 - `Layout/IndentHash` enforces consistent style
 - `Layout/IndentArray` enforces consistent style
