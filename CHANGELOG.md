@@ -1,5 +1,9 @@
 # ezcater_rubocop
 
+## v0.61.1
+- `Layout/IndentHash` enforces consistent style
+- `Layout/IndentArray` enforces consistent style
+
 ## v0.61.0
 - Update to `rubocop` v0.61.1.
 - Update to `rubocop-rspec` v1.30.1
