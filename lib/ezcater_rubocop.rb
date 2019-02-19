@@ -14,7 +14,6 @@ puts "configuration from #{DEFAULT_FILES}" if RuboCop::ConfigLoader.debug?
 config = RuboCop::ConfigLoader.merge_with_default(config, path)
 RuboCop::ConfigLoader.instance_variable_set(:@default_configuration, config)
 
-require "rubocop/cop/ezcater/private_attr"
 require "rubocop/cop/ezcater/rails_configuration"
 require "rubocop/cop/ezcater/require_gql_error_helpers"
 require "rubocop/cop/ezcater/rspec_match_ordered_array"
