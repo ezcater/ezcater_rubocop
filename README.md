@@ -84,7 +84,6 @@ is updated.
 
 ## Custom Cops
 
-1. [PrivateAttr](https://github.com/ezcater/ezcater_rubocop/blob/master/lib/rubocop/cop/ezcater/private_attr.rb) - Require methods from the `private_attr` gem.
 1. [RailsConfiguration](https://github.com/ezcater/ezcater_rubocop/blob/master/lib/rubocop/cop/ezcater/rails_configuration.rb) - Enforce use of `Rails.configuration` instead of `Rails.application.config`.
 1. [RequireGqlErrorHelpers](https://github.com/ezcater/ezcater_rubocop/blob/master/lib/rubocop/cop/ezcater/require_gql_error_helpers.rb) - Use the helpers provided by `GQLErrors` instead of raising `GraphQL::ExecutionError` directly.
 1. [RspecDotNotSelfDot](https://github.com/ezcater/ezcater_rubocop/blob/master/lib/rubocop/cop/ezcater/rspec_dot_not_self_dot.rb) - Enforce ".<class method>" instead of "self.<class method>" and "::<class method>" for example group description.
