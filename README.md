@@ -70,7 +70,7 @@ running rubocop.
 
 ## Versioning
 
-ezCater is using [Semantic Versioning](https://semver.org/). All version bumps should increment using `MAJOR.MINOR.PATCH` based on changes.
+This gem is using [Semantic Versioning](https://semver.org/). All version bumps should increment using `MAJOR.MINOR.PATCH` based on changes.
 
 ## Custom Cops
 
