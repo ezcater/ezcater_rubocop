@@ -70,17 +70,7 @@ running rubocop.
 
 ## Versioning
 
-This gem is versioned based on the MAJOR.MINOR version of `rubocop`. The first
-release of the `ezcater_rubocop` gem was v0.49.0.
-
-The patch version for this gem does _not_ correspond to the patch version of
-`rubocop`. The patch version for this gem will change any time that one of its
-configurations is modified _or_ its dependency on `rubocop` is changed to require
-a different patch version.
-
-This gem also includes a dependency on `rubocop-rspec` that will be updated to
-the latest compatible version each time that the MAJOR.MINOR version of `rubocop`
-is updated.
+This gem is using [Semantic Versioning](https://semver.org/). All version bumps should increment using `MAJOR.MINOR.PATCH` based on changes.
 
 ## Custom Cops
 
