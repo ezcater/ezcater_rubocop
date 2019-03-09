@@ -50,6 +50,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "simplecov"
 
   spec.add_runtime_dependency "parser", "!= 2.5.1.1"
-  spec.add_runtime_dependency "rubocop", "~> 0.61.1"
+  spec.add_runtime_dependency "rubocop", ">= 0.61.1", "< 0.66.0"
   spec.add_runtime_dependency "rubocop-rspec", "~> 1.30.1"
 end
