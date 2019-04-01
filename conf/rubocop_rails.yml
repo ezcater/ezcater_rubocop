@@ -1,8 +1,14 @@
 inherit_from:
   - ../conf/rubocop.yml
 
+inherit_mode:
+  merge:
+    - Exclude
+
 AllCops:
   TargetRailsVersion: 5.1
+  Exclude:
+    - tmp/cache/**/*
 
 Metrics/BlockLength:
   inherit_mode:
