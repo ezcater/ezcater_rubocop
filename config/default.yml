@@ -2,6 +2,14 @@ Ezcater/RailsConfiguration:
   Description: 'Enforce the use of `Rails.configuration` instead of `Rails.application.config`.'
   Enabled: true
 
+Ezcater/RailsEnv:
+  Description: 'Enforce the use of `Rails.configuration.x.<foo>` instead of `Rails.env` checks.'
+  Enabled: true
+  Exclude:
+    - "config/**/*"
+    - "spec/rails_helper.rb"
+    - "db/**/*"
+
 Ezcater/RspecDotNotSelfDot:
   Description: 'Enforce ".<class method>" instead of "self.<class method>" for example group description.'
   Enabled: true
