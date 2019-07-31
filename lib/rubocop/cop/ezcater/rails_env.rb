@@ -5,9 +5,10 @@ module RuboCop
     module Ezcater
       # Use the `Rails.configuration.x` namespace for configuration backed by
       # environment variables, rather than inspecting `Rails.env` directly.
+      #
       # Centralizing application configuration helps avoid scattering it
       # throughout the codebase, and avoids coarse environment grouping under
-      # a single RAILS_ENV var. See https://ezcater.atlassian.net/wiki/x/ZIChNg.
+      # a single env var. See https://ezcater.atlassian.net/wiki/x/ZIChNg.
       #
       # @example
       #
@@ -15,10 +16,13 @@ module RuboCop
       #   enforce_foo! if Rails.configuration.x.foo_enforced
       #
       #   # bad
-      #   foo! if Rails.env.production?
-
+      #   enforce_foo! if Rails.env.production?
+      #
+      #   # bad
+      #   enforce_foo! if ENV["RAILS_ENV"] == "production"
+      #
       class RailsEnv < Cop
-        MSG = <<~END_MESSAGE
+        MSG = <<~END_MESSAGE.split("\n").join(" ")
           Use `Rails.configuration.x.<foo>` for env-backed configuration instead of inspecting `Rails.env`, so that
           configuration is more centralized and gives finer control. https://ezcater.atlassian.net/wiki/x/ZIChNg
         END_MESSAGE

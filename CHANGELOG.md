@@ -10,6 +10,7 @@ ezcater_rubocop gem was `v0.49.0`.
 ## Unreleased
 
 - Add `Ezcater/RailsEnv` cop.
+- Add `Ezcater/DirectEnvCheck` cop.
 
 ## v1.0.2
 - Exclude bootsnap cache directory (`tmp/cache`).

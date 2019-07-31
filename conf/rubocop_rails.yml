@@ -46,3 +46,20 @@ Rails/UnknownEnv:
     - test
     - staging
     - production
+
+Ezcater/RailsEnv:
+  Description: 'Enforce the use of `Rails.configuration.x.<foo>` instead of checking `Rails.env`.'
+  Enabled: true
+  Exclude:
+    - "config/**/*"
+    - "spec/rails_helper.rb"
+    - "db/**/*"
+
+Ezcater/DirectEnvCheck:
+  Description: 'Enforce the use of `Rails.configuration.x.<foo>` instead of checking `ENV`.'
+  Enabled: true
+  Exclude:
+    - "bin/**/*"
+    - "config/**/*"
+    - "spec/rails_helper.rb"
+    - "db/**/*"
