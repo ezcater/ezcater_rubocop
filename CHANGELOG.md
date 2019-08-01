@@ -4,10 +4,13 @@
 
 This gem is moving onto its own [Semantic Versioning](https://semver.org/) scheme starting with v1.0.0. All version bumps moving forward should increment using `MAJOR.MINOR.PATCH` based on changes.
 
-Prior to v1.0.0 this gem was versioned based on the `MAJOR`.`MINOR` version of RuboCop. The first release of the
-ezcater_rubocop gem was `v0.49.0`.
+Prior to v1.0.0 this gem was versioned based on the `MAJOR`.`MINOR` version of RuboCop. The first release of the ezcater_rubocop gem was `v0.49.0`.
 
 ## Unreleased
+
+- ...
+
+## v1.1.0
 
 - Add `Ezcater/RailsEnv` cop.
 - Add `Ezcater/DirectEnvCheck` cop.
