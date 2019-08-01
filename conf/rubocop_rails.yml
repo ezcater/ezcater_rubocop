@@ -54,6 +54,8 @@ Ezcater/RailsEnv:
     - "config/**/*"
     - "spec/rails_helper.rb"
     - "db/**/*"
+    - "lib/tasks/**/*"
+    - "spec/lib/tasks/**/*"
 
 Ezcater/DirectEnvCheck:
   Description: 'Enforce the use of `Rails.configuration.x.<foo>` instead of checking `ENV`.'
@@ -63,3 +65,5 @@ Ezcater/DirectEnvCheck:
     - "config/**/*"
     - "spec/rails_helper.rb"
     - "db/**/*"
+    - "lib/tasks/**/*"
+    - "spec/lib/tasks/**/*"
