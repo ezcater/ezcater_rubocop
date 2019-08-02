@@ -8,6 +8,10 @@ Prior to v1.0.0 this gem was versioned based on the `MAJOR`.`MINOR` version of R
 
 ## Unreleased
 
+- ...
+
+## v1.1.1
+
 - Exclude `lib/tasks/` for `Ezcater/RailsEnv` and `Ezcater/DirectEnvCheck`.
 
 ## v1.1.0
