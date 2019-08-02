@@ -51,5 +51,5 @@ Gem::Specification.new do |spec|
 
   spec.add_runtime_dependency "parser", "!= 2.5.1.1"
   spec.add_runtime_dependency "rubocop", "~> 0.61.1"
-  spec.add_runtime_dependency "rubocop-rspec", "~> 1.30.1"
+  spec.add_runtime_dependency "rubocop-rspec", ">= 1.30.1", "< 1.36.0"
 end
