@@ -47,6 +47,12 @@ Rails/UnknownEnv:
     - staging
     - production
 
+Ezcater/RailsTopLevelSqlExecute:
+  Description: 'Use `execute` instead of `ActiveRecord::Base.connection.execute` in migrations.'
+  Enabled: true
+  Include:
+    - "db/migrate/**/*"
+
 Ezcater/RailsEnv:
   Description: 'Enforce the use of `Rails.configuration.x.<foo>` instead of checking `Rails.env`.'
   Enabled: true
