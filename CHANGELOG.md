@@ -8,6 +8,10 @@ Prior to v1.0.0 this gem was versioned based on the `MAJOR`.`MINOR` version of R
 
 ## Unreleased
 
+- ...
+
+## v1.2.0
+
 - Add `Ezcater/RailsTopLevelSqlExecute` to replace `ActiveRecord::Base.connection.execute` with `execute` in `db/migrate/`.
 
 ## v1.1.1
