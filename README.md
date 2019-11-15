@@ -82,6 +82,7 @@ This gem is using [Semantic Versioning](https://semver.org/). All version bumps 
 1. [RspecRequireFeatureFlagMock](https://github.com/ezcater/ezcater_rubocop/blob/master/lib/rubocop/cop/ezcater/rspec_require_feature_flag_mock.rb) - Enforce use of `mock_feature_flag` helper instead of mocking `FeatureFlag.is_active?` directly.
 1. [RspecRequireHttpStatusMatcher](https://github.com/ezcater/ezcater_rubocop/blob/master/lib/rubocop/cop/ezcater/rspec_require_http_status_matcher.rb) - Use the HTTP status code matcher, like `expect(response).to have_http_status :bad_request`, rather than `expect(response.code).to eq 400`
 1. [StyleDig](https://github.com/ezcater/ezcater_rubocop/blob/master/lib/rubocop/cop/ezcater/style_dig.rb) - Recommend `dig` for deeply nested access.
+1. [GraphqlFieldsNaming](https://github.com/ezcater/ezcater_rubocop/blob/master/lib/rubocop/cop/ezcater/graphql_fields_naming.rb) - Enforce the configured style when naming graphQL fields and arguments.
 
 ## Development
 
