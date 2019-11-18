@@ -9,6 +9,7 @@ Prior to v1.0.0 this gem was versioned based on the `MAJOR`.`MINOR` version of R
 ## Unreleased
 
 - ...
+- Add `Ezcater/GraphqlFieldsNaming` cop.
 
 ## v1.2.0
 
