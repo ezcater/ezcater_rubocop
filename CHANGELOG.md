@@ -6,6 +6,11 @@ This gem is moving onto its own [Semantic Versioning](https://semver.org/) schem
 
 Prior to v1.0.0 this gem was versioned based on the `MAJOR`.`MINOR` version of RuboCop. The first release of the ezcater_rubocop gem was `v0.49.0`.
 
+## v2.0.0 (unreleased)
+- Update to `rubocop` v0.78.0, `rubocop-rspec` v1.37.1 and `rubocop-rails`.
+- This is being released as a major update because cops have been renamed so this is unlikely to be
+  a drop-in replacement.
+
 ## v1.4.1
 - Correct a matching syntax issue with `Ezcater/RubyTimeout` so that it applies in the expected cases.
 

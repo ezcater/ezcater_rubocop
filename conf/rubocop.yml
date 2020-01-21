@@ -3,10 +3,10 @@ require: ezcater_rubocop
 AllCops:
   DisplayCopNames: true
 
-Layout/IndentHash:
+Layout/FirstHashElementIndentation:
   EnforcedStyle: consistent
 
-Layout/IndentArray:
+Layout/FirstArrayElementIndentation:
   EnforcedStyle: consistent
 
 Layout/MultilineMethodCallIndentation:
@@ -26,7 +26,7 @@ Metrics/BlockLength:
 Metrics/CyclomaticComplexity:
   Enabled: false
 
-Metrics/LineLength:
+Layout/LineLength:
   Max: 120
   Exclude:
   - "Gemfile"
@@ -42,7 +42,7 @@ Metrics/PerceivedComplexity:
 Naming/MemoizedInstanceVariableName:
   EnforcedStyleForLeadingUnderscores: required
 
-Naming/UncommunicativeMethodParamName:
+Naming/MethodParameterName:
   AllowedNames:
   - e
   - ex
@@ -89,7 +89,7 @@ Style/EmptyLiteral:
 
 Style/FrozenStringLiteralComment:
   Enabled: true
-  EnforcedStyle: when_needed
+  EnforcedStyle: always
 
 Style/GuardClause:
   Enabled: false

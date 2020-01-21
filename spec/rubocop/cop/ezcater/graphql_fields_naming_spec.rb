@@ -8,7 +8,7 @@ RSpec.describe RuboCop::Cop::Ezcater::GraphqlFieldsNaming, :config do
     {
       "EnforcedStyle" => "snake_case",
       "SupportedStyles" => %w(snake_case camelCase),
-      "Include" => ["*"] # allow all during specs
+      "Include" => ["*"], # allow all during specs
     }
   end
 
