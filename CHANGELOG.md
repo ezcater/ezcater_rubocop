@@ -6,21 +6,16 @@ This gem is moving onto its own [Semantic Versioning](https://semver.org/) schem
 
 Prior to v1.0.0 this gem was versioned based on the `MAJOR`.`MINOR` version of RuboCop. The first release of the ezcater_rubocop gem was `v0.49.0`.
 
-## Unreleased
-
-- ...
+## v1.3.0
 - Add `Ezcater/GraphqlFieldsNaming` cop.
 
 ## v1.2.0
-
 - Add `Ezcater/RailsTopLevelSqlExecute` to replace `ActiveRecord::Base.connection.execute` with `execute` in `db/migrate/`.
 
 ## v1.1.1
-
 - Exclude `lib/tasks/` for `Ezcater/RailsEnv` and `Ezcater/DirectEnvCheck`.
 
 ## v1.1.0
-
 - Add `Ezcater/RailsEnv` cop.
 - Add `Ezcater/DirectEnvCheck` cop.
 
