@@ -51,3 +51,7 @@ Ezcater/StyleDig:
   Description: 'Recommend `dig` for deeply nested access.'
   Enabled: true
   AutoCorrect: false
+
+Ezcater/RubyTimeout:
+  Description: 'Disallow use of `Timeout.timeout` because it is unsafe and can cause unexpected behavior.'
+  Enabled: true
