@@ -6,7 +6,7 @@ This gem is moving onto its own [Semantic Versioning](https://semver.org/) schem
 
 Prior to v1.0.0 this gem was versioned based on the `MAJOR`.`MINOR` version of RuboCop. The first release of the ezcater_rubocop gem was `v0.49.0`.
 
-## Unreleased
+## v1.4.0
 - Add `Ezcater/RubyTimeout` cop.
 
 ## v1.3.0
