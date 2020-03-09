@@ -25,7 +25,7 @@ module RuboCop
         END_MESSAGE
 
         def_node_matcher "timeout", <<-PATTERN
-          (send (const _ :Timeout) :timeout)
+          (send (const _ :Timeout) :timeout ...)
         PATTERN
 
         def on_send(node)
