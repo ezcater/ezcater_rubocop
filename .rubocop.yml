@@ -1,5 +1,8 @@
+AllCops:
+  TargetRubyVersion: 2.5
+
 inherit_from:
-  - conf/rubocop.yml
+  - conf/rubocop_gem.yml
 
 # Disable because aggregate_failures is configured globally
 RSpec/MultipleExpectations:
