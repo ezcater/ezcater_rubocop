@@ -142,11 +142,19 @@ Style/TrailingCommaInHashLiteral:
 
 ### New Cops
 
+# Cops are now introduced in a "pending" state and must be explicitly
+# enabled or disabled. New cops are not enabled by default until the
+# next major release.
+
+#### New cops in v0.81
+
 Lint/RaiseException:
   Enabled: true
 
 Lint/StructNewOverride:
   Enabled: true
+
+#### New cops in v0.80
 
 Style/HashEachMethods:
   Enabled: true

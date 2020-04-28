@@ -10,6 +10,7 @@ Prior to v1.0.0 this gem was versioned based on the `MAJOR`.`MINOR` version of R
 - Update to `rubocop` v0.81.0, `rubocop-rspec` v1.38.1 and `rubocop-rails` v2.5.2.
 - This is being released as a major update because cops have been renamed so this is unlikely to be
   a drop-in replacement.
+- This is the first release to support Ruby 2.7.
 
 ## v1.4.1
 - Correct a matching syntax issue with `Ezcater/RubyTimeout` so that it applies in the expected cases.
