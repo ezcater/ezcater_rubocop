@@ -6,7 +6,7 @@ inherit_mode:
     - Exclude
 
 AllCops:
-  TargetRailsVersion: 5.1
+  TargetRailsVersion: 5.2
   Exclude:
     - tmp/cache/**/*
 

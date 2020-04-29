@@ -39,7 +39,7 @@ begin
       run("bundle exec rubocop --force-exclusion #{changed_files}")
     end
   end
-rescue StandardError => ex
-  puts "Error: #{ex.message}"
+rescue StandardError => e
+  puts "Error: #{e.message}"
   rubocop_everything
 end
