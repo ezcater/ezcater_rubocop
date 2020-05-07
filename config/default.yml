@@ -55,3 +55,9 @@ Ezcater/StyleDig:
 Ezcater/RubyTimeout:
   Description: 'Disallow use of `Timeout.timeout` because it is unsafe and can cause unexpected behavior.'
   Enabled: true
+
+Ezcater/MigrationDocumentation:
+  Description: 'Enforce the comment with link to migration best practices on migration files'
+  Enabled: true
+  Include:
+    - '**/migrate/*.rb'

@@ -17,6 +17,7 @@ RuboCop::ConfigLoader.instance_variable_set(:@default_configuration, config)
 
 require "rubocop/cop/ezcater/direct_env_check"
 require "rubocop/cop/ezcater/graphql_fields_naming"
+require "rubocop/cop/ezcater/migration_documentation"
 require "rubocop/cop/ezcater/rails_configuration"
 require "rubocop/cop/ezcater/rails_env"
 require "rubocop/cop/ezcater/ruby_timeout"
