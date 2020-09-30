@@ -47,6 +47,11 @@ Rails/UnknownEnv:
     - staging
     - production
 
+Rails/SaveBang:
+  Enabled: true
+  AllowImplicitReturn: false
+  AutoCorrect: False
+
 Ezcater/RailsTopLevelSqlExecute:
   Description: 'Use `execute` instead of `ActiveRecord::Base.connection.execute` in migrations.'
   Enabled: true
