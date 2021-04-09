@@ -6,6 +6,10 @@ This gem is moving onto its own [Semantic Versioning](https://semver.org/) schem
 
 Prior to v1.0.0 this gem was versioned based on the `MAJOR`.`MINOR` version of RuboCop. The first release of the ezcater_rubocop gem was `v0.49.0`.
 
+## v2.2.0
+- Require Ruby 2.6 or later.
+- Set `TargetRubyVersion` to 2.6 in `rubocop_gem` configuration.
+
 ## v2.1.0
 - Enable `Rails/SaveBang` with `AllowImplicitReturn: false`, and with autocorrection disabled.
 
