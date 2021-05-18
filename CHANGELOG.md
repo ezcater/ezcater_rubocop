@@ -6,6 +6,10 @@ This gem is moving onto its own [Semantic Versioning](https://semver.org/) schem
 
 Prior to v1.0.0 this gem was versioned based on the `MAJOR`.`MINOR` version of RuboCop. The first release of the ezcater_rubocop gem was `v0.49.0`.
 
+## v2.3.0
+- Add `FeatureFlagActive` cop. This provides confidence that upgrading to `ezcater_feature_flag-client` v2.0.0, which
+    contains breaking API changes, can be done safely.
+
 ## v2.2.0
 - Require Ruby 2.6 or later.
 - Set `TargetRubyVersion` to 2.6 in `rubocop_gem` configuration.

@@ -16,6 +16,7 @@ config = RuboCop::ConfigLoader.merge_with_default(config, path)
 RuboCop::ConfigLoader.instance_variable_set(:@default_configuration, config)
 
 require "rubocop/cop/ezcater/direct_env_check"
+require "rubocop/cop/ezcater/feature_flag_active"
 require "rubocop/cop/ezcater/graphql_fields_naming"
 require "rubocop/cop/ezcater/rails_configuration"
 require "rubocop/cop/ezcater/rails_env"
