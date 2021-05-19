@@ -19,6 +19,10 @@ Ezcater/DirectEnvCheck:
   Description: 'Enforce the use of `Rails.configuration.x.<foo>` instead of checking `ENV`.'
   Enabled: false
 
+Ezcater/FeatureFlagActive:
+  Description: 'Enforce the proper arguments are given to EzcaterFeatureFlag.active?'
+  Enabled: true
+
 Ezcater/RspecDotNotSelfDot:
   Description: 'Enforce ".<class method>" instead of "self.<class method>" for example group description.'
   Enabled: true

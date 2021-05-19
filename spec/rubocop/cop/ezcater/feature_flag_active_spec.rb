@@ -3,6 +3,7 @@
 
 RSpec.describe RuboCop::Cop::Ezcater::FeatureFlagActive, :config do
   subject(:cop) { described_class.new(config) }
+
   let(:flag_name) { "FeatureFlag #{rand(100)}" }
   let(:tracking_id) { generate_tracking_id }
 
@@ -46,10 +47,34 @@ RSpec.describe RuboCop::Cop::Ezcater::FeatureFlagActive, :config do
     end
   end
 
+  context "other lines that parse to use `send` in the AST don't get caught" do
+    context "require" do
+      let(:line) { 'require "bar"' }
+
+      it "reports nothing" do
+        expect(cop.offenses).to be_empty
+      end
+    end
+
+    context "config blocks" do
+      let(:line) do
+        <<-RUBY
+        Configuration.config do |config|
+          config.foo = true
+        end
+        RUBY
+      end
+
+      it "reports nothing" do
+        expect(cop.offenses).to be_empty
+      end
+    end
+  end
+
   def generate_tracking_id
     [
       %w(user brand caterer).sample,
-      rand(200)
+      rand(200),
     ].join(":")
   end
 end
