@@ -10,27 +10,37 @@ module RuboCop
       #   # good
       #   EzFF.active?("FlagName", tracking_id: "user:12345")
       #   EzFF.active?("FlagName", identifiers: ["user:12345", "user:23456"])
+      #   EzFF.active?(defined_flag_name_var, tracking_id: "brand:12345")
+      #   EzFF.active?(@flag_name_ivar, tracking_id: "brand:12345")
       #
       #   # bad
       #   EzFF.active?("FlagName")
+      #   EzFF.active?(defined_flag_name_var)
+      #   EzFF.active?(@flag_name_ivar)
 
       class FeatureFlagActive < Cop
         MSG = "`EzFF.active?` must be called with at least one of `tracking_id` or `identifiers`"
+        FIRST_PARAM_MSG = "The first argument to `EzFF.active?` must be a string or predefined variable"
 
         def_node_matcher :ezff_active_one_arg, <<-PATTERN
           (send
-            (_ _ {:EzFF :EzcaterFeatureFlag}) :active? (str _))
+            (_ _ {:EzFF :EzcaterFeatureFlag}) :active? ${str lvar ivar})
         PATTERN
 
         def_node_matcher :args_matcher, <<-PATTERN
           (send
             (_ _ {:EzFF :EzcaterFeatureFlag}) :active?
-              (str _)
+              ${str lvar ivar}
               (_
                 (pair
                   (sym {:tracking_id :identifiers})
                   _)
                 ...))
+        PATTERN
+
+        def_node_matcher :first_param_good, <<-PATTERN
+          (send
+            (_ _ {:EzFF :EzcaterFeatureFlag}) :active? ${str lvar ivar} ...)
         PATTERN
 
         def_node_matcher :method_call_matcher, <<-PATTERN
@@ -40,6 +50,10 @@ module RuboCop
 
         def on_send(node)
           return unless method_call_matcher(node)
+
+          if !first_param_good(node)
+            add_offense(node, location: :expression, message: FIRST_PARAM_MSG)
+          end
 
           if ezff_active_one_arg(node) || !args_matcher(node)
             add_offense(node, location: :expression, message: MSG)
