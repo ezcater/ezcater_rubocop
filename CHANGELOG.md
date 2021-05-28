@@ -6,6 +6,10 @@ This gem is moving onto its own [Semantic Versioning](https://semver.org/) schem
 
 Prior to v1.0.0 this gem was versioned based on the `MAJOR`.`MINOR` version of RuboCop. The first release of the ezcater_rubocop gem was `v0.49.0`.
 
+## v2.4.0
+- Fix `FeatureFlagActive` cop so that it allows feature flag names to be variables in addition to strings.
+- Add check to `FeatureFlagActive` that the first parameter is a string or a variable, and use the appropriate messaging.
+
 ## v2.3.0
 - Add `FeatureFlagActive` cop. This provides confidence that upgrading to `ezcater_feature_flag-client` v2.0.0, which
     contains breaking API changes, can be done safely.
