@@ -24,18 +24,16 @@ module RuboCop
       #   end
 
       class RspecDotNotSelfDot < Cop
+        include RuboCop::RSpec::Language
+
         SELF_DOT_REGEXP = /["']self\./.freeze
         COLON_COLON_REGEXP = /["'](\:\:)/.freeze
 
         SELF_DOT_MSG = 'Use ".<class method>" instead of "self.<class method>" for example group description.'
         COLON_COLON_MSG = 'Use ".<class method>" instead of "::<class method>" for example group description.'
 
-        def_node_matcher :example_group_match, <<-PATTERN
-          (send _ #{RuboCop::RSpec::Language::ExampleGroups::ALL.node_pattern_union} $_ ...)
-        PATTERN
-
         def on_send(node)
-          example_group_match(node) do |doc|
+          example_group?(node) do |doc|
             if doc.source.match?(SELF_DOT_REGEXP)
               add_offense(doc, location: :expression, message: SELF_DOT_MSG)
             elsif doc.source.match?(COLON_COLON_REGEXP)
