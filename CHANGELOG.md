@@ -6,6 +6,31 @@ This gem is moving onto its own [Semantic Versioning](https://semver.org/) schem
 
 Prior to v1.0.0 this gem was versioned based on the `MAJOR`.`MINOR` version of RuboCop. The first release of the ezcater_rubocop gem was `v0.49.0`.
 
+## v3.0.0
+- Upgrade rubocop:       1.16.0
+- Upgrade rubocop-rails: 2.10.1
+- Upgrade rubocop-rspec: 2.3.0
+- This is a major upgrade because a large number of cops have been introduced, tweaked, or renamed.  Here is an aggregate of the breaking changes introduced
+  - RuboCop assumes that Cop classes do not define new `on_<type>` methods at runtime (e.g. via `extend` in `initialize`).
+  - Enable all pending cops for RuboCop 1.0.
+  - Change logic for cop department name computation. Cops inside deep namespaces (5 or more levels deep) now belong to departments with names that are calculated by joining module names starting from the third one with slashes as separators. For example, cop `Rubocop::Cop::Foo::Bar::Baz` now belongs to `Foo/Bar` department (previously it was `Bar`).
+  - `RegexpNode#parsed_tree` now processes regexps including interpolation (by blanking the interpolation before parsing, rather than skipping).
+  - Cop `Metrics/AbcSize` now counts ||=, &&=, multiple assignments, for, yield, iterating blocks. `&.` now count as conditions too (unless repeated on the same variable). Default bumped from 15 to 17. Consider using `rubocop -a --disable-uncorrectable` to ease transition.
+  - Cop `Metrics/PerceivedComplexity` now counts `else` in `case` statements, `&.`, `||=`, `&&=` and blocks known to iterate. Default bumped from 7 to 8. Consider using `rubocop -a --disable-uncorrectable` to ease transition.
+  - Extensive refactoring of internal classes `Team`, `Commissioner`, `Corrector`. `Cop::Cop#corrections` not completely compatible. See Upgrade Notes.
+  - `rubocop -a / --autocorrect` no longer run unsafe corrections; `rubocop -A / --autocorrect-all` run both safe and unsafe corrections. Options `--safe-autocorrect` is deprecated.
+  - Order for gems names now disregards underscores and dashes unless `ConsiderPunctuation` setting is set to `true`.
+  - Cop `Metrics/CyclomaticComplexity` now counts `&.`, `||=`, `&&=` and blocks known to iterate. Default bumped from 6 to 7. Consider using `rubocop -a --disable-uncorrectable` to ease transition.
+  - Remove support for unindent/active_support/powerpack from `Layout/HeredocIndentation`, so it only recommends using squiggy heredoc.
+  - Change the max line length of `Layout/LineLength` to 120 by default.
+  - Inspect all files given on command line unless `--only-recognized-file-types` is given.
+  - Enabling a cop overrides disabling its department.
+  - Renamed `Layout/Tab` cop to `Layout/IndentationStyle`.
+  - Drop support for Ruby 2.3.
+  - Drop support for ruby 2.4.
+  - Retire `RSpec/InvalidPredicateMatcher` cop.
+  - Enabled pending cop (`RSpec/StubbedMock`).
+
 ## v2.4.0
 - Fix `FeatureFlagActive` cop so that it allows feature flag names to be variables in addition to strings.
 - Add check to `FeatureFlagActive` that the first parameter is a string or a variable, and use the appropriate messaging.
