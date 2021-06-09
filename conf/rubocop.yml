@@ -2,6 +2,7 @@ require: ezcater_rubocop
 
 AllCops:
   DisplayCopNames: true
+  NewCops: disable
 
 Layout/FirstHashElementIndentation:
   EnforcedStyle: consistent
@@ -47,6 +48,9 @@ Naming/MethodParameterName:
   - e
   - ex
   - id
+
+Naming/VariableNumber:
+  Enabled: false
 
 Rails:
   Enabled: false
@@ -131,6 +135,9 @@ Style/StderrPuts:
   Exclude:
     - "bin/yarn"
 
+Style/StringConcatenation:
+  Enabled: false
+
 Style/StringLiterals:
   EnforcedStyle: double_quotes
 
@@ -145,6 +152,184 @@ Style/TrailingCommaInHashLiteral:
 # Cops are now introduced in a "pending" state and must be explicitly
 # enabled or disabled. New cops are not enabled by default until the
 # next major release.
+
+# New cops introduced between 0.81.0 and 1.16.0
+Layout/BeginEndAlignment:
+  Enabled: false
+
+Layout/EmptyLinesAroundAttributeAccessor:
+  Enabled: false
+
+Layout/IndentationStyle:
+  Enabled: false
+
+Layout/SpaceAroundMethodCallOperator:
+  Enabled: false
+
+Lint/BinaryOperatorWithIdenticalOperands:
+  Enabled: false
+
+Lint/ConstantDefinitionInBlock:
+  Enabled: false
+
+Lint/DeprecatedOpenSSLConstant:
+  Enabled: false
+
+Lint/DuplicateElsifCondition:
+  Enabled: false
+
+Lint/DuplicateRequire:
+  Enabled: false
+
+Lint/DuplicateRescueException:
+  Enabled: false
+
+Lint/EmptyConditionalBody:
+  Enabled: false
+
+Lint/EmptyFile:
+  Enabled: false
+
+Lint/FloatComparison:
+  Enabled: false
+
+Lint/HashCompareByIdentity:
+  Enabled: false
+
+Lint/IdentityComparison:
+  Enabled: false
+
+Lint/MissingSuper:
+  Enabled: false
+
+Lint/MixedRegexpCaptureTypes:
+  Enabled: false
+
+Lint/OutOfRangeRegexpRef:
+  Enabled: false
+
+Lint/RedundantSafeNavigation:
+  Enabled: false
+
+Lint/SelfAssignment:
+  Enabled: false
+
+Lint/TopLevelReturnWithArgument:
+  Enabled: false
+
+Lint/TrailingCommaInAttributeDeclaration:
+  Enabled: false
+
+Lint/UnreachableLoop:
+  Enabled: false
+
+Lint/UselessMethodDefinition:
+  Enabled: false
+
+Lint/UselessTimes:
+  Enabled: false
+
+Rails/ArelStar:
+  Enabled: false
+
+Rails/Pick:
+  Enabled: false
+
+Rails/RedundantForeignKey:
+  Enabled: false
+
+RSpec/Capybara/CurrentPathExpectation:
+  Enabled: false
+
+RSpec/Capybara/FeatureMethods:
+  Enabled: false
+
+RSpec/Capybara/VisibilityMatcher:
+  Enabled: false
+
+RSpec/EmptyHook:
+  Enabled: false
+
+RSpec/FactoryBot/AttributeDefinedStatically:
+  Enabled: false
+
+RSpec/FactoryBot/CreateList:
+  Enabled: false
+
+RSpec/FactoryBot/FactoryClassName:
+  Enabled: false
+
+RSpec/MultipleMemoizedHelpers:
+  Enabled: false
+
+RSpec/NotToNot:
+  Enabled: false
+
+RSpec/Rails/HttpStatus:
+  Enabled: false
+
+RSpec/RepeatedIncludeExample:
+  Enabled: false
+
+RSpec/StubbedMock:
+  Enabled: false
+
+RSpec/VariableDefinition:
+  Enabled: false
+
+RSpec/VariableName:
+  Enabled: false
+
+Style/AccessorGrouping:
+  Enabled: false
+
+Style/BisectedAttrAccessor:
+  Enabled: false
+
+Style/CaseLikeIf:
+  Enabled: false
+
+Style/CombinableLoops:
+  Enabled: false
+
+Style/ExponentialNotation:
+  Enabled: false
+
+Style/GlobalStdStream:
+  Enabled: false
+
+Style/HashAsLastArrayItem:
+  Enabled: false
+
+Style/HashLikeCase:
+  Enabled: false
+
+Style/KeywordParametersOrder:
+  Enabled: false
+
+Style/OptionalBooleanParameter:
+  Enabled: false
+
+Style/RedundantAssignment:
+  Enabled: false
+
+Style/RedundantRegexpCharacterClass:
+  Enabled: false
+
+Style/RedundantRegexpEscape:
+  Enabled: false
+
+Style/RedundantSelfAssignment:
+  Enabled: false
+
+Style/SingleArgumentDig:
+  Enabled: false
+
+Style/SlicingWithRange:
+  Enabled: false
+
+Style/SoleNestedConditional:
+  Enabled: false
 
 #### New cops in v0.81
 

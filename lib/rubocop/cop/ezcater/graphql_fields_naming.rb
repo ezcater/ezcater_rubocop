@@ -40,7 +40,7 @@ module RuboCop
 
           return if includes_camelize?(node)
 
-          check_name(node, first_arg.value, node.first_argument.loc.expression)
+          check_name(node, first_arg.value, node.first_argument)
         end
 
         alias on_super on_send
