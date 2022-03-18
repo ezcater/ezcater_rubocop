@@ -49,7 +49,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake", ">=  12.3"
   spec.add_development_dependency "rspec", ">= 3.0"
   spec.add_development_dependency "rspec_junit_formatter"
-  spec.add_development_dependency "simplecov", "< 0.18.0"
+  spec.add_development_dependency "simplecov"
 
   spec.add_runtime_dependency "parser", ">= 2.5"
   spec.add_runtime_dependency "rubocop", ">= 1.16.0"
