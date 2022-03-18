@@ -66,7 +66,7 @@ module RuboCop
         end
 
         def message(style)
-          format(MSG, style: style)
+          format(MSG, style:)
         end
       end
     end

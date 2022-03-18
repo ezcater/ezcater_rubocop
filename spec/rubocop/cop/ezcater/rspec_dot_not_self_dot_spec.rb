@@ -5,9 +5,9 @@ RSpec.describe RuboCop::Cop::Ezcater::RspecDotNotSelfDot, :config do
   subject(:cop) { described_class.new(config) }
 
   let(:self_dot_msg) { [described_class::SELF_DOT_MSG] }
-  let(:colon_colon_msg) { [described_class::COLON_COLON_REGEXP] }
+  let(:colon_colon_msg) { [described_class::COLON_COLON_MSG] }
 
-  RuboCop::RSpec::Language::ExampleGroups::ALL.each do |name|
+  described_class::EXAMPLE_GROUP_IDENTIFIERS.each do |name|
     it "corrects #{name} with `self.class_method`" do
       source = "#{name} \"self.class_method\" do\nend"
       inspect_source(source)
@@ -45,9 +45,21 @@ RSpec.describe RuboCop::Cop::Ezcater::RspecDotNotSelfDot, :config do
       inspect_source(source)
       expect(cop.offenses).to be_empty
     end
+
+    it "accepts #{name} with `self.` not at the start of the string" do
+      source = "#{name} \"something self.class_method\" do\nend"
+      inspect_source(source)
+      expect(cop.offenses).to be_empty
+    end
+
+    it "accepts #{name} with `::` not at the start of the string" do
+      source = "#{name} \"something ::class_method\" do\nend"
+      inspect_source(source)
+      expect(cop.offenses).to be_empty
+    end
   end
 
-  RuboCop::RSpec::Language::Examples::ALL.each do |name|
+  described_class::EXAMPLE_IDENTIFIERS.each do |name|
     it "accepts #{name} with `self.class_method`" do
       source = "#{name} \"self.class_method\" do\nend"
       inspect_source(source)

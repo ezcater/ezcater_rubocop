@@ -25,26 +25,39 @@ module RuboCop
 
       class RspecDotNotSelfDot < Cop
         include RuboCop::RSpec::Language
+        extend RuboCop::RSpec::Language::NodePattern
 
-        SELF_DOT_REGEXP = /["']self\./.freeze
-        COLON_COLON_REGEXP = /["'](\:\:)/.freeze
+        EXAMPLE_GROUP_IDENTIFIERS = %w(describe context feature example_group)
+        EXAMPLE_IDENTIFIERS = %w(it specify example scenario its)
+
+        SELF_DOT_REGEXP = /\Aself\./.freeze
+        COLON_COLON_REGEXP = /\A(\:\:)/.freeze
 
         SELF_DOT_MSG = 'Use ".<class method>" instead of "self.<class method>" for example group description.'
         COLON_COLON_MSG = 'Use ".<class method>" instead of "::<class method>" for example group description.'
 
-        def on_send(node)
-          example_group?(node) do |doc|
-            if doc.source.match?(SELF_DOT_REGEXP)
-              add_offense(doc, location: :expression, message: SELF_DOT_MSG)
-            elsif doc.source.match?(COLON_COLON_REGEXP)
-              add_offense(doc, location: :expression, message: COLON_COLON_MSG)
-            end
+        def_node_matcher :example_group?, <<~PATTERN
+          (block
+            (send #rspec? {#{EXAMPLE_GROUP_IDENTIFIERS.map { |i| ":#{i}" }.join(" ") }}
+              (str ...) ...
+            ) ...
+          )
+        PATTERN
+
+        def on_block(node)
+          return unless example_group?(node)
+
+          str_node = node.send_node.arguments[0]
+          if str_node.value.match?(SELF_DOT_REGEXP)
+            add_offense(str_node, location: :expression, message: SELF_DOT_MSG)
+          elsif str_node.value.match?(COLON_COLON_REGEXP)
+            add_offense(str_node, location: :expression, message: COLON_COLON_MSG)
           end
         end
 
         def autocorrect(node)
           lambda do |corrector|
-            experession_end = node.source.match?(COLON_COLON_REGEXP) ? 3 : 6
+            experession_end = node.source.match?('::') ? 3 : 6
             corrector.replace(Parser::Source::Range.new(node.source_range.source_buffer,
                                                         node.source_range.begin_pos + 1,
                                                         node.source_range.begin_pos + experession_end), ".")
