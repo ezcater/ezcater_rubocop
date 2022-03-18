@@ -6,11 +6,17 @@ This gem is moving onto its own [Semantic Versioning](https://semver.org/) schem
 
 Prior to v1.0.0 this gem was versioned based on the `MAJOR`.`MINOR` version of RuboCop. The first release of the ezcater_rubocop gem was `v0.49.0`.
 
+## v3.1.0
+
+- Fix the RspecDotNotSelfDot cop to work with rubocop-rspec
+- Don't force particular versions of dependencies, just list minimum versions
+
 ## v3.0.0
-- Upgrade rubocop:       1.16.0
+
+- Upgrade rubocop: 1.16.0
 - Upgrade rubocop-rails: 2.10.1
 - Upgrade rubocop-rspec: 2.3.0
-- This is a major upgrade because a large number of cops have been introduced, tweaked, or renamed.  Here is an aggregate of the breaking changes introduced
+- This is a major upgrade because a large number of cops have been introduced, tweaked, or renamed. Here is an aggregate of the breaking changes introduced
   - RuboCop assumes that Cop classes do not define new `on_<type>` methods at runtime (e.g. via `extend` in `initialize`).
   - Enable all pending cops for RuboCop 1.0.
   - Change logic for cop department name computation. Cops inside deep namespaces (5 or more levels deep) now belong to departments with names that are calculated by joining module names starting from the third one with slashes as separators. For example, cop `Rubocop::Cop::Foo::Bar::Baz` now belongs to `Foo/Bar` department (previously it was `Bar`).
