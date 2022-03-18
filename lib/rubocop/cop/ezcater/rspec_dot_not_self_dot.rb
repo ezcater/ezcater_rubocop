@@ -27,8 +27,8 @@ module RuboCop
         include RuboCop::RSpec::Language
         extend RuboCop::RSpec::Language::NodePattern
 
-        EXAMPLE_GROUP_IDENTIFIERS = %w(describe context feature example_group)
-        EXAMPLE_IDENTIFIERS = %w(it specify example scenario its)
+        EXAMPLE_GROUP_IDENTIFIERS = %w(describe context feature example_group).freeze
+        EXAMPLE_IDENTIFIERS = %w(it specify example scenario its).freeze
 
         SELF_DOT_REGEXP = /\Aself\./.freeze
         COLON_COLON_REGEXP = /\A(\:\:)/.freeze
@@ -38,7 +38,7 @@ module RuboCop
 
         def_node_matcher :example_group?, <<~PATTERN
           (block
-            (send #rspec? {#{EXAMPLE_GROUP_IDENTIFIERS.map { |i| ":#{i}" }.join(" ") }}
+            (send #rspec? {#{EXAMPLE_GROUP_IDENTIFIERS.map { |i| ":#{i}" }.join(' ')}}
               (str ...) ...
             ) ...
           )
@@ -57,7 +57,7 @@ module RuboCop
 
         def autocorrect(node)
           lambda do |corrector|
-            experession_end = node.source.match?('::') ? 3 : 6
+            experession_end = node.source.match?("::") ? 3 : 6
             corrector.replace(Parser::Source::Range.new(node.source_range.source_buffer,
                                                         node.source_range.begin_pos + 1,
                                                         node.source_range.begin_pos + experession_end), ".")
