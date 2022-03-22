@@ -27,8 +27,13 @@ module RuboCop
         include RuboCop::RSpec::Language
         extend RuboCop::RSpec::Language::NodePattern
 
-        EXAMPLE_GROUP_IDENTIFIERS = %w(describe context feature example_group).freeze
-        EXAMPLE_IDENTIFIERS = %w(it specify example scenario its).freeze
+        RSPEC_EXAMPLE_PREFIXES = ["", "x", "f"].freeze
+        EXAMPLE_GROUP_IDENTIFIERS = (RSPEC_EXAMPLE_PREFIXES.map do |prefix|
+          %w(describe context feature).map { |identifier| "#{prefix}#{identifier}" }
+        end.flatten + %w(example_group)).freeze
+        EXAMPLE_IDENTIFIERS = (RSPEC_EXAMPLE_PREFIXES.map do |prefix|
+          %w(it specify example scenario).map { |identifier| "#{prefix}#{identifier}" }
+        end.flatten + %w(its focus skip)).freeze
 
         SELF_DOT_REGEXP = /\Aself\./.freeze
         COLON_COLON_REGEXP = /\A(\:\:)/.freeze
