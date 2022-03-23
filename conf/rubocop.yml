@@ -3,6 +3,7 @@ require: ezcater_rubocop
 AllCops:
   DisplayCopNames: true
   NewCops: disable
+  SuggestExtensions: false
 
 Layout/FirstHashElementIndentation:
   EnforcedStyle: consistent
@@ -21,8 +22,8 @@ Metrics/AbcSize:
 
 Metrics/BlockLength:
   Exclude:
-  - "*.gemspec"
-  - "spec/**/*.rb"
+    - "*.gemspec"
+    - "spec/**/*.rb"
 
 Metrics/CyclomaticComplexity:
   Enabled: false
@@ -30,7 +31,7 @@ Metrics/CyclomaticComplexity:
 Layout/LineLength:
   Max: 120
   Exclude:
-  - "Gemfile"
+    - "Gemfile"
 
 Metrics/MethodLength:
   Enabled: true
@@ -45,9 +46,9 @@ Naming/MemoizedInstanceVariableName:
 
 Naming/MethodParameterName:
   AllowedNames:
-  - e
-  - ex
-  - id
+    - e
+    - ex
+    - id
 
 Naming/VariableNumber:
   Enabled: false
@@ -60,12 +61,12 @@ RSpec/ContextWording:
 
 RSpec/DescribeClass:
   Exclude:
-  - "spec/requests/**/*.rb"
-  - "spec/features/**/*.rb"
-  - "spec/routing/**/*.rb"
-  - "spec/views/**/*.rb"
-  - "spec/system/**/*.rb"
-  - "spec/integrations/**/*.rb"
+    - "spec/requests/**/*.rb"
+    - "spec/features/**/*.rb"
+    - "spec/routing/**/*.rb"
+    - "spec/views/**/*.rb"
+    - "spec/system/**/*.rb"
+    - "spec/integrations/**/*.rb"
 
 RSpec/ExampleLength:
   Max: 25
@@ -113,12 +114,12 @@ Style/NumericLiterals:
 
 Style/PercentLiteralDelimiters:
   PreferredDelimiters:
-    default: '()'
-    '%i': '()'
-    '%I': '()'
-    '%r': '{}'
-    '%w': '()'
-    '%W': '()'
+    default: "()"
+    "%i": "()"
+    "%I": "()"
+    "%r": "{}"
+    "%w": "()"
+    "%W": "()"
 
 Style/RaiseArgs:
   EnforcedStyle: compact

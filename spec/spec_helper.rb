@@ -9,7 +9,6 @@ require "bundler/setup"
 require "ezcater_rubocop"
 require "rspec"
 require "rubocop/rspec/support"
-require "rubocop/rspec/language/each_selector"
 require "pry"
 
 RSpec.configure do |config|

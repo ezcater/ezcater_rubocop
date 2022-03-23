@@ -5,57 +5,57 @@ Ezcater/GraphqlFieldsNaming:
     - snake_case
     - camelCase
   Include:
-    - 'app/graphql/**/*.rb'
+    - "app/graphql/**/*.rb"
 
 Ezcater/RailsConfiguration:
-  Description: 'Enforce the use of `Rails.configuration` instead of `Rails.application.config`.'
+  Description: "Enforce the use of `Rails.configuration` instead of `Rails.application.config`."
   Enabled: true
 
 Ezcater/RailsEnv:
-  Description: 'Enforce the use of `Rails.configuration.x.<foo>` instead of checking `Rails.env`.'
+  Description: "Enforce the use of `Rails.configuration.x.<foo>` instead of checking `Rails.env`."
   Enabled: false
 
 Ezcater/DirectEnvCheck:
-  Description: 'Enforce the use of `Rails.configuration.x.<foo>` instead of checking `ENV`.'
+  Description: "Enforce the use of `Rails.configuration.x.<foo>` instead of checking `ENV`."
   Enabled: false
 
 Ezcater/FeatureFlagActive:
-  Description: 'Enforce the proper arguments are given to EzcaterFeatureFlag.active?'
+  Description: "Enforce the proper arguments are given to EzcaterFeatureFlag.active?"
   Enabled: true
 
 Ezcater/RspecDotNotSelfDot:
   Description: 'Enforce ".<class method>" instead of "self.<class method>" for example group description.'
   Enabled: true
   Include:
-    - '**/*_spec.rb'
+    - "**/*_spec.rb"
 
 Ezcater/RspecRequireBrowserMock:
-  Description: 'Enforce use of `mock_ezcater_app`, `mock_chrome_browser` & `mock_custom_browser` helpers instead of mocking `Browser` or `EzBrowser` directly.'
+  Description: "Enforce use of `mock_ezcater_app`, `mock_chrome_browser` & `mock_custom_browser` helpers instead of mocking `Browser` or `EzBrowser` directly."
   Enabled: true
   Include:
-    - '**/*_spec.rb'
+    - "**/*_spec.rb"
 
 Ezcater/RspecRequireFeatureFlagMock:
-  Description: 'Enforce use of `mock_feature_flag` helpers instead of mocking `FeatureFlag.is_active?` directly.'
+  Description: "Enforce use of `mock_feature_flag` helpers instead of mocking `FeatureFlag.is_active?` directly."
   Enabled: true
   Include:
-    - '**/*_spec.rb'
+    - "**/*_spec.rb"
 
 Ezcater/RspecRequireHttpStatusMatcher:
-  Description: 'Use the HTTP status code matcher, like `expect(response).to have_http_status :bad_request`, rather than `expect(response.code).to eq 400`'
+  Description: "Use the HTTP status code matcher, like `expect(response).to have_http_status :bad_request`, rather than `expect(response.code).to eq 400`"
   Enabled: true
   Include:
-    - '**/*_spec.rb'
+    - "**/*_spec.rb"
 
 Ezcater/RequireGqlErrorHelpers:
-  Description: 'Use the helpers provided by `GQLErrors` instead of raising `GraphQL::ExecutionError` directly.'
+  Description: "Use the helpers provided by `GQLErrors` instead of raising `GraphQL::ExecutionError` directly."
   Enabled: true
 
 Ezcater/StyleDig:
-  Description: 'Recommend `dig` for deeply nested access.'
+  Description: "Recommend `dig` for deeply nested access."
   Enabled: true
   AutoCorrect: false
 
 Ezcater/RubyTimeout:
-  Description: 'Disallow use of `Timeout.timeout` because it is unsafe and can cause unexpected behavior.'
+  Description: "Disallow use of `Timeout.timeout` because it is unsafe and can cause unexpected behavior."
   Enabled: true
