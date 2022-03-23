@@ -9,6 +9,7 @@ AllCops:
   TargetRailsVersion: 5.2
   Exclude:
     - tmp/cache/**/*
+    - '**/gemfiles/*.gemfile'
 
 Metrics/BlockLength:
   inherit_mode:
