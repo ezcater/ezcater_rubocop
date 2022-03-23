@@ -6,7 +6,12 @@ This gem is moving onto its own [Semantic Versioning](https://semver.org/) schem
 
 Prior to v1.0.0 this gem was versioned based on the `MAJOR`.`MINOR` version of RuboCop. The first release of the ezcater_rubocop gem was `v0.49.0`.
 
+## v4.0.0
+
+- Update to Ruby 3.1 and latest dependency gems
+
 ## v3.0.1
+
 - Fix the RspecDotNotSelfDot cop to work with rubocop-rspec
 - Exclude appraisal generated gemfiles for possible embedded gems in rails apps
 
