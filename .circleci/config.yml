@@ -4,7 +4,7 @@ jobs:
     parallelism: 1
     working_directory: ~/ezcater
     docker:
-      - image: circleci/ruby:2.7.3
+      - image: circleci/ruby:3.1.1
     steps:
       - checkout
 
@@ -22,7 +22,7 @@ jobs:
             chmod +x ./cc-test-reporter
 
       # Bundle install dependencies
-      - run: gem install bundler --no-document -v 2.1.4
+      - run: gem install bundler --no-document -v 2.3.7
       - run: bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs=4 --retry=3
       - run: bundle clean --force
 

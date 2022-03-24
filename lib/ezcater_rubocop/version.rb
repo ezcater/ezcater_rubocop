@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
 module EzcaterRubocop
-  VERSION = "4.0.0"
+  VERSION = "3.0.2"
 end

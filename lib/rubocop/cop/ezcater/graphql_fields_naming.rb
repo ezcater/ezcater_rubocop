@@ -66,7 +66,7 @@ module RuboCop
         end
 
         def message(style)
-          format(MSG, style: style) # Rubocop:disable Style/HashSyntax
+          format(MSG, style:) # Rubocop:disable Style/HashSyntax
         end
       end
     end

@@ -35,8 +35,8 @@ module RuboCop
           %w(it specify example scenario).map { |identifier| "#{prefix}#{identifier}" }
         end.flatten + %w(its focus skip)).freeze
 
-        SELF_DOT_REGEXP = /\Aself\./.freeze
-        COLON_COLON_REGEXP = /\A(\:\:)/.freeze
+        SELF_DOT_REGEXP = /\Aself\./
+        COLON_COLON_REGEXP = /\A(\:\:)/
 
         SELF_DOT_MSG = 'Use ".<class method>" instead of "self.<class method>" for example group description.'
         COLON_COLON_MSG = 'Use ".<class method>" instead of "::<class method>" for example group description.'
