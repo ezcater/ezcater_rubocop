@@ -65,8 +65,8 @@ module RuboCop
           node.children[1]
         end
 
-        def message(style)
-          format(MSG, style:)
+        def message(msg_style)
+          format(MSG, style: msg_style)
         end
       end
     end
