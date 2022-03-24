@@ -61,11 +61,11 @@ configuration for existing offenses and auto-correction.
 
 This gem contains a script, `circle_rubocop.rb`, that can be used to run RuboCop in CI.
 
-The behavior of the script is that all files are checked on master or if the rubocop
-configuration has changed. On non-master branches, only the files added or changed on
+The behavior of the script is that all files are checked on main or if the rubocop
+configuration has changed. On non-main branches, only the files added or changed on
 the branch are checked.
 
-For non-master branches, `[rubocop skip]` can be included in the commit message to skip
+For non-main branches, `[rubocop skip]` can be included in the commit message to skip
 running rubocop.
 
 ## Versioning
@@ -74,15 +74,15 @@ This gem is using [Semantic Versioning](https://semver.org/). All version bumps 
 
 ## Custom Cops
 
-1. [RailsConfiguration](https://github.com/ezcater/ezcater_rubocop/blob/master/lib/rubocop/cop/ezcater/rails_configuration.rb) - Enforce use of `Rails.configuration` instead of `Rails.application.config`.
-1. [RequireGqlErrorHelpers](https://github.com/ezcater/ezcater_rubocop/blob/master/lib/rubocop/cop/ezcater/require_gql_error_helpers.rb) - Use the helpers provided by `GQLErrors` instead of raising `GraphQL::ExecutionError` directly.
-1. [RspecDotNotSelfDot](https://github.com/ezcater/ezcater_rubocop/blob/master/lib/rubocop/cop/ezcater/rspec_dot_not_self_dot.rb) - Enforce ".<class method>" instead of "self.<class method>" and "::<class method>" for example group description.
-1. [RspecMatchOrderedArray](https://github.com/ezcater/ezcater_rubocop/blob/master/lib/rubocop/cop/ezcater/rspec_match_ordered_array.rb) - Enforce use of `match_ordered_array` matcher instead of `eq` matcher. This matcher comes from the [ezcater_matchers](https://github.com/ezcater/ezcater_matchers) gem.
-1. [RspecRequireBrowserMock](https://github.com/ezcater/ezcater_rubocop/blob/master/lib/rubocop/cop/ezcater/rspec_require_browser_mock.rb) - Enforce use of `mock_ezcater_app`, `mock_chrome_browser` & `mock_custom_browser` helpers instead of mocking `Browser` or `EzBrowser` directly.
-1. [RspecRequireFeatureFlagMock](https://github.com/ezcater/ezcater_rubocop/blob/master/lib/rubocop/cop/ezcater/rspec_require_feature_flag_mock.rb) - Enforce use of `mock_feature_flag` helper instead of mocking `FeatureFlag.is_active?` directly.
-1. [RspecRequireHttpStatusMatcher](https://github.com/ezcater/ezcater_rubocop/blob/master/lib/rubocop/cop/ezcater/rspec_require_http_status_matcher.rb) - Use the HTTP status code matcher, like `expect(response).to have_http_status :bad_request`, rather than `expect(response.code).to eq 400`
-1. [StyleDig](https://github.com/ezcater/ezcater_rubocop/blob/master/lib/rubocop/cop/ezcater/style_dig.rb) - Recommend `dig` for deeply nested access.
-1. [GraphqlFieldsNaming](https://github.com/ezcater/ezcater_rubocop/blob/master/lib/rubocop/cop/ezcater/graphql_fields_naming.rb) - Enforce the configured style when naming graphQL fields and arguments.
+1. [RailsConfiguration](https://github.com/ezcater/ezcater_rubocop/blob/main/lib/rubocop/cop/ezcater/rails_configuration.rb) - Enforce use of `Rails.configuration` instead of `Rails.application.config`.
+1. [RequireGqlErrorHelpers](https://github.com/ezcater/ezcater_rubocop/blob/main/lib/rubocop/cop/ezcater/require_gql_error_helpers.rb) - Use the helpers provided by `GQLErrors` instead of raising `GraphQL::ExecutionError` directly.
+1. [RspecDotNotSelfDot](https://github.com/ezcater/ezcater_rubocop/blob/main/lib/rubocop/cop/ezcater/rspec_dot_not_self_dot.rb) - Enforce ".<class method>" instead of "self.<class method>" and "::<class method>" for example group description.
+1. [RspecMatchOrderedArray](https://github.com/ezcater/ezcater_rubocop/blob/main/lib/rubocop/cop/ezcater/rspec_match_ordered_array.rb) - Enforce use of `match_ordered_array` matcher instead of `eq` matcher. This matcher comes from the [ezcater_matchers](https://github.com/ezcater/ezcater_matchers) gem.
+1. [RspecRequireBrowserMock](https://github.com/ezcater/ezcater_rubocop/blob/main/lib/rubocop/cop/ezcater/rspec_require_browser_mock.rb) - Enforce use of `mock_ezcater_app`, `mock_chrome_browser` & `mock_custom_browser` helpers instead of mocking `Browser` or `EzBrowser` directly.
+1. [RspecRequireFeatureFlagMock](https://github.com/ezcater/ezcater_rubocop/blob/main/lib/rubocop/cop/ezcater/rspec_require_feature_flag_mock.rb) - Enforce use of `mock_feature_flag` helper instead of mocking `FeatureFlag.is_active?` directly.
+1. [RspecRequireHttpStatusMatcher](https://github.com/ezcater/ezcater_rubocop/blob/main/lib/rubocop/cop/ezcater/rspec_require_http_status_matcher.rb) - Use the HTTP status code matcher, like `expect(response).to have_http_status :bad_request`, rather than `expect(response.code).to eq 400`
+1. [StyleDig](https://github.com/ezcater/ezcater_rubocop/blob/main/lib/rubocop/cop/ezcater/style_dig.rb) - Recommend `dig` for deeply nested access.
+1. [GraphqlFieldsNaming](https://github.com/ezcater/ezcater_rubocop/blob/main/lib/rubocop/cop/ezcater/graphql_fields_naming.rb) - Enforce the configured style when naming graphQL fields and arguments.
 
 ## Development
 
