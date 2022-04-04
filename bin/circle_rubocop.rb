@@ -4,10 +4,10 @@
 require "English"
 
 # This script is used to run Rubocop in CircleCI so that on branches only
-# the changed files are checked and on master all files are checked.
+# the changed files are checked and on main all files are checked.
 #
 # Additionally if rubocop configuration is changed, all files are checked, and
-# if the commit description on a non-master branch includes [rubocop skip]
+# if the commit description on a non-main branch includes [rubocop skip]
 # then rubocop is skipped.
 
 def run(command)
@@ -20,7 +20,7 @@ def rubocop_everything
 end
 
 begin
-  if ENV["CIRCLE_BRANCH"] == "master"
+  if ENV["CIRCLE_BRANCH"] == "main"
     rubocop_everything
   else
     git_commit_desc = `git log --format=%B -n 1 $CIRCLE_SHA1`
@@ -30,7 +30,7 @@ begin
       exit 0
     end
 
-    changed_files = `git diff --diff-filter=d --name-only origin/master...$CIRCLE_BRANCH`.split("\n").join(" ")
+    changed_files = `git diff --diff-filter=d --name-only origin/main...$CIRCLE_BRANCH`.split("\n").join(" ")
     raise "Failed to identify changed files" unless $CHILD_STATUS.success?
 
     if changed_files.strip.empty? || changed_files.include?(".rubocop")
