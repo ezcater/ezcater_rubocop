@@ -1,12 +1,3 @@
-Ezcater/GraphqlFieldsNaming:
-  EnforcedStyle: snake_case
-  Enabled: true
-  SupportedStyles:
-    - snake_case
-    - camelCase
-  Include:
-    - "app/graphql/**/*.rb"
-
 Ezcater/RailsConfiguration:
   Description: "Enforce the use of `Rails.configuration` instead of `Rails.application.config`."
   Enabled: true
