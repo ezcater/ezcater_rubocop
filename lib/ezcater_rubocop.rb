@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "ezcater_rubocop/version"
+require "rubocop-graphql"
 require "rubocop-rails"
 require "rubocop-rspec"
 

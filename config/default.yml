@@ -59,3 +59,15 @@ Ezcater/StyleDig:
 Ezcater/RubyTimeout:
   Description: "Disallow use of `Timeout.timeout` because it is unsafe and can cause unexpected behavior."
   Enabled: true
+
+GraphQL/FieldDescription:
+  Enabled: false
+GraphQL/ArgumentDescription:
+  Enabled: false
+GraphQL/ObjectDescription:
+  Include:
+    - "**/types/**/*.rb"
+    - "**/mutations/**/*.rb"
+GraphQL/ExtractInputType:
+  Exclude:
+    - "**/input_objects/**/*.rb"
