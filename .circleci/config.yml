@@ -1,4 +1,8 @@
-version: 2
+version: 2.1
+
+orbs:
+  ruby: circleci/ruby@1.0
+
 jobs:
   build:
     parallelism: 1
@@ -8,18 +12,11 @@ jobs:
     steps:
       - checkout
 
-      # Restore bundle cache
       - restore_cache:
           keys:
             - ruby-cache-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile" }}-{{ checksum "ezcater_rubocop.gemspec" }}
             - ruby-cache-{{ arch }}-{{ .Branch }}-
             - ruby-cache-
-
-      - run:
-          name: Setup Code Climate test-reporter
-          command: |
-            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 -o ./cc-test-reporter
-            chmod +x ./cc-test-reporter
 
       # Bundle install dependencies
       - run: gem install bundler --no-document -v 2.3.7
@@ -33,20 +30,21 @@ jobs:
             - vendor/bundle
 
       # Run Rubocop
-      - run:
-          name: RuboCop
-          command: bundle exec rubocop
+      - run: bundle exec rubocop
 
       # Run rspec
-      - type: shell
-        command: |
-          ./cc-test-reporter before-build
-          bundle exec rspec --profile 10 \
-                            --format RspecJunitFormatter \
-                            --out test_results/rspec.xml \
-                            --format progress
-          ./cc-test-reporter after-build -t simplecov --exit-code $?
+      - run:
+          command: |
+            bundle exec rspec --profile 10 \
+                              --format RspecJunitFormatter \
+                              --out test_results/rspec.xml \
+                              --format progress
 
       # Save test results for timing analysis
       - store_test_results:
           path: test_results
+
+workflows:
+  build_and_test:
+    jobs:
+      - build
