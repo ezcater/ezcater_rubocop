@@ -1,4 +1,4 @@
-# ezcater_rubocop
+# ezcater_rubocop [![CircleCI](https://circleci.com/gh/ezcater/ezcater_rubocop/tree/main.svg?style=svg)](https://circleci.com/gh/ezcater/ezcater_rubocop/tree/main)
 
 ezCater custom cops and shared RuboCop configuration.
 
