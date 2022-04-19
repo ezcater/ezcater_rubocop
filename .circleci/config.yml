@@ -15,22 +15,10 @@ jobs:
     steps:
       - checkout
 
-      - restore_cache:
-          keys:
-            - ruby-cache-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile" }}-{{ checksum "ezcater_rubocop.gemspec" }}
-            - ruby-cache-{{ arch }}-{{ .Branch }}-
-            - ruby-cache-
-
       # Bundle install dependencies
       - run: gem install bundler --no-document -v 2.3.7
-      - run: bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs=4 --retry=3
+      - run: bundle install --path=vendor/bundle --jobs=4 --retry=3
       - run: bundle clean --force
-
-      # Store bundle cache
-      - save_cache:
-          key: ruby-cache-{{ .Branch }}-{{ checksum "Gemfile" }}-{{ checksum "ezcater_rubocop.gemspec" }}
-          paths:
-            - vendor/bundle
 
       # Run Rubocop
       - run: bundle exec rubocop
