@@ -4,11 +4,14 @@ orbs:
   ruby: circleci/ruby@1.0
 
 jobs:
-  build:
+  test:
+    parameters:
+      ruby-version:
+        type: string
     parallelism: 1
     working_directory: ~/ezcater
     docker:
-      - image: cimg/ruby:3.1.1
+      - image: cimg/ruby:<< parameters.ruby-version >>
     steps:
       - checkout
 
@@ -45,6 +48,10 @@ jobs:
           path: test_results
 
 workflows:
-  build_and_test:
+  test_all:
     jobs:
-      - build
+      - test:
+          matrix:
+            parameters:
+              # https://github.com/CircleCI-Public/cimg-ruby
+              ruby-version: ["2.6", "2.7", "3.0", "3.1"]
