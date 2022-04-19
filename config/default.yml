@@ -1,12 +1,3 @@
-Ezcater/GraphqlFieldsNaming:
-  EnforcedStyle: snake_case
-  Enabled: true
-  SupportedStyles:
-    - snake_case
-    - camelCase
-  Include:
-    - "app/graphql/**/*.rb"
-
 Ezcater/RailsConfiguration:
   Description: "Enforce the use of `Rails.configuration` instead of `Rails.application.config`."
   Enabled: true
@@ -59,3 +50,15 @@ Ezcater/StyleDig:
 Ezcater/RubyTimeout:
   Description: "Disallow use of `Timeout.timeout` because it is unsafe and can cause unexpected behavior."
   Enabled: true
+
+GraphQL/FieldDescription:
+  Enabled: false
+GraphQL/ArgumentDescription:
+  Enabled: false
+GraphQL/ObjectDescription:
+  Include:
+    - "**/types/**/*.rb"
+    - "**/mutations/**/*.rb"
+GraphQL/ExtractInputType:
+  Exclude:
+    - "**/input_objects/**/*.rb"

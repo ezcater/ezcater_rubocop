@@ -6,6 +6,12 @@ This gem is moving onto its own [Semantic Versioning](https://semver.org/) schem
 
 Prior to v1.0.0 this gem was versioned based on the `MAJOR`.`MINOR` version of RuboCop. The first release of the ezcater_rubocop gem was `v0.49.0`.
 
+## 4.0.0
+
+- Add the [rubcop-graphql](https://github.com/DmitryTsepelev/rubocop-graphql) helpers and enable
+    them by default
+- Remove `Ezcater/GraphqlFieldsNaming` cop. The same rule exists in `rubocop-graphql`.
+
 ## v3.0.2
 
 - Loosen restrictions to allow for Ruby 3.1 and latest dependency gems
