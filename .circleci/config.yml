@@ -1,52 +1,42 @@
-version: 2
+version: 2.1
+
 jobs:
-  build:
+  test:
+    parameters:
+      ruby-version:
+        type: string
     parallelism: 1
     working_directory: ~/ezcater
     docker:
-      - image: cimg/ruby:3.1.1
+      - image: cimg/ruby:<< parameters.ruby-version >>
     steps:
       - checkout
 
-      # Restore bundle cache
-      - restore_cache:
-          keys:
-            - ruby-cache-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile" }}-{{ checksum "ezcater_rubocop.gemspec" }}
-            - ruby-cache-{{ arch }}-{{ .Branch }}-
-            - ruby-cache-
-
-      - run:
-          name: Setup Code Climate test-reporter
-          command: |
-            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 -o ./cc-test-reporter
-            chmod +x ./cc-test-reporter
-
       # Bundle install dependencies
       - run: gem install bundler --no-document -v 2.3.7
-      - run: bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs=4 --retry=3
+      - run: bundle install --path=vendor/bundle --jobs=4 --retry=3
       - run: bundle clean --force
 
-      # Store bundle cache
-      - save_cache:
-          key: ruby-cache-{{ .Branch }}-{{ checksum "Gemfile" }}-{{ checksum "ezcater_rubocop.gemspec" }}
-          paths:
-            - vendor/bundle
-
       # Run Rubocop
-      - run:
-          name: RuboCop
-          command: bundle exec rubocop
+      - run: bundle exec rubocop
 
       # Run rspec
-      - type: shell
-        command: |
-          ./cc-test-reporter before-build
-          bundle exec rspec --profile 10 \
-                            --format RspecJunitFormatter \
-                            --out test_results/rspec.xml \
-                            --format progress
-          ./cc-test-reporter after-build -t simplecov --exit-code $?
+      - run:
+          command: |
+            bundle exec rspec --profile 10 \
+                              --format RspecJunitFormatter \
+                              --out test_results/rspec.xml \
+                              --format progress
 
       # Save test results for timing analysis
       - store_test_results:
           path: test_results
+
+workflows:
+  test_all:
+    jobs:
+      - test:
+          matrix:
+            parameters:
+              # https://github.com/CircleCI-Public/cimg-ruby
+              ruby-version: ["2.6", "2.7", "3.0", "3.1"]
