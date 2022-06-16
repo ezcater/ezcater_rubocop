@@ -5,10 +5,14 @@ module RuboCop
     module Ezcater
       class GraphQlTypeFileOrder < Cop
         ORDERED_DSL_METHODS = %I(
+          extend
+          include
           description
           pundit_policy_class
+          pundit_role
           argument
           field
+          user_errors_field
         ).freeze
 
         LOAD_METHOD_POSITION = ORDERED_DSL_METHODS.length
