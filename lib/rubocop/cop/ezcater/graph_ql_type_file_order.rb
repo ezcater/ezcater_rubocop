@@ -64,7 +64,7 @@ module RuboCop
           attr_reader :node
 
           def initialize(node)
-            @name = node.method_name
+            @name = node.method_name.to_s
             @node = node
           end
 
