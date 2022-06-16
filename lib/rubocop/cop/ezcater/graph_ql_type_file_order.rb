@@ -4,7 +4,7 @@ module RuboCop
   module Cop
     module Ezcater
       class GraphQlTypeFileOrder < Cop
-        ORDERED_DSL_METHODS = %I(
+        ORDERED_DSL_METHODS = %w(
           extend
           include
           description
@@ -29,6 +29,8 @@ module RuboCop
             current = MatchedNode.new(current)
 
             if previous.dsl_method? || current.dsl_method?
+              p previous.name
+              p current.name
               is_gql_type = true
             end
 
@@ -81,7 +83,7 @@ module RuboCop
           end
 
           def dsl_method?
-            !(ORDERED_DSL_METHODS - %i(extend include)).index(name).nil?
+            !(ORDERED_DSL_METHODS - %w(extend include)).index(name).nil?
           end
 
           def <=>(other)
