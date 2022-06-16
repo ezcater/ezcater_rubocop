@@ -11,27 +11,73 @@ module RuboCop
           field
         ).freeze
 
+        LOAD_METHOD_POSITION = ORDERED_DSL_METHODS.length
+        RESOLVE_METHOD_POSITION = ORDERED_DSL_METHODS.length + 1
+
         METHOD_LOOKUP_LIST = ORDERED_DSL_METHODS.map { |method| ":#{method}" }.join(" | ")
 
         def on_class(node)
           type_dsl_calls(node).each_cons(2) do |previous, current|
-            if position(previous) > position(current)
-              add_offense(node, location: :expression, message: "#{previous} calls should be positioned after #{current}")
+            if MatchedNode.new(previous) > MatchedNode.new(current)
+              add_offense(node, location: :expression, message: "#{previous} should be positioned after #{current}")
             end
           end
         end
 
-        def position(name)
-          ORDERED_DSL_METHODS.index(name)
-        end
+        private
 
         def_node_search :type_dsl_calls, <<~PATTERN
           {
             (send nil? ${#{METHOD_LOOKUP_LIST}}  ...)
             (block
                 (send nil? ${#{METHOD_LOOKUP_LIST}} (:sym _) ...) ...)
+            (def $_ ...)
           }
         PATTERN
+
+        class MatchedNode
+          include Comparable
+
+          attr_reader :name
+
+          def initialize(name)
+            @name = name
+          end
+
+          def positional_score
+            ORDERED_DSL_METHODS.index(name) || load_method_position || resolve_method_position
+          end
+
+          def load_method?
+            name.start_with?("load_")
+          end
+
+          def resolve_method?
+            name.start_with?("resolve_")
+          end
+
+          def <=>(other)
+            if (load_method? && other.load_method?) || (resolve_method? && other.resolve_method?)
+              name <=> other.name
+            else
+              positional_score <=> other.positional_score
+            end
+          end
+
+          private
+
+          def load_method_position
+            if load_method?
+              LOAD_METHOD_POSITION
+            end
+          end
+
+          def resolve_method_position
+            if resolve_method?
+              RESOLVE_METHOD_POSITION
+            end
+          end
+        end
       end
     end
   end
