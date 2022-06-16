@@ -29,8 +29,6 @@ module RuboCop
             current = MatchedNode.new(current)
 
             if previous.dsl_method? || current.dsl_method?
-              p previous.name
-              p current.name
               is_gql_type = true
             end
 
