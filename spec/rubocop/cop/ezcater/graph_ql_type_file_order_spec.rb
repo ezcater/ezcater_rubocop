@@ -37,6 +37,8 @@ RSpec.describe RuboCop::Cop::Ezcater::GraphQlTypeFileOrder do
   it "enforces alphabetical order for defined methods" do
     source = <<~SOURCE
       class MyType
+        description "A great type."
+
         def load_recipe(id)
           RecipeLoader.call(id)
         end
@@ -66,5 +68,20 @@ RSpec.describe RuboCop::Cop::Ezcater::GraphQlTypeFileOrder do
 
     inspect_source(source)
     expect(cop.messages).to match_array(["do_something should be positioned after description"])
+  end
+
+  it "does not throw any errors if the class does not use any of the gql DSL methods" do
+    source = <<~SOURCE
+      class MyType
+        def resolve_something
+        end
+
+        def load_something
+        end
+      end
+    SOURCE
+
+    inspect_source(source)
+    expect(cop.messages).to be_empty
   end
 end

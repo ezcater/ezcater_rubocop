@@ -21,10 +21,26 @@ module RuboCop
         METHOD_LOOKUP_LIST = ORDERED_DSL_METHODS.map { |method| ":#{method}" }.join(" | ")
 
         def on_class(node)
+          gql_offenses = []
+          is_gql_type = false
+
           type_dsl_calls(node).each_cons(2) do |previous, current|
-            if MatchedNode.new(previous) > MatchedNode.new(current)
-              msg = "#{previous.method_name} should be positioned after #{current.method_name}"
-              add_offense(previous, location: :expression, message: msg)
+            previous = MatchedNode.new(previous)
+            current = MatchedNode.new(current)
+
+            if previous.dsl_method? || current.dsl_method?
+              is_gql_type = true
+            end
+
+            next unless previous > current
+
+            msg = "#{previous.name} should be positioned after #{current.name}"
+            gql_offenses << { node: previous.node, message: msg }
+          end
+
+          if is_gql_type
+            gql_offenses.each do |offense|
+              add_offense(offense[:node], location: :expression, message: offense[:message])
             end
           end
         end
@@ -45,9 +61,11 @@ module RuboCop
           UNKNOWN_METHOD_SCORE = 100
 
           attr_reader :name
+          attr_reader :node
 
           def initialize(node)
             @name = node.method_name
+            @node = node
           end
 
           def positional_score
@@ -60,6 +78,10 @@ module RuboCop
 
           def resolve_method?
             name.start_with?("resolve_")
+          end
+
+          def dsl_method?
+            !(ORDERED_DSL_METHODS - %i(extend include)).index(name).nil?
           end
 
           def <=>(other)
