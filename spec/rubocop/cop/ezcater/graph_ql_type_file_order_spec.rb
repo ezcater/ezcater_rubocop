@@ -30,6 +30,7 @@ RSpec.describe RuboCop::Cop::Ezcater::GraphQlTypeFileOrder do
     SOURCE
 
     inspect_source(source)
+    expect(cop.highlights).to match_array(["def load_recipe(id)\n    RecipeLoader.call(id)\n  end"])
     expect(cop.messages).to match_array(["load_recipe should be positioned after pundit_policy_class"])
   end
 

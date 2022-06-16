@@ -19,19 +19,20 @@ module RuboCop
         def on_class(node)
           type_dsl_calls(node).each_cons(2) do |previous, current|
             if MatchedNode.new(previous) > MatchedNode.new(current)
-              add_offense(node, location: :expression, message: "#{previous} should be positioned after #{current}")
+              msg = "#{previous.method_name} should be positioned after #{current.method_name}"
+              add_offense(previous, location: :expression, message: msg)
             end
           end
         end
 
-        private
+        private # rubocop:disable Lint/UselessAccessModifier
 
         def_node_search :type_dsl_calls, <<~PATTERN
           {
-            (send nil? ${#{METHOD_LOOKUP_LIST}}  ...)
+            (send nil? {#{METHOD_LOOKUP_LIST}}  ...)
             (block
-                (send nil? ${#{METHOD_LOOKUP_LIST}} (:sym _) ...) ...)
-            (def $_ ...)
+                (send nil? {#{METHOD_LOOKUP_LIST}} (:sym _) ...) ...)
+            (def ...)
           }
         PATTERN
 
@@ -41,8 +42,8 @@ module RuboCop
 
           attr_reader :name
 
-          def initialize(name)
-            @name = name
+          def initialize(node)
+            @name = node.method_name
           end
 
           def positional_score
