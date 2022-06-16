@@ -37,6 +37,7 @@ module RuboCop
 
         class MatchedNode
           include Comparable
+          UNKNOWN_METHOD_SCORE = 100
 
           attr_reader :name
 
@@ -45,7 +46,7 @@ module RuboCop
           end
 
           def positional_score
-            ORDERED_DSL_METHODS.index(name) || load_method_position || resolve_method_position
+            ORDERED_DSL_METHODS.index(name) || load_method_position || resolve_method_position || UNKNOWN_METHOD_SCORE
           end
 
           def load_method?

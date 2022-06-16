@@ -15,7 +15,7 @@ RSpec.describe RuboCop::Cop::Ezcater::GraphQlTypeFileOrder do
     SOURCE
 
     inspect_source(source)
-    expect(cop.offenses).not_to be_empty
+    expect(cop.messages).to match_array(["pundit_policy_class should be positioned after description"])
   end
 
   it "enforces the expected order of methods" do
@@ -30,7 +30,7 @@ RSpec.describe RuboCop::Cop::Ezcater::GraphQlTypeFileOrder do
     SOURCE
 
     inspect_source(source)
-    expect(cop.offenses).not_to be_empty
+    expect(cop.messages).to match_array(["load_recipe should be positioned after pundit_policy_class"])
   end
 
   it "enforces alphabetical order for defined methods" do
@@ -47,6 +47,23 @@ RSpec.describe RuboCop::Cop::Ezcater::GraphQlTypeFileOrder do
     SOURCE
 
     inspect_source(source)
-    expect(cop.offenses).not_to be_empty
+    expect(cop.messages).to match_array(["load_recipe should be positioned after load_cart"])
+  end
+
+  it "handles unknown methods mixed between DSL calls" do
+    source = <<~SOURCE
+      class MyType
+        pundit_policy_class Policies::RecipeUpdatePolicy
+
+        def do_something
+         # do something
+        end
+
+        description "Allow a user to update a recipe."
+      end
+    SOURCE
+
+    inspect_source(source)
+    expect(cop.messages).to match_array(["do_something should be positioned after description"])
   end
 end
