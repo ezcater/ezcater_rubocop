@@ -77,7 +77,7 @@ module RuboCop
           end
 
           def resolve_method?
-            name.start_with?("resolve_")
+            name == "resolve"
           end
 
           def dsl_method?

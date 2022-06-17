@@ -53,6 +53,25 @@ RSpec.describe RuboCop::Cop::Ezcater::GraphQlTypeFileOrder do
     expect(cop.messages).to match_array(["load_recipe should be positioned after load_cart"])
   end
 
+  it "enforces the order for the resolve" do
+    source = <<~SOURCE
+      class MyType
+        description "A great type."
+
+        def resolve(cart:)
+          Resolver.call(cart)
+        end
+
+        def load_cart(id)
+          CartLoader.call(id)
+        end
+      end
+    SOURCE
+
+    inspect_source(source)
+    expect(cop.messages).to match_array(["resolve should be positioned after load_cart"])
+  end
+
   it "handles unknown methods mixed between DSL calls" do
     source = <<~SOURCE
       class MyType
