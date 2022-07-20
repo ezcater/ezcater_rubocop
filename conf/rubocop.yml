@@ -148,192 +148,189 @@ Style/TrailingCommaInArrayLiteral:
 Style/TrailingCommaInHashLiteral:
   EnforcedStyleForMultiline: consistent_comma
 
+
 Layout/BeginEndAlignment:
-  Enabled: false
+  Enabled: true
 
 Layout/EmptyLinesAroundAttributeAccessor:
-  Enabled: false
+  Enabled: true
 
 Layout/IndentationStyle:
-  Enabled: false
+  Enabled: true
 
 Layout/SpaceAroundMethodCallOperator:
-  Enabled: false
+  Enabled: true
 
 Lint/BinaryOperatorWithIdenticalOperands:
-  Enabled: false
+  Enabled: true
 
 Lint/ConstantDefinitionInBlock:
-  Enabled: false
+  Enabled: true
 
 Lint/DeprecatedOpenSSLConstant:
-  Enabled: false
+  Enabled: true
 
 Lint/DuplicateElsifCondition:
-  Enabled: false
+  Enabled: true
 
 Lint/DuplicateRequire:
-  Enabled: false
+  Enabled: true
 
 Lint/DuplicateRescueException:
-  Enabled: false
+  Enabled: true
 
 Lint/EmptyConditionalBody:
-  Enabled: false
+  Enabled: true
 
 Lint/EmptyFile:
-  Enabled: false
+  Enabled: true
 
 Lint/FloatComparison:
-  Enabled: false
+  Enabled: true
 
 Lint/HashCompareByIdentity:
-  Enabled: false
+  Enabled: true
 
 Lint/IdentityComparison:
-  Enabled: false
+  Enabled: true
 
 Lint/MissingSuper:
-  Enabled: false
+  Enabled: true
 
 Lint/MixedRegexpCaptureTypes:
-  Enabled: false
+  Enabled: true
 
 Lint/OutOfRangeRegexpRef:
-  Enabled: false
+  Enabled: true
 
 Lint/RedundantSafeNavigation:
-  Enabled: false
+  Enabled: true
 
 Lint/SelfAssignment:
-  Enabled: false
+  Enabled: true
 
 Lint/TopLevelReturnWithArgument:
-  Enabled: false
+  Enabled: true
 
 Lint/TrailingCommaInAttributeDeclaration:
-  Enabled: false
+  Enabled: true
 
 Lint/UnreachableLoop:
-  Enabled: false
+  Enabled: true
 
 Lint/UselessMethodDefinition:
-  Enabled: false
+  Enabled: true
 
 Lint/UselessTimes:
-  Enabled: false
+  Enabled: true
 
 Rails/ArelStar:
-  Enabled: false
+  Enabled: true
 
 Rails/Pick:
-  Enabled: false
+  Enabled: true
 
 Rails/RedundantForeignKey:
-  Enabled: false
+  Enabled: true
 
 RSpec/Capybara/CurrentPathExpectation:
-  Enabled: false
+  Enabled: true
 
 RSpec/Capybara/FeatureMethods:
-  Enabled: false
+  Enabled: true
 
 RSpec/Capybara/VisibilityMatcher:
-  Enabled: false
+  Enabled: true
 
 RSpec/EmptyHook:
-  Enabled: false
+  Enabled: true
 
 RSpec/FactoryBot/AttributeDefinedStatically:
-  Enabled: false
+  Enabled: true
 
 RSpec/FactoryBot/CreateList:
-  Enabled: false
+  Enabled: true
 
 RSpec/FactoryBot/FactoryClassName:
-  Enabled: false
+  Enabled: true
 
 RSpec/MultipleMemoizedHelpers:
-  Enabled: false
+  Enabled: true
 
 RSpec/NotToNot:
-  Enabled: false
+  Enabled: true
 
 RSpec/Rails/HttpStatus:
-  Enabled: false
+  Enabled: true
 
 RSpec/RepeatedIncludeExample:
-  Enabled: false
+  Enabled: true
 
 RSpec/StubbedMock:
-  Enabled: false
+  Enabled: true
 
 RSpec/VariableDefinition:
-  Enabled: false
+  Enabled: true
 
 RSpec/VariableName:
-  Enabled: false
+  Enabled: true
 
 Style/AccessorGrouping:
-  Enabled: false
+  Enabled: true
 
 Style/BisectedAttrAccessor:
-  Enabled: false
+  Enabled: true
 
 Style/CaseLikeIf:
-  Enabled: false
+  Enabled: true
 
 Style/CombinableLoops:
-  Enabled: false
+  Enabled: true
 
 Style/ExponentialNotation:
-  Enabled: false
+  Enabled: true
 
 Style/GlobalStdStream:
-  Enabled: false
+  Enabled: true
 
 Style/HashAsLastArrayItem:
-  Enabled: false
+  Enabled: true
 
 Style/HashLikeCase:
-  Enabled: false
+  Enabled: true
 
 Style/KeywordParametersOrder:
-  Enabled: false
+  Enabled: true
 
 Style/OptionalBooleanParameter:
-  Enabled: false
+  Enabled: true
 
 Style/RedundantAssignment:
-  Enabled: false
+  Enabled: true
 
 Style/RedundantRegexpCharacterClass:
-  Enabled: false
+  Enabled: true
 
 Style/RedundantRegexpEscape:
-  Enabled: false
+  Enabled: true
 
 Style/RedundantSelfAssignment:
-  Enabled: false
+  Enabled: true
 
 Style/SingleArgumentDig:
-  Enabled: false
+  Enabled: true
 
 Style/SlicingWithRange:
-  Enabled: false
+  Enabled: true
 
 Style/SoleNestedConditional:
-  Enabled: false
-
-#### New cops in v0.81
+  Enabled: true
 
 Lint/RaiseException:
   Enabled: true
 
 Lint/StructNewOverride:
   Enabled: true
-
-#### New cops in v0.80
 
 Style/HashEachMethods:
   Enabled: true
