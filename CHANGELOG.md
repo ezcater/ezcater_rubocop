@@ -6,6 +6,9 @@ This gem is moving onto its own [Semantic Versioning](https://semver.org/) schem
 
 Prior to v1.0.0 this gem was versioned based on the `MAJOR`.`MINOR` version of RuboCop. The first release of the ezcater_rubocop gem was `v0.49.0`.
 
+## 5.0.0
+- Enable all added cops since 0.8. There are a lot of new cops now, be sure to use `--regenerate-todo` if you're on a large project that can't be updated easily.
+
 ## 4.0.0
 
 - Add the [rubcop-graphql](https://github.com/DmitryTsepelev/rubocop-graphql) helpers and enable
