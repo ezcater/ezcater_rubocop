@@ -72,6 +72,11 @@ running rubocop.
 
 This gem is using [Semantic Versioning](https://semver.org/). All version bumps should increment using `MAJOR.MINOR.PATCH` based on changes.
 
+When adding a new cop, please enable the cop and release a new major version. This allows us to
+constantly roll out improvements without clients having their suite break unknowingly. When a
+breaking change is released, users can opt to use `--regenerate-todo` to update their TODO file. Do
+not add cops with `enabled: false` unless you want that cop to always be disabled.
+
 ## Custom Cops
 
 1. [RailsConfiguration](https://github.com/ezcater/ezcater_rubocop/blob/main/lib/rubocop/cop/ezcater/rails_configuration.rb) - Enforce use of `Rails.configuration` instead of `Rails.application.config`.

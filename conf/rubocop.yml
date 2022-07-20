@@ -148,13 +148,6 @@ Style/TrailingCommaInArrayLiteral:
 Style/TrailingCommaInHashLiteral:
   EnforcedStyleForMultiline: consistent_comma
 
-### New Cops
-
-# Cops are now introduced in a "pending" state and must be explicitly
-# enabled or disabled. New cops are not enabled by default until the
-# next major release.
-
-# New cops introduced between 0.81.0 and 1.16.0
 Layout/BeginEndAlignment:
   Enabled: false
 
