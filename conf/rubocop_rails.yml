@@ -17,8 +17,8 @@ Metrics/BlockLength:
       - Exclude
   Exclude:
   - "app/graphql/**/*.rb"
-  - "config/environments/*.rb"
-  - "lib/tasks/**/*.rake"
+  - "/**/config/environments/*.rb"
+  - "/**/lib/tasks/**/*.rake"
 
 Rails:
   Enabled: true
@@ -63,19 +63,19 @@ Ezcater/RailsEnv:
   Description: 'Enforce the use of `Rails.configuration.x.<foo>` instead of checking `Rails.env`.'
   Enabled: true
   Exclude:
-    - "config/**/*"
-    - "spec/rails_helper.rb"
+    - "/**/config/**/*"
+    - "/**/spec/rails_helper.rb"
     - "db/**/*"
-    - "lib/tasks/**/*"
-    - "spec/lib/tasks/**/*"
+    - "/**/lib/tasks/**/*"
+    - "/**/spec/lib/tasks/**/*"
 
 Ezcater/DirectEnvCheck:
   Description: 'Enforce the use of `Rails.configuration.x.<foo>` instead of checking `ENV`.'
   Enabled: true
   Exclude:
     - "bin/**/*"
-    - "config/**/*"
-    - "spec/rails_helper.rb"
+    - "/**/config/**/*"
+    - "/**/spec/rails_helper.rb"
     - "db/**/*"
-    - "lib/tasks/**/*"
-    - "spec/lib/tasks/**/*"
+    - "/**/lib/tasks/**/*"
+    - "/**/spec/lib/tasks/**/*"
