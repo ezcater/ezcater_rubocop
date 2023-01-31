@@ -6,6 +6,28 @@ This gem is moving onto its own [Semantic Versioning](https://semver.org/) schem
 
 Prior to v1.0.0 this gem was versioned based on the `MAJOR`.`MINOR` version of RuboCop. The first release of the ezcater_rubocop gem was `v0.49.0`.
 
+## 5.2.0
+
+- Add an explicit rule for `Style/HashSyntax`, setting `EnforcedShorthandSyntax: either`.
+
+Ruby 3.1 introduces syntax where named arguments can be passed
+
+```ruby
+name = "Michael"
+method_with_named_args(name:)
+```
+
+rather than
+
+```ruby
+name = "Michael"
+method_with_named_args(name: name)
+```
+
+when the variable's name matches the named argument key.
+
+For now, we have decided to allow either syntax while we upgrade our applications to Ruby 3.1. This is auto-correctable if and when we decide to enforce the new syntax.
+
 ## 5.1.0
 - Change paths to exclude for various cops to be agnostic of directory structure prior to the matching string. This is to allow apps to have greater flexibility in where files live, but still have them excluded from certain cops. The need for this arose when implementing Stimpack, which moves specs and other files under app/packs/[pack_name].
 

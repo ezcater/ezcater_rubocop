@@ -340,3 +340,6 @@ Style/HashTransformKeys:
 
 Style/HashTransformValues:
   Enabled: true
+
+Style/HashSyntax:
+  EnforcedShorthandSyntax: either
