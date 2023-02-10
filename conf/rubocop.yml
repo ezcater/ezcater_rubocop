@@ -233,13 +233,13 @@ Rails/Pick:
 Rails/RedundantForeignKey:
   Enabled: true
 
-RSpec/Capybara/CurrentPathExpectation:
+Capybara/CurrentPathExpectation:
+  Enabled: true
+
+Capybara/VisibilityMatcher:
   Enabled: true
 
 RSpec/Capybara/FeatureMethods:
-  Enabled: true
-
-RSpec/Capybara/VisibilityMatcher:
   Enabled: true
 
 RSpec/EmptyHook:

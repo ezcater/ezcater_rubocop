@@ -6,6 +6,9 @@ This gem is moving onto its own [Semantic Versioning](https://semver.org/) schem
 
 Prior to v1.0.0 this gem was versioned based on the `MAJOR`.`MINOR` version of RuboCop. The first release of the ezcater_rubocop gem was `v0.49.0`.
 
+## 5.2.1
+- Fix the has the wrong namespace for `RSpec/Capybara/CurrentPathExpectation` and `RSpec/Capybara/VisibilityMatcher` cops, since [they've been extracted](https://github.com/rubocop/rubocop-rspec/blob/master/CHANGELOG.md#2180-2023-01-16) into a separate repo [rubocop-capybara](https://github.com/rubocop/rubocop-capybara).
+
 ## 5.2.0
 
 - Add an explicit rule for `Style/HashSyntax`, setting `EnforcedShorthandSyntax: either`.
