@@ -14,6 +14,10 @@ Ezcater/FeatureFlagActive:
   Description: "Enforce the proper arguments are given to EzcaterFeatureFlag.active?"
   Enabled: true
 
+Ezcater/FeatureFlagNameValid:
+  Description: "Enforce correct flag name format is being used."
+  Enabled: true
+
 Ezcater/RspecDotNotSelfDot:
   Description: 'Enforce ".<class method>" instead of "self.<class method>" for example group description.'
   Enabled: true
