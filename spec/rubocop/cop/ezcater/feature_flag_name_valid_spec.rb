@@ -72,7 +72,10 @@ RSpec.describe RuboCop::Cop::Ezcater::FeatureFlagNameValid, :config do
 
           it "reports an offense" do
             expect(cop.messages).to match_array(
-              ["Feature flag names must use double colons (::) as namespace separators., Feature flag names must use titlecase for each segment."]
+              [
+                "Feature flag names must use double colons (::) as namespace separators., " \
+                "Feature flag names must use titlecase for each segment."
+              ]
             )
           end
         end
