@@ -6,7 +6,7 @@ This gem is moving onto its own [Semantic Versioning](https://semver.org/) schem
 
 Prior to v1.0.0 this gem was versioned based on the `MAJOR`.`MINOR` version of RuboCop. The first release of the ezcater_rubocop gem was `v0.49.0`.
 
-## 5.3.0
+## 6.0.0
 - Add `FeatureFlagNameValid` cop to validate correct feature flag name format, [adopted from the cop](https://github.com/ezcater/ez-rails/blob/2d9272eb3d2c71dc5ebc2aa01a849cf9cfae3df2/cops/rubocop/cops/feature_flags_flag_name.rb_) in `ez-rails`.
 
 ## 5.2.1
