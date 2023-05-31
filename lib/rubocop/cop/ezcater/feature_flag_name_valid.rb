@@ -8,17 +8,18 @@ module RuboCop
       # @example
       #
       #   # good
-      #   EzFF.active?("Foo::Bar")
-      #   EzFF.active?("Foo::Bar::Baz")
-      #   MY_FLAG="Foo::Bar"; EzFF.active?(MY_FLAG)
+      #   EzFF.at_100?("Flag1")
+      #   EzFF.active?("Foo::Bar", tracking_id: 1234)
+      #   EzFF.at_100?("Foo::Bar::Baz")
+      #   MY_FLAG="Foo::Bar"; EzFF.at_100?(MY_FLAG)
       #
       #   # bad
-      #   EzFF.active?("Foo:Bar")
-      #   EzFF.active?("Foo:::Bar")
-      #   EzFF.active?("Foo:Bar:Baz")
-      #   EzFF.active?("Foo::Bar  ")
-      #   EzFF.active?("Foo::Bar && rm -rf * ")
-      #   EzFF.active?("foo::bar")
+      #   EzFF.at_100?("Foo:Bar")
+      #   EzFF.active?("Foo:::Bar", tracking_id: 1234)
+      #   EzFF.at_100?("Foo:Bar:Baz")
+      #   EzFF.at_100?("Foo::Bar  ")
+      #   EzFF.at_100?("Foo::Bar && rm -rf * ")
+      #   EzFF.active?("foo::bar", identifiers: ["user:1"])
       #   MY_FLAG="Foo:bar"
       class FeatureFlagNameValid < Cop
         WHITESPACE = /\s/.freeze
@@ -43,7 +44,7 @@ module RuboCop
 
         def on_casgn(node)
           feature_flag_constant_assignment(node) do |const_name, flag_name|
-            if const_name.end_with?("_FLAG")
+            if const_name.end_with?("_FF", "_FLAG", "_FLAG_NAME", "_FEATURE_FLAG")
               errors = find_name_violations(flag_name)
               add_offense(node, location: :expression, message: errors.join(", ")) if errors.any?
             end
