@@ -13,7 +13,7 @@ RSpec.describe RuboCop::Cop::Ezcater::FeatureFlagNameValid, :config do
       end
     end
 
-    context "with an invalid constant name" do
+    context "with an invalid feature flag name" do
       let(:line) { %[MY_FLAG = "Foo:Bar"] }
 
       it "reports an offense" do
