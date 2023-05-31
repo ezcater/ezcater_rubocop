@@ -79,14 +79,16 @@ not add cops with `enabled: false` unless you want that cop to always be disable
 
 ## Custom Cops
 
-1. [RailsConfiguration](https://github.com/ezcater/ezcater_rubocop/blob/main/lib/rubocop/cop/ezcater/rails_configuration.rb) - Enforce use of `Rails.configuration` instead of `Rails.application.config`.
-1. [RequireGqlErrorHelpers](https://github.com/ezcater/ezcater_rubocop/blob/main/lib/rubocop/cop/ezcater/require_gql_error_helpers.rb) - Use the helpers provided by `GQLErrors` instead of raising `GraphQL::ExecutionError` directly.
-1. [RspecDotNotSelfDot](https://github.com/ezcater/ezcater_rubocop/blob/main/lib/rubocop/cop/ezcater/rspec_dot_not_self_dot.rb) - Enforce ".<class method>" instead of "self.<class method>" and "::<class method>" for example group description.
-1. [RspecMatchOrderedArray](https://github.com/ezcater/ezcater_rubocop/blob/main/lib/rubocop/cop/ezcater/rspec_match_ordered_array.rb) - Enforce use of `match_ordered_array` matcher instead of `eq` matcher. This matcher comes from the [ezcater_matchers](https://github.com/ezcater/ezcater_matchers) gem.
-1. [RspecRequireBrowserMock](https://github.com/ezcater/ezcater_rubocop/blob/main/lib/rubocop/cop/ezcater/rspec_require_browser_mock.rb) - Enforce use of `mock_ezcater_app`, `mock_chrome_browser` & `mock_custom_browser` helpers instead of mocking `Browser` or `EzBrowser` directly.
-1. [RspecRequireFeatureFlagMock](https://github.com/ezcater/ezcater_rubocop/blob/main/lib/rubocop/cop/ezcater/rspec_require_feature_flag_mock.rb) - Enforce use of `mock_feature_flag` helper instead of mocking `FeatureFlag.is_active?` directly.
-1. [RspecRequireHttpStatusMatcher](https://github.com/ezcater/ezcater_rubocop/blob/main/lib/rubocop/cop/ezcater/rspec_require_http_status_matcher.rb) - Use the HTTP status code matcher, like `expect(response).to have_http_status :bad_request`, rather than `expect(response.code).to eq 400`
-1. [StyleDig](https://github.com/ezcater/ezcater_rubocop/blob/main/lib/rubocop/cop/ezcater/style_dig.rb) - Recommend `dig` for deeply nested access.
+* [FeatureFlagActive](https://github.com/ezcater/ezcater_rubocop/blob/main/lib/rubocop/cop/ezcater/feature_flag_active.rb) - Enforce the proper arguments are given to `EzcaterFeatureFlag.active?`
+* [FeatureFlagNameValid](https://github.com/ezcater/ezcater_rubocop/blob/main/lib/rubocop/cop/ezcater/feature_flag_name_valid.rb) - Enforce correct flag name format is being used.
+* [RailsConfiguration](https://github.com/ezcater/ezcater_rubocop/blob/main/lib/rubocop/cop/ezcater/rails_configuration.rb) - Enforce use of `Rails.configuration` instead of `Rails.application.config`.
+* [RequireGqlErrorHelpers](https://github.com/ezcater/ezcater_rubocop/blob/main/lib/rubocop/cop/ezcater/require_gql_error_helpers.rb) - Use the helpers provided by `GQLErrors` instead of raising `GraphQL::ExecutionError` directly.
+* [RspecDotNotSelfDot](https://github.com/ezcater/ezcater_rubocop/blob/main/lib/rubocop/cop/ezcater/rspec_dot_not_self_dot.rb) - Enforce ".<class method>" instead of "self.<class method>" and "::<class method>" for example group description.
+* [RspecMatchOrderedArray](https://github.com/ezcater/ezcater_rubocop/blob/main/lib/rubocop/cop/ezcater/rspec_match_ordered_array.rb) - Enforce use of `match_ordered_array` matcher instead of `eq` matcher. This matcher comes from the [ezcater_matchers](https://github.com/ezcater/ezcater_matchers) gem.
+* [RspecRequireBrowserMock](https://github.com/ezcater/ezcater_rubocop/blob/main/lib/rubocop/cop/ezcater/rspec_require_browser_mock.rb) - Enforce use of `mock_ezcater_app`, `mock_chrome_browser` & `mock_custom_browser` helpers instead of mocking `Browser` or `EzBrowser` directly.
+* [RspecRequireFeatureFlagMock](https://github.com/ezcater/ezcater_rubocop/blob/main/lib/rubocop/cop/ezcater/rspec_require_feature_flag_mock.rb) - Enforce use of `mock_feature_flag` helper instead of mocking `FeatureFlag.is_active?` directly.
+* [RspecRequireHttpStatusMatcher](https://github.com/ezcater/ezcater_rubocop/blob/main/lib/rubocop/cop/ezcater/rspec_require_http_status_matcher.rb) - Use the HTTP status code matcher, like `expect(response).to have_http_status :bad_request`, rather than `expect(response.code).to eq 400`
+* [StyleDig](https://github.com/ezcater/ezcater_rubocop/blob/main/lib/rubocop/cop/ezcater/style_dig.rb) - Recommend `dig` for deeply nested access.
 
 ## Development
 
