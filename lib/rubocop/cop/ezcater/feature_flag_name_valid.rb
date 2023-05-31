@@ -26,7 +26,7 @@ module RuboCop
         ISOLATED_COLON = /(?<!:):(?!:)/.freeze
         TRIPLE_COLON = /:::/.freeze
         INVALID_CHARACTERS = /[^a-zA-Z0-9:]/.freeze
-        TITLECASE_SEGMENT = /^([A-Z][a-z0-9]*)+$/.freeze
+        TITLECASE_SEGMENT = /"^([A-Z][a-z0-9]*)+$"/.freeze
 
         WHITESPACE_MSG = "Feature flag names must not contain whitespace."
         DOUBLE_COLON_MSG = "Feature flag names must use double colons (::) as namespace separators."
