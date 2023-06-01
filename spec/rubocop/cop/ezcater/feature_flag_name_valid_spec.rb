@@ -60,7 +60,7 @@ RSpec.describe RuboCop::Cop::Ezcater::FeatureFlagNameValid, :config do
     %w(active? at_100? random_sample_active?).each do |method_name|
       describe "method call to #{klass_name}.#{method_name}" do
         context "with a valid feature flag name" do
-          let(:line) { %[#{klass_name}.#{method_name}("Foo::Bar")] }
+          let(:line) { %[#{klass_name}.#{method_name}("Foo::Bar", tracking_id: 1234)] }
 
           it "does not report an offense" do
             expect(cop.offenses).to be_empty
@@ -80,7 +80,7 @@ RSpec.describe RuboCop::Cop::Ezcater::FeatureFlagNameValid, :config do
           end
 
           context "without a tracking id" do
-            let(:line) { %[#{klass_name}.#{method_name}("foobar")] }
+            let(:line) { %[#{klass_name}.#{method_name}("Foobar")] }
   
             it "does not report an offense" do
               expect(cop.offenses).to be_empty
