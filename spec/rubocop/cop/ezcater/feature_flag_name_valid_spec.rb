@@ -80,10 +80,9 @@ RSpec.describe RuboCop::Cop::Ezcater::FeatureFlagNameValid, :config do
           end
 
           context "without a tracking id" do
-            let(:line) { %[#{klass_name}.#{method_name}("Foobar")] }
+            let(:line) { %[#{klass_name}.#{method_name}("foobar")] }
   
             it "does not report an offense" do
-              puts line
               expect(cop.offenses).to be_empty
             end
           end
