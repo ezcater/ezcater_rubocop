@@ -60,7 +60,7 @@ RSpec.describe RuboCop::Cop::Ezcater::FeatureFlagNameValid, :config do
     %w(active? at_100? random_sample_active?).each do |method_name|
       describe "method call to #{klass_name}.#{method_name}" do
         context "with a valid feature flag name" do
-          let(:line) { %[#{klass_name}.#{method_name}("Foo::Bar", tracking_id: 1234)] }
+          let(:line) { %[#{klass_name}.#{method_name}("Foo::Bar")] }
 
           it "does not report an offense" do
             expect(cop.offenses).to be_empty
@@ -77,6 +77,15 @@ RSpec.describe RuboCop::Cop::Ezcater::FeatureFlagNameValid, :config do
                 "Feature flag names must use titlecase for each segment."
               ]
             )
+          end
+
+          context "without a tracking id" do
+            let(:line) { %[#{klass_name}.#{method_name}("Foobar")] }
+  
+            it "does not report an offense" do
+              puts line
+              expect(cop.offenses).to be_empty
+            end
           end
         end
       end

@@ -26,7 +26,7 @@ module RuboCop
         ISOLATED_COLON = /(?<!:):(?!:)/.freeze
         TRIPLE_COLON = /:::/.freeze
         INVALID_CHARACTERS = /[^a-zA-Z0-9:]/.freeze
-        TITLECASE_SEGMENT = /"^([A-Z][a-z0-9]*)+$"/.freeze
+        TITLECASE_SEGMENT = /^([A-Z][a-z0-9]*)+$/.freeze
 
         WHITESPACE_MSG = "Feature flag names must not contain whitespace."
         DOUBLE_COLON_MSG = "Feature flag names must use double colons (::) as namespace separators."
@@ -39,7 +39,7 @@ module RuboCop
 
         def_node_matcher :feature_flag_method_call, <<~PATTERN
           (send
-            (_ _ {:EzFF :EzcaterFeatureFlag}) {:active? | :at_100? | :random_sample_active?} (str $_ ...))
+            (_ _ {:EzFF :EzcaterFeatureFlag}) {:active? | :at_100? | :random_sample_active?} <(str $_) ...>)
         PATTERN
 
         def on_casgn(node)
