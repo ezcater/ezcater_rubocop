@@ -4,7 +4,7 @@
 RSpec.describe RuboCop::Cop::Ezcater::RailsConfiguration do
   subject(:cop) { described_class.new }
 
-  let(:msgs) { [described_class::MSG] }
+  let(:msgs) { ["Ezcater/RailsConfiguration: #{described_class::MSG}"] }
 
   it "accepts Rails.configuration" do
     source = "Rails.configuration.foobar"

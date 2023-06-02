@@ -3,7 +3,7 @@
 RSpec.describe RuboCop::Cop::Ezcater::RailsTopLevelSqlExecute do
   subject(:cop) { described_class.new }
 
-  let(:msgs) { [described_class::MSG] }
+  let(:msgs) { ["Ezcater/RailsTopLevelSqlExecute: #{described_class::MSG}"] }
 
   it "accepts `execute`" do
     source = "execute('SELECT * FROM foo')"

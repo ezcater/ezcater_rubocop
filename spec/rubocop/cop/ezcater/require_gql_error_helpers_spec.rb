@@ -5,7 +5,7 @@ require "spec_helper"
 RSpec.describe RuboCop::Cop::Ezcater::RequireGqlErrorHelpers, :config do
   subject(:cop) { described_class.new }
 
-  let(:error_message) { described_class::MSG }
+  let(:error_message) { "Ezcater/RequireGqlErrorHelpers: #{described_class::MSG}" }
   let(:expected_source) { "GraphQL::ExecutionError" }
 
   context "when attempting to directly use GraphQL::ExecutionError" do
