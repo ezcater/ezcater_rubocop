@@ -3,7 +3,7 @@
 RSpec.describe RuboCop::Cop::Ezcater::RubyTimeout do
   subject(:cop) { described_class.new }
 
-  let(:msgs) { [described_class::MSG] }
+  let(:msgs) { ["Ezcater/RubyTimeout: #{described_class::MSG}"] }
 
   it "detects `Timeout.timeout(n)`" do
     source = "Timeout.timeout(n) { foo }"

@@ -22,11 +22,11 @@ module RuboCop
       #   EzFF.active?("foo::bar", identifiers: ["user:1"])
       #   MY_FLAG="Foo:bar"
       class FeatureFlagNameValid < Cop
-        WHITESPACE = /\s/.freeze
-        ISOLATED_COLON = /(?<!:):(?!:)/.freeze
-        TRIPLE_COLON = /:::/.freeze
-        INVALID_CHARACTERS = /[^a-zA-Z0-9:]/.freeze
-        TITLECASE_SEGMENT = /"^([A-Z][a-z0-9]*)+$"/.freeze
+        WHITESPACE = /\s/
+        ISOLATED_COLON = /(?<!:):(?!:)/
+        TRIPLE_COLON = /:::/
+        INVALID_CHARACTERS = /[^a-zA-Z0-9:]/
+        TITLECASE_SEGMENT = /^([A-Z][a-z0-9]*)+$/
 
         WHITESPACE_MSG = "Feature flag names must not contain whitespace."
         DOUBLE_COLON_MSG = "Feature flag names must use double colons (::) as namespace separators."
@@ -39,7 +39,7 @@ module RuboCop
 
         def_node_matcher :feature_flag_method_call, <<~PATTERN
           (send
-            (_ _ {:EzFF :EzcaterFeatureFlag}) {:active? | :at_100? | :random_sample_active?} (str $_ ...))
+            (_ _ {:EzFF :EzcaterFeatureFlag}) {:active? | :at_100? | :random_sample_active?} <(str $_) ...>)
         PATTERN
 
         def on_casgn(node)
@@ -53,7 +53,7 @@ module RuboCop
 
         def on_send(node)
           return unless feature_flag_method_call(node)
-            
+
           feature_flag_method_call(node) do |flag_name|
             errors = find_name_violations(flag_name)
             add_offense(node, location: :expression, message: errors.join(", ")) if errors.any?
@@ -88,5 +88,5 @@ module RuboCop
         end
       end
     end
-  end 
+  end
 end
