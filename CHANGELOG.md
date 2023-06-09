@@ -6,6 +6,10 @@ This gem is moving onto its own [Semantic Versioning](https://semver.org/) schem
 
 Prior to v1.0.0 this gem was versioned based on the `MAJOR`.`MINOR` version of RuboCop. The first release of the ezcater_rubocop gem was `v0.49.0`.
 
+## 6.0.2
+- Upgrade rubocop-rspec to v2.22.0 to use the new FactoryBot namespaces.
+- Fix the following wrong namespaces related to `FactoryBot`: `RSpec/FactoryBot/AttributeDefinedStatically`, `RSpec/FactoryBot/CreateList` and `RSpec/FactoryBot/FactoryClassName`.
+
 ## 6.0.1
 - Fix a bug in the `FeatureFlagNameValid` cop where the titlecase regex matcher was incorrectly finding offenses.
 
@@ -13,7 +17,7 @@ Prior to v1.0.0 this gem was versioned based on the `MAJOR`.`MINOR` version of R
 - Add `FeatureFlagNameValid` cop to validate correct feature flag name format, [adopted from the cop](https://github.com/ezcater/ez-rails/blob/2d9272eb3d2c71dc5ebc2aa01a849cf9cfae3df2/cops/rubocop/cops/feature_flags_flag_name.rb_) in `ez-rails`.
 
 ## 5.2.1
-- Fix the has the wrong namespace for `RSpec/Capybara/CurrentPathExpectation` and `RSpec/Capybara/VisibilityMatcher` cops, since [they've been extracted](https://github.com/rubocop/rubocop-rspec/blob/master/CHANGELOG.md#2180-2023-01-16) into a separate repo [rubocop-capybara](https://github.com/rubocop/rubocop-capybara).
+- Fix the wrong namespace for `RSpec/Capybara/CurrentPathExpectation` and `RSpec/Capybara/VisibilityMatcher` cops, since [they've been extracted](https://github.com/rubocop/rubocop-rspec/blob/master/CHANGELOG.md#2180-2023-01-16) into a separate repo [rubocop-capybara](https://github.com/rubocop/rubocop-capybara).
 
 ## 5.2.0
 
