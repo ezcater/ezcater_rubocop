@@ -104,6 +104,47 @@ To release a new version, update the version number in `version.rb`, merge your 
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/ezcater/ezcater_rubocop.
 
+### Adding New Cops
+
+New cops can be generated via the `new_cop` rake task which generates
+the cop, the spec, updates imports, and adds configuration. Example:
+
+``` shell
+rake 'new_cop[Ezcater/foo_bar]'
+```
+
+Follow the instructions after the task executes and update code as
+necessary for consistency.
+
+
+In addition, you need to:
+
+1. Add the cop to the "Custom Cops" section of this README
+2. Bump the version.
+3. Add a CHANGELOG entry.
+
+
+### Version Bumps & Changelog Entries
+
+The version for this gem follows [Semantic Versioning]:
+
+1. Bump the MAJOR version for breaking changes. Example: new cop,
+   enabled by default and which cannot be safely autofixed.
+
+2. Bump the MINOR version for new functionality which will not disrupt
+   projects which depend on this gem. Example: new cop, not enabled by
+   default or which can safely be autofixed.
+
+3. Bump the PATCH version for backwards compatible bugfixes.
+
+[Semantic Versioning]: https://semver.org/
+
+The version does not need to be bumped and the changelog does not need
+to be updated for chores which do not affect users of this
+gem. Example: updating CI. Omitting these details helps keep the
+signal-to-noise ratio high for people upgrading the gem as these types
+of changes will not affect them.
+
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
