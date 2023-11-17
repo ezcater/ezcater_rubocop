@@ -18,6 +18,14 @@ Ezcater/FeatureFlagNameValid:
   Description: "Enforce correct flag name format is being used."
   Enabled: true
 
+Ezcater/GraphQL/NotAuthorizedScalarField:
+  Description: 'Enforce the use of authorization for scalar GraphQL fields.'
+  Include:
+    - 'app/graphql/**/*.rb'
+    - 'packs/**/graphql/**/*.rb'
+  Enabled: false
+  VersionAdded: '6.1.0'
+
 Ezcater/RspecDotNotSelfDot:
   Description: 'Enforce ".<class method>" instead of "self.<class method>" for example group description.'
   Enabled: true

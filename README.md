@@ -81,6 +81,9 @@ not add cops with `enabled: false` unless you want that cop to always be disable
 
 * [FeatureFlagActive](https://github.com/ezcater/ezcater_rubocop/blob/main/lib/rubocop/cop/ezcater/feature_flag_active.rb) - Enforce the proper arguments are given to `EzcaterFeatureFlag.active?`
 * [FeatureFlagNameValid](https://github.com/ezcater/ezcater_rubocop/blob/main/lib/rubocop/cop/ezcater/feature_flag_name_valid.rb) - Enforce correct flag name format is being used.
+* [GraphQL/NotAuthorizedScalarField] - Enforces the use of
+  authorization (pundit or, optionally, the guard pattern) for scalar
+  fields. See examples within class comment for additional configuration.
 * [RailsConfiguration](https://github.com/ezcater/ezcater_rubocop/blob/main/lib/rubocop/cop/ezcater/rails_configuration.rb) - Enforce use of `Rails.configuration` instead of `Rails.application.config`.
 * [RequireGqlErrorHelpers](https://github.com/ezcater/ezcater_rubocop/blob/main/lib/rubocop/cop/ezcater/require_gql_error_helpers.rb) - Use the helpers provided by `GQLErrors` instead of raising `GraphQL::ExecutionError` directly.
 * [RspecDotNotSelfDot](https://github.com/ezcater/ezcater_rubocop/blob/main/lib/rubocop/cop/ezcater/rspec_dot_not_self_dot.rb) - Enforce ".<class method>" instead of "self.<class method>" and "::<class method>" for example group description.
@@ -89,6 +92,8 @@ not add cops with `enabled: false` unless you want that cop to always be disable
 * [RspecRequireFeatureFlagMock](https://github.com/ezcater/ezcater_rubocop/blob/main/lib/rubocop/cop/ezcater/rspec_require_feature_flag_mock.rb) - Enforce use of `mock_feature_flag` helper instead of mocking `FeatureFlag.is_active?` directly.
 * [RspecRequireHttpStatusMatcher](https://github.com/ezcater/ezcater_rubocop/blob/main/lib/rubocop/cop/ezcater/rspec_require_http_status_matcher.rb) - Use the HTTP status code matcher, like `expect(response).to have_http_status :bad_request`, rather than `expect(response.code).to eq 400`
 * [StyleDig](https://github.com/ezcater/ezcater_rubocop/blob/main/lib/rubocop/cop/ezcater/style_dig.rb) - Recommend `dig` for deeply nested access.
+
+[GraphQL/NotAuthorizedScalarField]: https://github.com/ezcater/ezcater_rubocop/blob/main/lib/rubocop/cop/ezcater/graphql/not_authorized_scalar_field.rb)
 
 ## Development
 
