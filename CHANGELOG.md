@@ -6,6 +6,9 @@ This gem is moving onto its own [Semantic Versioning](https://semver.org/) schem
 
 Prior to v1.0.0 this gem was versioned based on the `MAJOR`.`MINOR` version of RuboCop. The first release of the ezcater_rubocop gem was `v0.49.0`.
 
+## 6.0.3
+- Fix `FeatureFlagActive` cop so that it allows feature flag names to be constants and dot method calls in addition to strings.
+
 ## 6.0.2
 - Upgrade rubocop-rspec to v2.22.0 to use the new FactoryBot namespaces.
 - Fix the following wrong namespaces related to `FactoryBot`: `RSpec/FactoryBot/AttributeDefinedStatically`, `RSpec/FactoryBot/CreateList` and `RSpec/FactoryBot/FactoryClassName`.
