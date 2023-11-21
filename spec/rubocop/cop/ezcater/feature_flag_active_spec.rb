@@ -42,8 +42,32 @@ RSpec.describe RuboCop::Cop::Ezcater::FeatureFlagActive, :config do
         end
       end
 
+      context "with a constant instead of a flag name" do
+        let(:line) { %[#{constant_name}.active?(FLAG_VAR, identifiers: ["#{tracking_id}"])] }
+
+        it "does not report an offense" do
+          expect(cop.offenses).to be_empty
+        end
+      end
+
+      context "with a dot method call instead of a flag name" do
+        let(:line) { %[#{constant_name}.active?(config.flag_name, identifiers: ["#{tracking_id}"])] }
+
+        it "does not report an offense" do
+          expect(cop.offenses).to be_empty
+        end
+      end
+
       context "with a symbol instead of a flag name" do
         let(:line) { %[#{constant_name}.active?(:my_flag_sym, identifiers: ["#{tracking_id}"])] }
+
+        it "reports an offense" do
+          expect(cop.messages).to match_array(first_params_msgs)
+        end
+      end
+
+      context "with an integer instead of a flag name" do
+        let(:line) { %[#{constant_name}.active?(13, identifiers: ["#{tracking_id}"])] }
 
         it "reports an offense" do
           expect(cop.messages).to match_array(first_params_msgs)
