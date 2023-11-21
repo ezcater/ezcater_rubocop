@@ -20,6 +20,7 @@ module RuboCop
       #   EzFF.active?(defined_flag_name_var)
       #   EzFF.active?(@flag_name_ivar)
       #   EzFF.active?(:symbol_name, tracking_id: "brand:12345")
+      #   EzFF.active?(123, identifiers: ["user:12345"])
 
       class FeatureFlagActive < Cop
         MSG = "`EzFF.active?` must be called with at least one of `tracking_id` or `identifiers`"
