@@ -12,7 +12,7 @@ module RuboCop
       #   EzFF.active?("FlagName", identifiers: ["user:12345", "user:23456"])
       #   EzFF.active?(defined_flag_name_var, tracking_id: "brand:12345")
       #   EzFF.active?(@flag_name_ivar, tracking_id: "brand:12345")
-      #   EzFF.active?(CONTANT_NAME, tracking_id: "brand:12345")
+      #   EzFF.active?(CONSTANT_NAME, tracking_id: "brand:12345")
       #   EzFF.active?(config.flag_name, tracking_id: "brand:12345")
       #
       #   # bad
