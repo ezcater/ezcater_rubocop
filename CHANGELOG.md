@@ -6,6 +6,11 @@ This gem is moving onto its own [Semantic Versioning](https://semver.org/) schem
 
 Prior to v1.0.0 this gem was versioned based on the `MAJOR`.`MINOR` version of RuboCop. The first release of the ezcater_rubocop gem was `v0.49.0`.
 
+## 6.1.0
+
+- Add `Ezcater/GraphQL/NotAuthorizedScalarField` Cop which enforces the use
+  of authorization for scalar GraphQL fields. Not enforced by default.
+
 ## 6.0.3
 - Fix `FeatureFlagActive` cop so that it allows feature flag names to be constants and dot method calls in addition to strings.
 

@@ -81,6 +81,9 @@ not add cops with `enabled: false` unless you want that cop to always be disable
 
 * [FeatureFlagActive](https://github.com/ezcater/ezcater_rubocop/blob/main/lib/rubocop/cop/ezcater/feature_flag_active.rb) - Enforce the proper arguments are given to `EzcaterFeatureFlag.active?`
 * [FeatureFlagNameValid](https://github.com/ezcater/ezcater_rubocop/blob/main/lib/rubocop/cop/ezcater/feature_flag_name_valid.rb) - Enforce correct flag name format is being used.
+* [GraphQL/NotAuthorizedScalarField] - Enforces the use of
+  authorization (pundit or, optionally, the guard pattern) for scalar
+  fields. See examples within class comment for additional configuration.
 * [RailsConfiguration](https://github.com/ezcater/ezcater_rubocop/blob/main/lib/rubocop/cop/ezcater/rails_configuration.rb) - Enforce use of `Rails.configuration` instead of `Rails.application.config`.
 * [RequireGqlErrorHelpers](https://github.com/ezcater/ezcater_rubocop/blob/main/lib/rubocop/cop/ezcater/require_gql_error_helpers.rb) - Use the helpers provided by `GQLErrors` instead of raising `GraphQL::ExecutionError` directly.
 * [RspecDotNotSelfDot](https://github.com/ezcater/ezcater_rubocop/blob/main/lib/rubocop/cop/ezcater/rspec_dot_not_self_dot.rb) - Enforce ".<class method>" instead of "self.<class method>" and "::<class method>" for example group description.
@@ -89,6 +92,8 @@ not add cops with `enabled: false` unless you want that cop to always be disable
 * [RspecRequireFeatureFlagMock](https://github.com/ezcater/ezcater_rubocop/blob/main/lib/rubocop/cop/ezcater/rspec_require_feature_flag_mock.rb) - Enforce use of `mock_feature_flag` helper instead of mocking `FeatureFlag.is_active?` directly.
 * [RspecRequireHttpStatusMatcher](https://github.com/ezcater/ezcater_rubocop/blob/main/lib/rubocop/cop/ezcater/rspec_require_http_status_matcher.rb) - Use the HTTP status code matcher, like `expect(response).to have_http_status :bad_request`, rather than `expect(response.code).to eq 400`
 * [StyleDig](https://github.com/ezcater/ezcater_rubocop/blob/main/lib/rubocop/cop/ezcater/style_dig.rb) - Recommend `dig` for deeply nested access.
+
+[GraphQL/NotAuthorizedScalarField]: https://github.com/ezcater/ezcater_rubocop/blob/main/lib/rubocop/cop/ezcater/graphql/not_authorized_scalar_field.rb)
 
 ## Development
 
@@ -103,6 +108,47 @@ To release a new version, update the version number in `version.rb`, merge your 
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/ezcater/ezcater_rubocop.
+
+### Adding New Cops
+
+New cops can be generated via the `new_cop` rake task which generates
+the cop, the spec, updates imports, and adds configuration. Example:
+
+``` shell
+rake 'new_cop[Ezcater/foo_bar]'
+```
+
+Follow the instructions after the task executes and update code as
+necessary for consistency.
+
+
+In addition, you need to:
+
+1. Add the cop to the "Custom Cops" section of this README
+2. Bump the version.
+3. Add a CHANGELOG entry.
+
+
+### Version Bumps & Changelog Entries
+
+The version for this gem follows [Semantic Versioning]:
+
+1. Bump the MAJOR version for breaking changes. Example: new cop,
+   enabled by default and which cannot be safely autofixed.
+
+2. Bump the MINOR version for new functionality which will not disrupt
+   projects which depend on this gem. Example: new cop, not enabled by
+   default or which can safely be autofixed.
+
+3. Bump the PATCH version for backwards compatible bugfixes.
+
+[Semantic Versioning]: https://semver.org/
+
+The version does not need to be bumped and the changelog does not need
+to be updated for chores which do not affect users of this
+gem. Example: updating CI. Omitting these details helps keep the
+signal-to-noise ratio high for people upgrading the gem as these types
+of changes will not affect them.
 
 ## License
 

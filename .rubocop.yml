@@ -9,5 +9,9 @@ inherit_from:
 RSpec/MultipleExpectations:
   Enabled: false
 
+RSpec/FilePath:
+  Exclude:
+    - spec/rubocop/cop/ezcater/graphql/not_authorized_scalar_field_spec.rb
+
 Gemspec/RequiredRubyVersion:
   Enabled: false
