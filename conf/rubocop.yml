@@ -50,6 +50,9 @@ Naming/MethodParameterName:
     - ex
     - id
 
+Naming/RescuedExceptionsVariableName:
+  Enabled: false
+
 Naming/VariableNumber:
   Enabled: false
 
