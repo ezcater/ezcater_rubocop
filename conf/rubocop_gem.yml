@@ -1,3 +1,4 @@
+# Configurations intended to be used with Gems
 inherit_from:
   - ../conf/rubocop.yml
 

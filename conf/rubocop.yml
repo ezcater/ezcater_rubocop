@@ -56,9 +56,6 @@ Naming/RescuedExceptionsVariableName:
 Naming/VariableNumber:
   Enabled: false
 
-Rails:
-  Enabled: false
-
 RSpec/ContextWording:
   Enabled: false
 
@@ -86,11 +83,6 @@ RSpec/MultipleExpectations:
 
 RSpec/NestedGroups:
   Max: 5
-
-# From rubocop-rspec
-Rails/HttpStatus:
-  Enabled: true
-  EnforcedStyle: symbolic
 
 Style/EmptyLiteral:
   Enabled: false
@@ -225,15 +217,6 @@ Lint/UselessMethodDefinition:
   Enabled: true
 
 Lint/UselessTimes:
-  Enabled: true
-
-Rails/ArelStar:
-  Enabled: true
-
-Rails/Pick:
-  Enabled: true
-
-Rails/RedundantForeignKey:
   Enabled: true
 
 Capybara/CurrentPathExpectation:

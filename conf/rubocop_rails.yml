@@ -1,3 +1,7 @@
+# Configurations intended to be used with Rails applications.
+require:
+  - rubocop-rails
+
 inherit_from:
   - ../conf/rubocop.yml
 
@@ -47,6 +51,19 @@ Rails/UnknownEnv:
     - test
     - staging
     - production
+
+Rails/ArelStar:
+  Enabled: true
+
+Rails/HttpStatus:
+  Enabled: true
+  EnforcedStyle: symbolic
+
+Rails/Pick:
+  Enabled: true
+
+Rails/RedundantForeignKey:
+  Enabled: true
 
 Rails/SaveBang:
   Enabled: true
