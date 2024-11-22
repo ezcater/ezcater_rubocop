@@ -4,7 +4,7 @@
 RSpec.describe RuboCop::Cop::Ezcater::StyleDig, :config do
   subject(:cop) { described_class.new(config) }
 
-  let(:ruby_version) { 2.6 }
+  let(:ruby_version) { 3.1 }
   let(:msgs) { [described_class::MSG] }
 
   it "accepts non-nested access" do

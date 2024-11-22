@@ -39,4 +39,4 @@ workflows:
           matrix:
             parameters:
               # https://github.com/CircleCI-Public/cimg-ruby
-              ruby-version: ["2.7", "3.0", "3.1"]
+              ruby-version: ["3.1"]
