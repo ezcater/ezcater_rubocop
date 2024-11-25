@@ -42,7 +42,7 @@ Gem::Specification.new do |spec|
   spec.executables << "circle_rubocop.rb"
   spec.require_paths = ["lib"]
 
-  spec.required_ruby_version = ">= 2.6"
+  spec.required_ruby_version = ">= 3.1"
 
   spec.add_development_dependency "bundler"
   spec.add_development_dependency "pry-byebug"

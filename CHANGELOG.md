@@ -6,6 +6,10 @@ This gem is moving onto its own [Semantic Versioning](https://semver.org/) schem
 
 Prior to v1.0.0 this gem was versioned based on the `MAJOR`.`MINOR` version of RuboCop. The first release of the ezcater_rubocop gem was `v0.49.0`.
 
+## 7.0.0
+
+- Drop support for ruby 2.6 & 3.0
+
 ## 6.1.2
 
 - Disable `Naming/RescuedExceptionsVariableName` so exception variable names are less restrictive.
