@@ -14,7 +14,7 @@ module RuboCop
       #   # bad
       #   expect(response.code).to eq 201
       #   expect(response.code).to eq 400
-      class RspecRequireHttpStatusMatcher < Cop
+      class RspecRequireHttpStatusMatcher < Base
         MSG = "Use the `have_http_status` matcher, like `expect(response).to have_http_status :bad_request`, "\
           "rather than `%<node_source>s`"
 
@@ -29,8 +29,7 @@ module RuboCop
         def on_send(node)
           return if !response_status_assertion(node) && !response_code_assertion(node)
 
-          add_offense(node,
-                      location: :expression,
+          add_offense(node.loc.expression,
                       message: format(MSG, node_source: node.source))
         end
       end

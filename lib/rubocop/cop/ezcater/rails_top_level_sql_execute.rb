@@ -14,7 +14,9 @@ module RuboCop
       #   # bad
       #   ActiveRecord::Base.connection.execute("...")
       #
-      class RailsTopLevelSqlExecute < Cop
+      class RailsTopLevelSqlExecute < Base
+        extend RuboCop::Cop::AutoCorrector
+
         MSG = <<~END_MESSAGE.split("\n").join(" ")
           Use `execute` instead of `ActiveRecord::Base.connection.execute` in migrations. The latter is
           redundant and can bypass safety checks.
@@ -26,19 +28,15 @@ module RuboCop
 
         def on_send(node)
           ar_connection_execute(node) do
-            add_offense(node, location: :expression, message: MSG)
-          end
-        end
+            add_offense(node.loc.expression, message: MSG) do |corrector|
+              range = Parser::Source::Range.new(
+                node.source_range.source_buffer,
+                node.source_range.begin_pos,
+                node.source_range.end_pos
+              )
 
-        def autocorrect(node)
-          lambda do |corrector|
-            range = Parser::Source::Range.new(
-              node.source_range.source_buffer,
-              node.source_range.begin_pos,
-              node.source_range.end_pos
-            )
-
-            corrector.replace(range, "execute(#{node.last_argument.source})")
+              corrector.replace(range, "execute(#{node.last_argument.source})")
+            end
           end
         end
       end

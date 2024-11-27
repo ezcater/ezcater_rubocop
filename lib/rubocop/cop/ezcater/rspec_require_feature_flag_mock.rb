@@ -15,7 +15,7 @@ module RuboCop
       #   allow(FeatureFlag).to receive(:is_active?).and_return(true)
       #   allow(FeatureFlag).to receive(:is_active?).with("MyFeatureFlag").and_return(true)
       #   allow(FeatureFlag).to receive(:is_active?).with("MyFeatureFlag", user: current_user).and_return(true)
-      class RspecRequireFeatureFlagMock < Cop
+      class RspecRequireFeatureFlagMock < Base
         MSG = "Use the `mock_feature_flag` helper instead of mocking `allow(FeatureFlag)`"
 
         def_node_matcher :feature_flag_const?, <<~PATTERN
@@ -35,7 +35,7 @@ module RuboCop
 
           # Finish tree navigation to full line for highlighting
           match_node = match_node.parent while match_node.parent
-          add_offense(match_node, location: :expression)
+          add_offense(match_node.loc.expression)
         end
 
         private

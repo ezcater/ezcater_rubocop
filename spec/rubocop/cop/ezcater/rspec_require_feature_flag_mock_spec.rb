@@ -1,37 +1,38 @@
 # frozen_string_literal: true
 
-require "spec_helper"
-
 RSpec.describe RuboCop::Cop::Ezcater::RspecRequireFeatureFlagMock, :config do
   subject(:cop) { described_class.new }
 
   it "accepts usage of the mock_feature_flag helper with no options" do
-    inspect_source("mock_feature_flag(\"MyFeatureFlag\", true)")
-    expect(cop.offenses).to be_empty
+    expect_no_offenses <<~RUBY
+      mock_feature_flag("MyFeatureFlag", true)
+    RUBY
   end
 
   it "accepts usage of the mock_feature_flag helper with options" do
-    inspect_source(<<-RUBY)
+    expect_no_offenses <<~RUBY
       user = create(:user)
-      mock_feature_flag(\"MyFeatureFlag\", { user: user }, true)
+      mock_feature_flag("MyFeatureFlag", { user: user }, true)
     RUBY
-    expect(cop.offenses).to be_empty
   end
 
   it "accepts usage of FeatureFlag constant when validating mocked calls" do
-    inspect_source("expect(FeatureFlag).to have_received(:is_active?).and_return(true)")
-    expect(cop.offenses).to be_empty
+    expect_no_offenses <<~RUBY
+      expect(FeatureFlag).to have_received(:is_active?).and_return(true)
+    RUBY
   end
 
   it "registers an offense when attempting to directly mock FeatureFlag" do
-    inspect_source("allow(FeatureFlag).to receive(:is_active?).and_return(true)")
-    expect(cop.messages).to match_array(["Ezcater/RspecRequireFeatureFlagMock: #{described_class::MSG}"])
-    expect(cop.highlights).to match_array(["allow(FeatureFlag).to receive(:is_active?).and_return(true)"])
+    expect_offense <<~RUBY
+      allow(FeatureFlag).to receive(:is_active?).and_return(true)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Ezcater/RspecRequireFeatureFlagMock: Use the `mock_feature_flag` helper instead of mocking `allow(FeatureFlag)`
+    RUBY
   end
 
   it "registers an offense when attempting to directly mock FeatureFlag with bad formatting" do
-    inspect_source("allow   (    FeatureFlag  ).to receive(:is_active?).and_return(true)")
-    expect(cop.messages).to match_array(["Ezcater/RspecRequireFeatureFlagMock: #{described_class::MSG}"])
-    expect(cop.highlights).to match_array(["allow   (    FeatureFlag  ).to receive(:is_active?).and_return(true)"])
+    expect_offense <<~RUBY
+      allow   (    FeatureFlag  ).to receive(:is_active?).and_return(true)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Ezcater/RspecRequireFeatureFlagMock: Use the `mock_feature_flag` helper instead of mocking `allow(FeatureFlag)`
+    RUBY
   end
 end

@@ -1,22 +1,20 @@
-# encoding utf-8
 # frozen_string_literal: true
 
-RSpec.describe RuboCop::Cop::Ezcater::RailsConfiguration do
-  subject(:cop) { described_class.new }
-
-  let(:msgs) { ["Ezcater/RailsConfiguration: #{described_class::MSG}"] }
-
+RSpec.describe RuboCop::Cop::Ezcater::RailsConfiguration, :config do
   it "accepts Rails.configuration" do
-    source = "Rails.configuration.foobar"
-    inspect_source(source)
-    expect(cop.offenses).to be_empty
+    expect_no_offenses <<~RUBY
+      Rails.configuration.foobar
+    RUBY
   end
 
   it "corrects Rails.application.config" do
-    source = "Rails.application.config.foobar"
-    inspect_source(source)
-    expect(cop.highlights).to match_array(["Rails.application.config"])
-    expect(cop.messages).to match_array(msgs)
-    expect(autocorrect_source(source)).to eq("Rails.configuration.foobar")
+    expect_offense <<~RUBY
+      Rails.application.config.foobar
+      ^^^^^^^^^^^^^^^^^^^^^^^^ Use `Rails.configuration` instead of `Rails.application.config`.
+    RUBY
+
+    expect_correction <<~RUBY
+      Rails.configuration.foobar
+    RUBY
   end
 end

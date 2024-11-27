@@ -1,37 +1,27 @@
 # frozen_string_literal: true
 
-RSpec.describe RuboCop::Cop::Ezcater::RailsTopLevelSqlExecute do
-  subject(:cop) { described_class.new }
-
-  let(:msgs) { ["Ezcater/RailsTopLevelSqlExecute: #{described_class::MSG}"] }
-
+RSpec.describe RuboCop::Cop::Ezcater::RailsTopLevelSqlExecute, :config do
   it "accepts `execute`" do
-    source = "execute('SELECT * FROM foo')"
-    inspect_source(source)
-    expect(cop.offenses).to be_empty
+    expect_no_offenses <<~RUBY
+      execute('SELECT * FROM foo')
+    RUBY
   end
 
   it "detects `ActiveRecord::Base.connection.execute`" do
-    source = "ActiveRecord::Base.connection.execute('SELECT * FROM foo')"
-    inspect_source(source)
-    expect(cop.offenses).not_to be_empty
-    expect(cop.highlights).to match_array([source])
-    expect(cop.messages).to match_array(msgs)
+    expect_offense <<~RUBY
+      ActiveRecord::Base.connection.execute('SELECT * FROM foo')
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Use `execute` instead of `ActiveRecord::Base.connection.execute` in migrations. The latter is redundant and can bypass safety checks.
+    RUBY
+
+    expect_correction <<~RUBY
+      execute('SELECT * FROM foo')
+    RUBY
   end
 
   it "detects `ActiveRecord::Base.connection.execute` with non-string arguments" do
-    source = "ActiveRecord::Base.connection.execute(foo_bar)"
-    inspect_source(source)
-    expect(cop.offenses).not_to be_empty
-    expect(cop.highlights).to match_array([source])
-    expect(cop.messages).to match_array(msgs)
-  end
-
-  it "supports autocorrect" do
-    source = "ActiveRecord::Base.connection.execute('SELECT * FROM foo')"
-    inspect_source(source)
-    expect(cop.highlights).to match_array([source])
-    expect(cop.messages).to match_array(msgs)
-    expect(autocorrect_source(source)).to eq("execute('SELECT * FROM foo')")
+    expect_offense <<~RUBY
+      ActiveRecord::Base.connection.execute(foo_bar)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Use `execute` instead of `ActiveRecord::Base.connection.execute` in migrations. The latter is redundant and can bypass safety checks.
+    RUBY
   end
 end
