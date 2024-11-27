@@ -17,6 +17,7 @@ module RuboCop
       #   my_array[0][1]
 
       class StyleDig < Base
+        extend RuboCop::Cop::AutoCorrector
         extend TargetRubyVersion
 
         minimum_target_ruby_version 2.3
@@ -33,22 +34,19 @@ module RuboCop
           match_node = node
           # walk to outermost access node
           match_node = match_node.parent while access_node?(match_node.parent)
-          add_offense(match_node.loc.expression, message: MSG)
-        end
 
-        def autocorrect(node)
-          access_node = node
-          source_args = [access_node.first_argument.source]
-          while access_node?(access_node.children.first)
-            access_node = access_node.children.first
-            source_args << access_node.first_argument.source
-          end
-          root_node = access_node.children.first
+          add_offense(match_node.loc.expression, message: MSG) do |corrector|
+            access_node = match_node
+            source_args = [access_node.first_argument.source]
+            while access_node?(access_node.children.first)
+              access_node = access_node.children.first
+              source_args << access_node.first_argument.source
+            end
+            root_node = access_node.children.first
 
-          lambda do |corrector|
-            range = Parser::Source::Range.new(node.source_range.source_buffer,
+            range = Parser::Source::Range.new(match_node.source_range.source_buffer,
                                               root_node.source_range.end_pos,
-                                              node.source_range.end_pos)
+                                              match_node.source_range.end_pos)
             corrector.replace(range, ".dig(#{source_args.reverse.join(', ')})")
           end
         end

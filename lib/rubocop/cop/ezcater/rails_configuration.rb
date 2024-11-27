@@ -4,6 +4,8 @@ module RuboCop
   module Cop
     module Ezcater
       class RailsConfiguration < Base
+        extend RuboCop::Cop::AutoCorrector
+
         MSG = "Use `Rails.configuration` instead of `Rails.application.config`."
         RAILS_CONFIGURATION = "Rails.configuration"
 
@@ -13,13 +15,9 @@ module RuboCop
 
         def on_send(node)
           rails_application_config(node) do
-            add_offense(node.loc.expression, message: MSG)
-          end
-        end
-
-        def autocorrect(node)
-          lambda do |corrector|
-            corrector.replace(node.source_range, RAILS_CONFIGURATION)
+            add_offense(node.loc.expression, message: MSG) do |corrector|
+              corrector.replace(node.source_range, RAILS_CONFIGURATION)
+            end
           end
         end
       end
