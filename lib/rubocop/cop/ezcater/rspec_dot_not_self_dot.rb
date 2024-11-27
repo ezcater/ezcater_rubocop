@@ -54,9 +54,9 @@ module RuboCop
 
           str_node = node.send_node.arguments[0]
           if str_node.value.match?(SELF_DOT_REGEXP)
-            add_offense(str_node, location: :expression, message: SELF_DOT_MSG)
+            add_offense(str_node.loc.expression, message: SELF_DOT_MSG)
           elsif str_node.value.match?(COLON_COLON_REGEXP)
-            add_offense(str_node, location: :expression, message: COLON_COLON_MSG)
+            add_offense(str_node.loc.expression, message: COLON_COLON_MSG)
           end
         end
 

@@ -33,7 +33,7 @@ module RuboCop
           match_node = node
           # walk to outermost access node
           match_node = match_node.parent while access_node?(match_node.parent)
-          add_offense(match_node, location: :expression, message: MSG)
+          add_offense(match_node.loc.expression, message: MSG)
         end
 
         def autocorrect(node)

@@ -57,11 +57,11 @@ module RuboCop
           return unless method_call_matcher(node)
 
           if first_param_bad(node)
-            add_offense(node, location: :expression, message: FIRST_PARAM_MSG)
+            add_offense(node.loc.expression, message: FIRST_PARAM_MSG)
           end
 
           if ezff_active_one_arg(node) || !args_matcher(node)
-            add_offense(node, location: :expression, message: MSG)
+            add_offense(node.loc.expression, message: MSG)
           end
         end
       end

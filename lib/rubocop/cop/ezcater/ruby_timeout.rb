@@ -30,7 +30,7 @@ module RuboCop
 
         def on_send(node)
           timeout(node) do
-            add_offense(node, location: :expression, message: MSG)
+            add_offense(node.loc.expression, message: MSG)
           end
         end
       end
