@@ -14,7 +14,7 @@ module RuboCop
       #   # bad
       #   ActiveRecord::Base.connection.execute("...")
       #
-      class RailsTopLevelSqlExecute < Cop
+      class RailsTopLevelSqlExecute < Base
         MSG = <<~END_MESSAGE.split("\n").join(" ")
           Use `execute` instead of `ActiveRecord::Base.connection.execute` in migrations. The latter is
           redundant and can bypass safety checks.

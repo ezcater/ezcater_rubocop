@@ -16,7 +16,7 @@ module RuboCop
       #   my_hash['foo'] && my_hash['foo']['bar']
       #   my_array[0][1]
 
-      class StyleDig < Cop
+      class StyleDig < Base
         extend TargetRubyVersion
 
         minimum_target_ruby_version 2.3

@@ -13,7 +13,7 @@ module RuboCop
       #   # good
       #   raise OrderActionNotAllowed
 
-      class RequireCustomError < Cop
+      class RequireCustomError < Base
         MSG = "Use a custom error class that inherits from StandardError when raising an exception"
 
         def_node_matcher :raising_standard_or_argument_error,

@@ -21,7 +21,7 @@ module RuboCop
       #   EzFF.at_100?("Foo::Bar && rm -rf * ")
       #   EzFF.active?("foo::bar", identifiers: ["user:1"])
       #   MY_FLAG="Foo:bar"
-      class FeatureFlagNameValid < Cop
+      class FeatureFlagNameValid < Base
         WHITESPACE = /\s/
         ISOLATED_COLON = /(?<!:):(?!:)/
         TRIPLE_COLON = /:::/

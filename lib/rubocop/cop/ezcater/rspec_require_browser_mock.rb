@@ -19,7 +19,7 @@ module RuboCop
       #   # bad
       #   allow(Browser).to receive...
       #   allow(EzBrowser).to receive...
-      class RspecRequireBrowserMock < Cop
+      class RspecRequireBrowserMock < Base
         MSG = "Use the mocks provided by `BrowserHelpers` instead of mocking `%<node_source>s`"
 
         def_node_matcher :browser_const?, <<~PATTERN

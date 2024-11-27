@@ -3,7 +3,7 @@
 module RuboCop
   module Cop
     module Ezcater
-      class RailsConfiguration < Cop
+      class RailsConfiguration < Base
         MSG = "Use `Rails.configuration` instead of `Rails.application.config`."
         RAILS_CONFIGURATION = "Rails.configuration"
 

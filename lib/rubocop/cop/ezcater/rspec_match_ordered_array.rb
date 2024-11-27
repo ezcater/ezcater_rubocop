@@ -14,7 +14,7 @@ module RuboCop
       #   # bad
       #   expect(foo).to eq([1, 2, 3])
       #   expect(foo).to eq [1, 2, 3]
-      class RspecMatchOrderedArray < Cop
+      class RspecMatchOrderedArray < Base
         MATCH_ORDERED_ARRAY = "match_ordered_array"
         MSG = "Use the `match_ordered_array` matcher from ezcater_matchers gem "\
           "instead of `eq` when comparing collections"

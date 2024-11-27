@@ -23,7 +23,7 @@ module RuboCop
       #     ...
       #   end
 
-      class RspecDotNotSelfDot < Cop
+      class RspecDotNotSelfDot < Base
         include RuboCop::RSpec::Language
         extend RuboCop::RSpec::Language::NodePattern
 

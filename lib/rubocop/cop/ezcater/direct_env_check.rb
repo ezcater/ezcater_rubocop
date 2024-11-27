@@ -18,7 +18,7 @@ module RuboCop
       #   # bad
       #   enforce_foo! if ENV["FOO_ENFORCED"] == "true"
       #
-      class DirectEnvCheck < Cop
+      class DirectEnvCheck < Base
         MSG = <<~END_MESSAGE.split("\n").join(" ")
           Use `Rails.configuration.x.<foo>` for env-backed configuration instead of inspecting `ENV`. Restricting
           environment variables references to be within application configuration makes it more obvious which env vars

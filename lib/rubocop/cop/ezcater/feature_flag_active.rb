@@ -22,7 +22,7 @@ module RuboCop
       #   EzFF.active?(:symbol_name, tracking_id: "brand:12345")
       #   EzFF.active?(123, identifiers: ["user:12345"])
 
-      class FeatureFlagActive < Cop
+      class FeatureFlagActive < Base
         MSG = "`EzFF.active?` must be called with at least one of `tracking_id` or `identifiers`"
         FIRST_PARAM_MSG = "The first argument to `EzFF.active?` must be a string literal or a variable " \
         "or constant assigned to a string"
