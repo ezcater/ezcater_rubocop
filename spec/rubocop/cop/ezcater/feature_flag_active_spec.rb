@@ -50,22 +50,18 @@ RSpec.describe RuboCop::Cop::Ezcater::FeatureFlagActive, :config do
 
       context "with a symbol instead of a flag name" do
         it "reports an offense" do
-          dynamic_highlight_width = "^" * (constant_name.size + tracking_id.size)
-
-          expect_offense <<~RUBY
+          expect_offense <<~RUBY, constant_name: constant_name, tracking_id: tracking_id
             #{constant_name}.active?(:my_flag_sym, identifiers: ["#{tracking_id}"])
-            #{dynamic_highlight_width}^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ The first argument to `EzFF.active?` must be a string literal or a variable or constant assigned to a string
+            ^{constant_name}^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^{tracking_id}^^^ The first argument to `EzFF.active?` must be a string literal or a variable or constant assigned to a string
           RUBY
         end
       end
 
       context "with an integer instead of a flag name" do
         it "reports an offense" do
-          dynamic_highlight_width = "^" * (constant_name.size + tracking_id.size)
-
-          expect_offense <<~RUBY
+          expect_offense <<~RUBY, constant_name: constant_name, tracking_id: tracking_id
             #{constant_name}.active?(13, identifiers: ["#{tracking_id}"])
-            #{dynamic_highlight_width}^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ The first argument to `EzFF.active?` must be a string literal or a variable or constant assigned to a string
+            ^{constant_name}^^^^^^^^^^^^^^^^^^^^^^^^^^^^^{tracking_id}^^^ The first argument to `EzFF.active?` must be a string literal or a variable or constant assigned to a string
           RUBY
         end
       end
@@ -80,22 +76,18 @@ RSpec.describe RuboCop::Cop::Ezcater::FeatureFlagActive, :config do
 
       context "with unexpected keyword args" do
         it "reports an offense" do
-          dynamic_highlight_width = "^" * (constant_name.size + tracking_id.size)
-
-          expect_offense <<~RUBY
+          expect_offense <<~RUBY, constant_name: constant_name, tracking_id: tracking_id
             #{constant_name}.active?("FakeFlagName", bad_arg: ["#{tracking_id}"])
-            #{dynamic_highlight_width}^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ `EzFF.active?` must be called with at least one of `tracking_id` or `identifiers`
+            ^{constant_name}^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^{tracking_id}^^^ `EzFF.active?` must be called with at least one of `tracking_id` or `identifiers`
           RUBY
         end
       end
 
       context "with no keyword args" do
         it "reports an offense" do
-          dynamic_highlight_width = "^" * constant_name.size
-
-          expect_offense <<~RUBY
+          expect_offense <<~RUBY, constant_name: constant_name
             #{constant_name}.active?("FakeFlagName")
-            #{dynamic_highlight_width}^^^^^^^^^^^^^^^^^^^^^^^^ `EzFF.active?` must be called with at least one of `tracking_id` or `identifiers`
+            ^{constant_name}^^^^^^^^^^^^^^^^^^^^^^^^ `EzFF.active?` must be called with at least one of `tracking_id` or `identifiers`
           RUBY
         end
       end

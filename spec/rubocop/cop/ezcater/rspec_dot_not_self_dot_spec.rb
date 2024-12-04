@@ -3,11 +3,9 @@
 RSpec.describe RuboCop::Cop::Ezcater::RspecDotNotSelfDot, :config do
   described_class::EXAMPLE_GROUP_IDENTIFIERS.each do |name|
     it "corrects #{name} with `self.class_method`" do
-      left_pad_for_highlight = " " * name.size
-
-      expect_offense <<~RUBY
+      expect_offense <<~RUBY, name: name
         #{name} "self.class_method" do; end
-        #{left_pad_for_highlight} ^^^^^^^^^^^^^^^^^^^ Use ".<class method>" instead of "self.<class method>" for example group description.
+        _{name} ^^^^^^^^^^^^^^^^^^^ Use ".<class method>" instead of "self.<class method>" for example group description.
       RUBY
 
       expect_correction <<~RUBY
@@ -16,11 +14,9 @@ RSpec.describe RuboCop::Cop::Ezcater::RspecDotNotSelfDot, :config do
     end
 
     it "corrects #{name} with `self.class_method` and metadata" do
-      left_pad_for_highlight = " " * name.size
-
-      expect_offense <<~RUBY
+      expect_offense <<~RUBY, name: name
         #{name} "self.class_method", foo: true do; end
-        #{left_pad_for_highlight} ^^^^^^^^^^^^^^^^^^^ Use ".<class method>" instead of "self.<class method>" for example group description.
+        _{name} ^^^^^^^^^^^^^^^^^^^ Use ".<class method>" instead of "self.<class method>" for example group description.
       RUBY
 
       expect_correction <<~RUBY
@@ -29,11 +25,9 @@ RSpec.describe RuboCop::Cop::Ezcater::RspecDotNotSelfDot, :config do
     end
 
     it "corrects #{name} with `::class_method`" do
-      left_pad_for_highlight = " " * name.size
-
-      expect_offense <<~RUBY
+      expect_offense <<~RUBY, name: name
         #{name} "::class_method" do; end
-        #{left_pad_for_highlight} ^^^^^^^^^^^^^^^^ Use ".<class method>" instead of "::<class method>" for example group description.
+        _{name} ^^^^^^^^^^^^^^^^ Use ".<class method>" instead of "::<class method>" for example group description.
       RUBY
 
       expect_correction <<~RUBY
@@ -42,11 +36,9 @@ RSpec.describe RuboCop::Cop::Ezcater::RspecDotNotSelfDot, :config do
     end
 
     it "corrects #{name} with `::class_method` and metadata" do
-      left_pad_for_highlight = " " * name.size
-
-      expect_offense <<~RUBY
+      expect_offense <<~RUBY, name: name
         #{name} "::class_method", foo: true do; end
-        #{left_pad_for_highlight} ^^^^^^^^^^^^^^^^ Use ".<class method>" instead of "::<class method>" for example group description.
+        _{name} ^^^^^^^^^^^^^^^^ Use ".<class method>" instead of "::<class method>" for example group description.
       RUBY
 
       expect_correction <<~RUBY

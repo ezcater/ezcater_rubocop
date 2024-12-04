@@ -16,35 +16,27 @@ RSpec.describe RuboCop::Cop::Ezcater::FeatureFlagNameValid, :config do
 
         context "with an invalid feature flag name: flag1" do
           it "reports an offense for titlecase" do
-            dynamic_highlight_width = "^" * suffix.size
-
-            expect_offense <<~RUBY
+            expect_offense <<~RUBY, suffix: suffix
               SOMETHING#{suffix} = "flag1"
-              #{dynamic_highlight_width}^^^^^^^^^^^^^^^^^^^ Feature flag names must use titlecase for each segment.
+              ^^^^^^^^^^{suffix}^^^^^^^^^^ Feature flag names must use titlecase for each segment.
             RUBY
           end
         end
 
         context "with an invalid feature flag name: Foo:bar" do
-          let(:line) { %(SOMETHING#{suffix} = "Foo:bar") }
-
           it "reports an offense for single colon use and titlecase" do
-            dynamic_highlight_width = "^" * suffix.size
-
-            expect_offense <<~RUBY
+            expect_offense <<~RUBY, suffix: suffix
               SOMETHING#{suffix} = "Foo:bar"
-              #{dynamic_highlight_width}^^^^^^^^^^^^^^^^^^^^^ Feature flag names must use double colons (::) as namespace separators., Feature flag names must use titlecase for each segment.
+              ^^^^^^^^^^{suffix}^^^^^^^^^^^^ Feature flag names must use double colons (::) as namespace separators., Feature flag names must use titlecase for each segment.
             RUBY
           end
         end
 
         context "with an invalid feature flag name: Foo:::Bar " do
           it "reports an offense for triple colon use and whitespace" do
-            dynamic_highlight_width = "^" * suffix.size
-
-            expect_offense <<~RUBY
+            expect_offense <<~RUBY, suffix: suffix
               SOMETHING#{suffix} = "Foo :::B%ar"
-              #{dynamic_highlight_width}^^^^^^^^^^^^^^^^^^^^^^^^^ Feature flag names must not contain whitespace., Feature flag names must use double colons (::) as namespace separators., Feature flag names must only contain alphanumeric characters and colons., Feature flag names must use titlecase for each segment.
+              ^^^^^^^^^^{suffix}^^^^^^^^^^^^^^^^ Feature flag names must not contain whitespace., Feature flag names must use double colons (::) as namespace separators., Feature flag names must only contain alphanumeric characters and colons., Feature flag names must use titlecase for each segment.
             RUBY
           end
         end
@@ -65,11 +57,9 @@ RSpec.describe RuboCop::Cop::Ezcater::FeatureFlagNameValid, :config do
 
         context "with an invalid feature flag name" do
           it "reports an offense" do
-            dynamic_highlight_width = "^" * (klass_name.size + method_name.size)
-
-            expect_offense <<~RUBY
+            expect_offense <<~RUBY, klass_name: klass_name, method_name: method_name
               #{klass_name}.#{method_name}("Foo:bar")
-              #{dynamic_highlight_width}^^^^^^^^^^^^ Feature flag names must use double colons (::) as namespace separators., Feature flag names must use titlecase for each segment.
+              ^{klass_name}^^{method_name}^^^^^^^^^^^ Feature flag names must use double colons (::) as namespace separators., Feature flag names must use titlecase for each segment.
             RUBY
           end
 

@@ -20,11 +20,9 @@ RSpec.describe RuboCop::Cop::Ezcater::RailsEnv, :config do
     staging
   ).each do |environment_name|
     it "blocks specific env check '#{environment_name}' via Rails.env" do
-      dynamic_highlight_width = "^" * environment_name.size
-
-      expect_offense <<~RUBY
+      expect_offense <<~RUBY, environment_name: environment_name
         Rails.env.#{environment_name}?
-        ^^^^^^^^^^^#{dynamic_highlight_width} Use `Rails.configuration.x.<foo>` for env-backed configuration instead of inspecting `Rails.env`, so that configuration is more centralized and gives finer control. https://ezcater.atlassian.net/wiki/x/ZIChNg
+        ^^^^^^^^^^^{environment_name}^ Use `Rails.configuration.x.<foo>` for env-backed configuration instead of inspecting `Rails.env`, so that configuration is more centralized and gives finer control. https://ezcater.atlassian.net/wiki/x/ZIChNg
       RUBY
       expect_no_corrections
     end
