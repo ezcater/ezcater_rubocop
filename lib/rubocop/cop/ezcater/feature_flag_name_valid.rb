@@ -21,7 +21,7 @@ module RuboCop
       #   EzFF.at_100?("Foo::Bar && rm -rf * ")
       #   EzFF.active?("foo::bar", identifiers: ["user:1"])
       #   MY_FLAG="Foo:bar"
-      class FeatureFlagNameValid < Cop
+      class FeatureFlagNameValid < Base
         WHITESPACE = /\s/
         ISOLATED_COLON = /(?<!:):(?!:)/
         TRIPLE_COLON = /:::/
@@ -46,7 +46,7 @@ module RuboCop
           feature_flag_constant_assignment(node) do |const_name, flag_name|
             if const_name.end_with?("_FF", "_FLAG", "_FLAG_NAME", "_FEATURE_FLAG")
               errors = find_name_violations(flag_name)
-              add_offense(node, location: :expression, message: errors.join(", ")) if errors.any?
+              add_offense(node.loc.expression, message: errors.join(", ")) if errors.any?
             end
           end
         end
@@ -56,7 +56,7 @@ module RuboCop
 
           feature_flag_method_call(node) do |flag_name|
             errors = find_name_violations(flag_name)
-            add_offense(node, location: :expression, message: errors.join(", ")) if errors.any?
+            add_offense(node.loc.expression, message: errors.join(", ")) if errors.any?
           end
         end
 

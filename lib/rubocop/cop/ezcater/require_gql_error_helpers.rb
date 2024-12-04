@@ -19,7 +19,7 @@ module RuboCop
       #   # bad
       #   GraphQL::ExecutionError.new("An error occurred")
       #   GraphQL::ExecutionError.new("You can't access this", options: { status_code: 401 })
-      class RequireGqlErrorHelpers < Cop
+      class RequireGqlErrorHelpers < Base
         MSG = "Use the helpers provided by `GQLErrors` instead of raising `GraphQL::ExecutionError` directly."
 
         def_node_matcher :graphql_const?, <<~PATTERN
@@ -29,7 +29,7 @@ module RuboCop
         def on_const(node)
           return unless graphql_const?(node)
 
-          add_offense(node, location: :expression, message: MSG)
+          add_offense(node.loc.expression, message: MSG)
         end
       end
     end

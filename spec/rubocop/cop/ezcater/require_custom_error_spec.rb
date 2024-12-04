@@ -1,28 +1,51 @@
-# encoding utf-8
 # frozen_string_literal: true
 
 RSpec.describe RuboCop::Cop::Ezcater::RequireCustomError, :config do
-  subject(:cop) { described_class.new(config) }
+  it "registers offense for raising StandardError class without message argument" do
+    expect_offense <<~RUBY
+      raise StandardError
+      ^^^^^^^^^^^^^^^^^^^ Use a custom error class that inherits from StandardError when raising an exception
+    RUBY
+  end
 
-  it "requires a custom error when raising Standard or Argument error" do
-    offensive_uses = [
-      "raise StandardError",
-      "raise ArgumentError",
-      "raise ArgumentError, 'expected string'",
-      "raise StandardError.new('expected string')",
-    ]
+  it "registers offense for raising StandardError class with message argument" do
+    expect_offense <<~RUBY
+      raise StandardError, "expected string"
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Use a custom error class that inherits from StandardError when raising an exception
+    RUBY
+  end
 
-    offensive_uses.each do |offensive_use|
-      inspect_source(offensive_use)
+  it "registers offense for raising StandardError instance" do
+    expect_offense <<~RUBY
+      raise StandardError.new("expected string")
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Use a custom error class that inherits from StandardError when raising an exception
+    RUBY
+  end
 
-      expect(cop.offenses).not_to be_empty
-      expect(cop.messages).to match_array(described_class::MSG)
-    end
+  it "registers offense for raising ArgumentError class without message argument" do
+    expect_offense <<~RUBY
+      raise ArgumentError
+      ^^^^^^^^^^^^^^^^^^^ Use a custom error class that inherits from StandardError when raising an exception
+    RUBY
+  end
+
+  it "registers offense for raising ArgumentError class with message argument" do
+    expect_offense <<~RUBY
+      raise ArgumentError, "expected string"
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Use a custom error class that inherits from StandardError when raising an exception
+    RUBY
+  end
+
+  it "registers offense for raising ArgumentError instance" do
+    expect_offense <<~RUBY
+      raise ArgumentError.new("expected string")
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Use a custom error class that inherits from StandardError when raising an exception
+    RUBY
   end
 
   it "allows raising custom errors" do
-    inspect_source("raise MyCustomError")
-
-    expect(cop.offenses).to be_empty
+    expect_no_offenses <<~RUBY
+      raise MyCustomError
+    RUBY
   end
 end

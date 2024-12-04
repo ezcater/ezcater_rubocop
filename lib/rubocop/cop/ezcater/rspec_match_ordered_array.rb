@@ -14,7 +14,9 @@ module RuboCop
       #   # bad
       #   expect(foo).to eq([1, 2, 3])
       #   expect(foo).to eq [1, 2, 3]
-      class RspecMatchOrderedArray < Cop
+      class RspecMatchOrderedArray < Base
+        extend RuboCop::Cop::AutoCorrector
+
         MATCH_ORDERED_ARRAY = "match_ordered_array"
         MSG = "Use the `match_ordered_array` matcher from ezcater_matchers gem "\
           "instead of `eq` when comparing collections"
@@ -25,20 +27,16 @@ module RuboCop
 
         def on_send(node)
           eq_array(node) do
-            add_offense(node, location: :expression, message: MSG)
-          end
-        end
-
-        def autocorrect(node)
-          lambda do |corrector|
-            corrector.replace(
-              Parser::Source::Range.new(
-                node.source_range.source_buffer,
-                node.source_range.begin_pos,
-                node.source_range.begin_pos + 2
-              ),
-              MATCH_ORDERED_ARRAY
-            )
+            add_offense(node.loc.expression, message: MSG) do |corrector|
+              corrector.replace(
+                Parser::Source::Range.new(
+                  node.source_range.source_buffer,
+                  node.source_range.begin_pos,
+                  node.source_range.begin_pos + 2
+                ),
+                MATCH_ORDERED_ARRAY
+              )
+            end
           end
         end
       end

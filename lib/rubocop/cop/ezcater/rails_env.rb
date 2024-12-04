@@ -21,7 +21,7 @@ module RuboCop
       #   # bad
       #   enforce_foo! if ENV["RAILS_ENV"] == "production"
       #
-      class RailsEnv < Cop
+      class RailsEnv < Base
         MSG = <<~END_MESSAGE.split("\n").join(" ")
           Use `Rails.configuration.x.<foo>` for env-backed configuration instead of inspecting `Rails.env`, so that
           configuration is more centralized and gives finer control. https://ezcater.atlassian.net/wiki/x/ZIChNg
@@ -33,7 +33,7 @@ module RuboCop
 
         def on_send(node)
           rails_env(node) do
-            add_offense(node, location: :expression, message: MSG)
+            add_offense(node.loc.expression, message: MSG)
           end
         end
       end

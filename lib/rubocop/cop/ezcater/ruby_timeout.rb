@@ -17,7 +17,7 @@ module RuboCop
       #     ...
       #   end
       #
-      class RubyTimeout < Cop
+      class RubyTimeout < Base
         MSG = <<~END_MESSAGE.split("\n").join(" ")
           `Timeout.timeout` is unsafe. Find an alternative to achieve the same goal.
            Ex. Use the timeout capabilities of a networking library.
@@ -30,7 +30,7 @@ module RuboCop
 
         def on_send(node)
           timeout(node) do
-            add_offense(node, location: :expression, message: MSG)
+            add_offense(node.loc.expression, message: MSG)
           end
         end
       end

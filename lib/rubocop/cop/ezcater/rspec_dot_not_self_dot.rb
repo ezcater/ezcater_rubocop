@@ -23,9 +23,10 @@ module RuboCop
       #     ...
       #   end
 
-      class RspecDotNotSelfDot < Cop
+      class RspecDotNotSelfDot < Base
         include RuboCop::RSpec::Language
         extend RuboCop::RSpec::Language::NodePattern
+        extend RuboCop::Cop::AutoCorrector
 
         RSPEC_EXAMPLE_PREFIXES = ["", "x", "f"].freeze
         EXAMPLE_GROUP_IDENTIFIERS = (RSPEC_EXAMPLE_PREFIXES.map do |prefix|
@@ -53,19 +54,19 @@ module RuboCop
           return unless example_group?(node)
 
           str_node = node.send_node.arguments[0]
-          if str_node.value.match?(SELF_DOT_REGEXP)
-            add_offense(str_node, location: :expression, message: SELF_DOT_MSG)
-          elsif str_node.value.match?(COLON_COLON_REGEXP)
-            add_offense(str_node, location: :expression, message: COLON_COLON_MSG)
-          end
-        end
+          message = if str_node.value.match?(SELF_DOT_REGEXP)
+                      SELF_DOT_MSG
+                    elsif str_node.value.match?(COLON_COLON_REGEXP)
+                      COLON_COLON_MSG
+                    end
 
-        def autocorrect(node)
-          lambda do |corrector|
-            experession_end = node.source.match?("::") ? 3 : 6
-            corrector.replace(Parser::Source::Range.new(node.source_range.source_buffer,
-                                                        node.source_range.begin_pos + 1,
-                                                        node.source_range.begin_pos + experession_end), ".")
+          if message
+            add_offense(str_node.loc.expression, message: message) do |corrector|
+              expression_end = str_node.source.match?("::") ? 3 : 6
+              corrector.replace(Parser::Source::Range.new(str_node.source_range.source_buffer,
+                                                          str_node.source_range.begin_pos + 1,
+                                                          str_node.source_range.begin_pos + expression_end), ".")
+            end
           end
         end
       end
