@@ -24,7 +24,7 @@ Rails:
   Enabled: true
 
 # This conflicts with Strong Migrations, which can't check `change_table`
-Rails/ BulkChangeTable:
+Rails/BulkChangeTable:
   Enabled: false
 
 Rails/FilePath:
