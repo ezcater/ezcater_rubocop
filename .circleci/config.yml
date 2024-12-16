@@ -20,6 +20,10 @@ jobs:
       # Run Rubocop
       - run: bundle exec rubocop
 
+      - run:
+          name: "Validate Rubocop config"
+          command: bin/check_configs.sh
+
       # Run rspec
       - run:
           command: |
