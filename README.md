@@ -48,6 +48,10 @@ Further customization of RuboCop for your local project may be added to this fil
 - **rubocop_gem**: For use in Ruby gem projects, this inherits from the **rubocop** configuration.
 - **rubocop_rails**: For Rails projects, this inherits from the **rubocop** configuration.
 
+### Documentation
+
+Visit https://rubydoc.info/gems/ezcater_rubocop to view the documentation for our custom cops in the latest release.
+
 ## Usage
 
 Run `rubocop` for an entire project:
