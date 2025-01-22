@@ -94,7 +94,7 @@ not add cops with `enabled: false` unless you want that cop to always be disable
 * [StyleDig](https://github.com/ezcater/ezcater_rubocop/blob/main/lib/rubocop/cop/ezcater/style_dig.rb) - Recommend `dig` for deeply nested access.
 * [Migration/BigintForeignKey](https://github.com/ezcater/ezcater_rubocop/blob/main/lib/rubocop/cop/ezcater/migration/bigint_foreign_key.rb) - Use `#bigint` instead of `#integer` for all foreign keys.
 
-[GraphQL/NotAuthorizedScalarField]: https://github.com/ezcater/ezcater_rubocop/blob/main/lib/rubocop/cop/ezcater/graphql/not_authorized_scalar_field.rb)
+[GraphQL/NotAuthorizedScalarField]: https://github.com/ezcater/ezcater_rubocop/blob/main/lib/rubocop/cop/ezcater/graphql/not_authorized_scalar_field.rb
 
 ## Development
 
