@@ -51,6 +51,15 @@ module RuboCop
             To prevent foreign keys from potentially running out of int values before their referenced primary keys, use `bigint` instead of `integer`.
           MSG
 
+          # Optimization: only call `on_send` for the methods in this list
+          RESTRICT_ON_SEND = %i(
+            integer
+            references
+            belongs_to
+            add_column
+            add_reference
+            add_belongs_to
+          ).freeze
 
           # @!method t_integer_method(node)
           def_node_matcher :t_integer_method, <<~PATTERN
