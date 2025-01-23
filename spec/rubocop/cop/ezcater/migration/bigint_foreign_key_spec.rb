@@ -35,7 +35,8 @@ RSpec.describe RuboCop::Cop::Ezcater::Migration::BigintForeignKey, :config do
       RUBY
     end
 
-    it "registers an offense when adding a column ending in \"_id\" that specifies a limit < 8 as one of several hash keys" do
+    it "registers an offense when adding a column ending in \"_id\" that \
+    specifies a limit < 8 as one of several hash keys" do
       expect_offense(<<~RUBY)
         create_table :foos do |t|
           t.integer :bar_id, null: false, limit: 7
@@ -159,7 +160,8 @@ RSpec.describe RuboCop::Cop::Ezcater::Migration::BigintForeignKey, :config do
       RUBY
     end
 
-    it "registers an offense when adding a column ending in \"_id\" that specifies a limit < 8 as one of several hash keys" do
+    it "registers an offense when adding a column ending in \"_id\" that \
+    specifies a limit < 8 as one of several hash keys" do
       expect_offense(<<~RUBY)
         add_column :foos, :bar_id, :integer, null: false, limit: 7
         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #{message}

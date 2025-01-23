@@ -130,7 +130,7 @@ module RuboCop
               end
             end
 
-            t_references_method(node) do |capture|
+            t_references_method(node) do
               limit_vals = limit_pair(node)
               limit_value = limit_vals.first
 
@@ -156,7 +156,6 @@ module RuboCop
               end
             end
           end
-
         end
       end
     end
