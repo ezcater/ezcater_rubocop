@@ -61,6 +61,8 @@ module RuboCop
             add_belongs_to
           ).freeze
 
+          BIGINT_BYTES = 8
+
           # @!method t_integer_method(node)
           def_node_matcher :t_integer_method, <<~PATTERN
             (send
@@ -152,7 +154,7 @@ module RuboCop
           end
 
           def check_limit(node, limit_value)
-            if limit_value.nil? || limit_value < 8
+            if limit_value.nil? || limit_value < BIGINT_BYTES
               add_offense(node)
             end
           end
