@@ -51,9 +51,6 @@ module RuboCop
             To prevent foreign keys from potentially running out of int values before their referenced primary keys, use `bigint` instead of `integer`.
           MSG
 
-          def ends_with_id?(str)
-            str.end_with?("_id")
-          end
 
           # @!method t_integer_method(node)
           def_node_matcher :t_integer_method, <<~PATTERN
@@ -123,38 +120,44 @@ module RuboCop
 
           def on_send(node)
             t_integer_method(node) do |captures|
-              limit_value = captures.first
-
-              if limit_value.nil? || limit_value < 8
-                add_offense(node)
-              end
-            end
-
-            t_references_method(node) do
-              limit_vals = limit_pair(node)
-              limit_value = limit_vals.first
-
-              if limit_value.nil? || limit_value < 8
-                add_offense(node)
-              end
+              check_integer_method(node, captures)
             end
 
             add_column_method(node) do |captures|
-              limit_value = captures.first
+              check_integer_method(node, captures)
+            end
 
-              if limit_value.nil? || limit_value < 8
-                add_offense(node)
-              end
+            t_references_method(node) do
+              check_reference_method(node)
             end
 
             add_reference_method(node) do
-              limit_vals = limit_pair(node)
-              limit_value = limit_vals.first
-
-              if limit_value.nil? || limit_value < 8
-                add_offense(node)
-              end
+              check_reference_method(node)
             end
+          end
+
+          private
+
+          def ends_with_id?(str)
+            str.end_with?("_id")
+          end
+
+          def check_limit(node, limit_value)
+            if limit_value.nil? || limit_value < 8
+              add_offense(node)
+            end
+          end
+
+          def check_integer_method(node, captures)
+            limit_value = captures.first
+            check_limit(node, limit_value)
+          end
+
+          def check_reference_method(node)
+            limit_vals = limit_pair(node)
+            limit_value = limit_vals.first
+
+            check_limit(node, limit_value)
           end
         end
       end
