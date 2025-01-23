@@ -1,12 +1,18 @@
 # frozen_string_literal: true
 
 RSpec.describe RuboCop::Cop::Ezcater::Migration::BigintForeignKey, :config do
+  let(:message) do
+    <<~MSG.chomp
+      To prevent foreign keys from potentially running out of int values before their referenced primary keys, use `bigint` instead of `integer`.
+    MSG
+  end
+
   context "when adding a column using t.* methods" do
     it "registers an offense when adding a column ending in \"_id\" that's not a bigint (symbol name)" do
       expect_offense(<<~RUBY)
         create_table :foos do |t|
           t.integer :bar_id
-          ^^^^^^^^^^^^^^^^^ To prevent foreign keys from potentially running out of int values before their referenced primary keys, use `bigint` instead of `integer`.
+          ^^^^^^^^^^^^^^^^^ #{message}
         end
       RUBY
     end
@@ -15,7 +21,7 @@ RSpec.describe RuboCop::Cop::Ezcater::Migration::BigintForeignKey, :config do
       expect_offense(<<~RUBY)
         create_table :foos do |t|
           t.integer "bar_id"
-          ^^^^^^^^^^^^^^^^^^ To prevent foreign keys from potentially running out of int values before their referenced primary keys, use `bigint` instead of `integer`.
+          ^^^^^^^^^^^^^^^^^^ #{message}
         end
       RUBY
     end
@@ -24,7 +30,7 @@ RSpec.describe RuboCop::Cop::Ezcater::Migration::BigintForeignKey, :config do
       expect_offense(<<~RUBY)
         create_table :foos do |t|
           t.integer :bar_id, limit: 7
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^ To prevent foreign keys from potentially running out of int values before their referenced primary keys, use `bigint` instead of `integer`.
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^ #{message}
         end
       RUBY
     end
@@ -33,7 +39,7 @@ RSpec.describe RuboCop::Cop::Ezcater::Migration::BigintForeignKey, :config do
       expect_offense(<<~RUBY)
         create_table :foos do |t|
           t.integer :bar_id, null: false, limit: 7
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ To prevent foreign keys from potentially running out of int values before their referenced primary keys, use `bigint` instead of `integer`.
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #{message}
         end
       RUBY
     end
@@ -42,7 +48,7 @@ RSpec.describe RuboCop::Cop::Ezcater::Migration::BigintForeignKey, :config do
       expect_offense(<<~RUBY)
         create_table :foos do |t|
           t.references :bar, type: :integer
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ To prevent foreign keys from potentially running out of int values before their referenced primary keys, use `bigint` instead of `integer`.
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #{message}
         end
       RUBY
     end
@@ -51,7 +57,7 @@ RSpec.describe RuboCop::Cop::Ezcater::Migration::BigintForeignKey, :config do
       expect_offense(<<~RUBY)
         create_table :foos do |t|
           t.references :bar, type: :integer, limit: 7
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ To prevent foreign keys from potentially running out of int values before their referenced primary keys, use `bigint` instead of `integer`.
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #{message}
         end
       RUBY
     end
@@ -60,7 +66,7 @@ RSpec.describe RuboCop::Cop::Ezcater::Migration::BigintForeignKey, :config do
       expect_offense(<<~RUBY)
         create_table :foos do |t|
           t.belongs_to :bar, type: :integer
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ To prevent foreign keys from potentially running out of int values before their referenced primary keys, use `bigint` instead of `integer`.
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #{message}
         end
       RUBY
     end
@@ -69,7 +75,7 @@ RSpec.describe RuboCop::Cop::Ezcater::Migration::BigintForeignKey, :config do
       expect_offense(<<~RUBY)
         create_table :foos do |t|
           t.belongs_to :bar, type: :integer, limit: 7
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ To prevent foreign keys from potentially running out of int values before their referenced primary keys, use `bigint` instead of `integer`.
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #{message}
         end
       RUBY
     end
@@ -135,56 +141,56 @@ RSpec.describe RuboCop::Cop::Ezcater::Migration::BigintForeignKey, :config do
     it "registers an offense when adding a column ending in \"_id\" that's not a bigint (symbol name)" do
       expect_offense(<<~RUBY)
         add_column :foos, :bar_id, :integer
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ To prevent foreign keys from potentially running out of int values before their referenced primary keys, use `bigint` instead of `integer`.
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #{message}
       RUBY
     end
 
     it "registers an offense when adding a column ending in \"_id\" that's not a bigint (string name)" do
       expect_offense(<<~RUBY)
         add_column :foos, "bar_id", :integer
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ To prevent foreign keys from potentially running out of int values before their referenced primary keys, use `bigint` instead of `integer`.
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #{message}
       RUBY
     end
 
     it "registers an offense when adding a column ending in \"_id\" that specifies a limit < 8 as its only hash key" do
       expect_offense(<<~RUBY)
         add_column :foos, :bar_id, :integer, limit: 7
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ To prevent foreign keys from potentially running out of int values before their referenced primary keys, use `bigint` instead of `integer`.
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #{message}
       RUBY
     end
 
     it "registers an offense when adding a column ending in \"_id\" that specifies a limit < 8 as one of several hash keys" do
       expect_offense(<<~RUBY)
         add_column :foos, :bar_id, :integer, null: false, limit: 7
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ To prevent foreign keys from potentially running out of int values before their referenced primary keys, use `bigint` instead of `integer`.
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #{message}
       RUBY
     end
 
     it "registers an offense when adding a reference that specifies an :integer type" do
       expect_offense(<<~RUBY)
         add_reference :foos, :bar, type: :integer
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ To prevent foreign keys from potentially running out of int values before their referenced primary keys, use `bigint` instead of `integer`.
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #{message}
       RUBY
     end
 
     it "registers an offense when adding a reference that specifies an :integer type and a limit < 8" do
       expect_offense(<<~RUBY)
         add_reference :foos, :bar, type: :integer, limit: 7
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ To prevent foreign keys from potentially running out of int values before their referenced primary keys, use `bigint` instead of `integer`.
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #{message}
       RUBY
     end
 
     it "registers an offense when adding a belongs_to that specifies an :integer type" do
       expect_offense(<<~RUBY)
         add_belongs_to :foos, :bar, type: :integer
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ To prevent foreign keys from potentially running out of int values before their referenced primary keys, use `bigint` instead of `integer`.
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #{message}
       RUBY
     end
 
     it "registers an offense when adding a belongs_to that specifies an :integer type and a limit < 8" do
       expect_offense(<<~RUBY)
         add_belongs_to :foos, :bar, type: :integer, limit: 7
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ To prevent foreign keys from potentially running out of int values before their referenced primary keys, use `bigint` instead of `integer`.
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #{message}
       RUBY
     end
 

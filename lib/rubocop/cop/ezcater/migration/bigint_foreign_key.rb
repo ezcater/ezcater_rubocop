@@ -47,7 +47,9 @@ module RuboCop
         #   add_reference :foos, :bar
         #
         class BigintForeignKey < Base
-          MSG = "To prevent foreign keys from potentially running out of int values before their referenced primary keys, use `bigint` instead of `integer`."
+          MSG = <<~MSG.chomp
+            To prevent foreign keys from potentially running out of int values before their referenced primary keys, use `bigint` instead of `integer`.
+          MSG
 
           def ends_with_id?(str)
             str.end_with?("_id")
