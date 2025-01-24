@@ -3,7 +3,7 @@
 RSpec.describe RuboCop::Cop::Ezcater::Migration::BigintForeignKey, :config do
   let(:message) do
     <<~MSG.chomp
-      To prevent foreign keys from potentially running out of int values before their referenced primary keys, use `bigint` instead of `integer`.
+      Use `bigint` instead of `integer` for foreign keys. This prevents them from potentially running out of int values before their referenced primary keys.
     MSG
   end
 

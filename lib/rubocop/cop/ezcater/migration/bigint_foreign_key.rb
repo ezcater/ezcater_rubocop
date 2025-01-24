@@ -50,7 +50,7 @@ module RuboCop
           extend AutoCorrector
 
           MSG = <<~MSG.chomp
-            To prevent foreign keys from potentially running out of int values before their referenced primary keys, use `bigint` instead of `integer`.
+            Use `bigint` instead of `integer` for foreign keys. This prevents them from potentially running out of int values before their referenced primary keys.
           MSG
 
           # Optimization: only call `on_send` for the methods in this list
