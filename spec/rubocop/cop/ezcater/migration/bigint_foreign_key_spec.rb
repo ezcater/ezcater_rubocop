@@ -15,6 +15,12 @@ RSpec.describe RuboCop::Cop::Ezcater::Migration::BigintForeignKey, :config do
           ^^^^^^^^^^^^^^^^^ #{message}
         end
       RUBY
+
+      expect_correction(<<~RUBY)
+        create_table :foos do |t|
+          t.bigint :bar_id
+        end
+      RUBY
     end
 
     it "registers an offense when adding a column ending in \"_id\" that's not a bigint (string name)" do
@@ -24,6 +30,12 @@ RSpec.describe RuboCop::Cop::Ezcater::Migration::BigintForeignKey, :config do
           ^^^^^^^^^^^^^^^^^^ #{message}
         end
       RUBY
+
+      expect_correction(<<~RUBY)
+        create_table :foos do |t|
+          t.bigint "bar_id"
+        end
+      RUBY
     end
 
     it "registers an offense when adding a column ending in \"_id\" that specifies a limit < 8 as its only hash key" do
@@ -31,6 +43,12 @@ RSpec.describe RuboCop::Cop::Ezcater::Migration::BigintForeignKey, :config do
         create_table :foos do |t|
           t.integer :bar_id, limit: 7
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^ #{message}
+        end
+      RUBY
+
+      expect_correction(<<~RUBY)
+        create_table :foos do |t|
+          t.bigint :bar_id
         end
       RUBY
     end
@@ -43,6 +61,8 @@ RSpec.describe RuboCop::Cop::Ezcater::Migration::BigintForeignKey, :config do
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #{message}
         end
       RUBY
+
+      expect_no_corrections
     end
 
     it "registers an offense when adding a reference that specifies an :integer type" do
@@ -50,6 +70,12 @@ RSpec.describe RuboCop::Cop::Ezcater::Migration::BigintForeignKey, :config do
         create_table :foos do |t|
           t.references :bar, type: :integer
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #{message}
+        end
+      RUBY
+
+      expect_correction(<<~RUBY)
+        create_table :foos do |t|
+          t.references :bar
         end
       RUBY
     end
@@ -61,6 +87,12 @@ RSpec.describe RuboCop::Cop::Ezcater::Migration::BigintForeignKey, :config do
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #{message}
         end
       RUBY
+
+      expect_correction(<<~RUBY)
+        create_table :foos do |t|
+          t.references :bar
+        end
+      RUBY
     end
 
     it "registers an offense when adding a belongs_to that specifies an :integer type" do
@@ -70,6 +102,12 @@ RSpec.describe RuboCop::Cop::Ezcater::Migration::BigintForeignKey, :config do
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #{message}
         end
       RUBY
+
+      expect_correction(<<~RUBY)
+        create_table :foos do |t|
+          t.belongs_to :bar
+        end
+      RUBY
     end
 
     it "registers an offense when adding a belongs_to that specifies an :integer type and a limit < 8" do
@@ -77,6 +115,12 @@ RSpec.describe RuboCop::Cop::Ezcater::Migration::BigintForeignKey, :config do
         create_table :foos do |t|
           t.belongs_to :bar, type: :integer, limit: 7
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #{message}
+        end
+      RUBY
+
+      expect_correction(<<~RUBY)
+        create_table :foos do |t|
+          t.belongs_to :bar
         end
       RUBY
     end
@@ -144,6 +188,10 @@ RSpec.describe RuboCop::Cop::Ezcater::Migration::BigintForeignKey, :config do
         add_column :foos, :bar_id, :integer
         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #{message}
       RUBY
+
+      expect_correction(<<~RUBY)
+        add_column :foos, :bar_id, :bigint
+      RUBY
     end
 
     it "registers an offense when adding a column ending in \"_id\" that's not a bigint (string name)" do
@@ -151,12 +199,20 @@ RSpec.describe RuboCop::Cop::Ezcater::Migration::BigintForeignKey, :config do
         add_column :foos, "bar_id", :integer
         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #{message}
       RUBY
+
+      expect_correction(<<~RUBY)
+        add_column :foos, "bar_id", :bigint
+      RUBY
     end
 
     it "registers an offense when adding a column ending in \"_id\" that specifies a limit < 8 as its only hash key" do
       expect_offense(<<~RUBY)
         add_column :foos, :bar_id, :integer, limit: 7
         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #{message}
+      RUBY
+
+      expect_correction(<<~RUBY)
+        add_column :foos, :bar_id, :bigint
       RUBY
     end
 
@@ -166,12 +222,18 @@ RSpec.describe RuboCop::Cop::Ezcater::Migration::BigintForeignKey, :config do
         add_column :foos, :bar_id, :integer, null: false, limit: 7
         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #{message}
       RUBY
+
+      expect_no_corrections
     end
 
     it "registers an offense when adding a reference that specifies an :integer type" do
       expect_offense(<<~RUBY)
         add_reference :foos, :bar, type: :integer
         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #{message}
+      RUBY
+
+      expect_correction(<<~RUBY)
+        add_reference :foos, :bar
       RUBY
     end
 
@@ -180,6 +242,10 @@ RSpec.describe RuboCop::Cop::Ezcater::Migration::BigintForeignKey, :config do
         add_reference :foos, :bar, type: :integer, limit: 7
         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #{message}
       RUBY
+
+      expect_correction(<<~RUBY)
+        add_reference :foos, :bar
+      RUBY
     end
 
     it "registers an offense when adding a belongs_to that specifies an :integer type" do
@@ -187,12 +253,20 @@ RSpec.describe RuboCop::Cop::Ezcater::Migration::BigintForeignKey, :config do
         add_belongs_to :foos, :bar, type: :integer
         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #{message}
       RUBY
+
+      expect_correction(<<~RUBY)
+        add_belongs_to :foos, :bar
+      RUBY
     end
 
     it "registers an offense when adding a belongs_to that specifies an :integer type and a limit < 8" do
       expect_offense(<<~RUBY)
         add_belongs_to :foos, :bar, type: :integer, limit: 7
         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #{message}
+      RUBY
+
+      expect_correction(<<~RUBY)
+        add_belongs_to :foos, :bar
       RUBY
     end
 
