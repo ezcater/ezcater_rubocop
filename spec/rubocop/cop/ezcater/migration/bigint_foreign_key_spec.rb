@@ -53,8 +53,7 @@ RSpec.describe RuboCop::Cop::Ezcater::Migration::BigintForeignKey, :config do
       RUBY
     end
 
-    it "registers an offense when adding a column ending in \"_id\" that \
-    specifies a limit < 8 as one of several hash keys" do
+    it "registers an offense when adding a column ending in \"_id\" that specifies a limit < 8 as one of several hash keys" do # rubocop:disable Layout/LineLength
       expect_offense(<<~RUBY)
         create_table :foos do |t|
           t.integer :bar_id, null: false, limit: 7
@@ -93,6 +92,17 @@ RSpec.describe RuboCop::Cop::Ezcater::Migration::BigintForeignKey, :config do
           t.references :bar
         end
       RUBY
+    end
+
+    it "registers an offense when adding a reference that specifies an :integer type, a limit < 8, and more hash pairs" do # rubocop:disable Layout/LineLength
+      expect_offense(<<~RUBY)
+        create_table :foos do |t|
+          t.references :bar, type: :integer, limit: 7, index: { algorithm: :concurrently }
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #{message}
+        end
+      RUBY
+
+      expect_no_corrections
     end
 
     it "registers an offense when adding a belongs_to that specifies an :integer type" do
@@ -216,8 +226,7 @@ RSpec.describe RuboCop::Cop::Ezcater::Migration::BigintForeignKey, :config do
       RUBY
     end
 
-    it "registers an offense when adding a column ending in \"_id\" that \
-    specifies a limit < 8 as one of several hash keys" do
+    it "registers an offense when adding a column ending in \"_id\" that specifies a limit < 8 as one of several hash keys" do # rubocop:disable Layout/LineLength
       expect_offense(<<~RUBY)
         add_column :foos, :bar_id, :integer, null: false, limit: 7
         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #{message}
@@ -246,6 +255,15 @@ RSpec.describe RuboCop::Cop::Ezcater::Migration::BigintForeignKey, :config do
       expect_correction(<<~RUBY)
         add_reference :foos, :bar
       RUBY
+    end
+
+    it "registers an offense when adding a reference that specifies an :integer type, a limit < 8, and more hash pairs" do # rubocop:disable Layout/LineLength
+      expect_offense(<<~RUBY)
+        add_reference :foos, :bar, type: :integer, limit: 7, index: { algorithm: :concurrently }
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #{message}
+      RUBY
+
+      expect_no_corrections
     end
 
     it "registers an offense when adding a belongs_to that specifies an :integer type" do

@@ -189,9 +189,11 @@ module RuboCop
           end
 
           def correct_integer_method(node, corrector)
+            # There's no hash argument or it has only one pair
             if node.arguments.size == 1 ||
-               (node.arguments[1].hash_type? &&
-                node.arguments[1].pairs.size <= 1)
+               (node.arguments.size == 2 &&
+                (node.arguments[1].hash_type? &&
+                 node.arguments[1].pairs.size == 1))
 
               corrector.replace(
                 range_for_method_and_optional_limit(node),
@@ -201,16 +203,28 @@ module RuboCop
           end
 
           def correct_references_method(node, corrector)
-            corrector.replace(
-              range_for_method_and_optional_limit(node),
-              "#{node.method_name} #{node.arguments[0].source}"
-            )
+            # There's only one hash pair (:type) or only two: :type and :limit
+            return unless node.arguments.size == 2 && node.arguments[1].hash_type?
+
+            hash_pairs = node.arguments[1].pairs
+            keys = hash_pairs.map { |pair| pair.key.source }
+
+            if keys.size == 1 ||
+               (keys.size == 2 && keys.include?("limit"))
+
+              corrector.replace(
+                range_for_method_and_optional_limit(node),
+                "#{node.method_name} #{node.arguments[0].source}"
+              )
+            end
           end
 
           def correct_add_column_method(node, corrector)
+            # There's no hash argument or it has only one pair (:limit)
             if node.arguments.size == 3 ||
-               (node.arguments[3].hash_type? &&
-                node.arguments[3].pairs.size <= 1)
+               (node.arguments.size == 4 &&
+                (node.arguments[3].hash_type? &&
+                 node.arguments[3].pairs.size == 1))
 
               corrector.replace(
                 range_for_method_and_optional_limit(node),
@@ -220,11 +234,14 @@ module RuboCop
           end
 
           def correct_add_reference_method(node, corrector)
+            # There's only one hash pair (:type) or only two: :type and :limit
+            return unless node.arguments.size == 3 && node.arguments[2].hash_type?
+
             hash_pairs = node.arguments[2].pairs
             keys = hash_pairs.map { |pair| pair.key.source }
 
-            if keys.size <= 1 ||
-               (keys.size == 2 && %w(type limit).all? { |key| keys.include?(key) })
+            if keys.size == 1 ||
+               (keys.size == 2 && keys.include?("limit"))
 
               corrector.replace(
                 range_for_method_and_optional_limit(node),
