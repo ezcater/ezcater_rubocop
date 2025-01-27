@@ -50,7 +50,7 @@ Further customization of RuboCop for your local project may be added to this fil
 
 ### Documentation
 
-Visit https://rubydoc.info/gems/ezcater_rubocop to view the documentation for our custom cops in the latest release.
+Visit https://gemdocs.org/gems/ezcater_rubocop to view the documentation for our custom cops in the latest release.
 
 ## Usage
 
