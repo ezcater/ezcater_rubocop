@@ -6,7 +6,11 @@ This gem is moving onto its own [Semantic Versioning](https://semver.org/) schem
 
 Prior to v1.0.0 this gem was versioned based on the `MAJOR`.`MINOR` version of RuboCop. The first release of the ezcater_rubocop gem was `v0.49.0`.
 
-## 7.1.3 (unreleased)
+## 8.0.0
+
+- Add `Ezcater/Migration/BigintForeignKey` Cop, which enforces the use of `bigint` for foreign keys in migrations.
+
+## 7.1.3
 
 - Update internal CI processes to validate Rubocop config files
 

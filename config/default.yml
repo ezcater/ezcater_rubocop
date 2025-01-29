@@ -74,3 +74,8 @@ GraphQL/ObjectDescription:
 GraphQL/ExtractInputType:
   Exclude:
     - "**/input_objects/**/*.rb"
+
+Ezcater/Migration/BigintForeignKey:
+  Description: "Use `bigint` instead of `integer` for all foreign keys."
+  Include:
+    - "**/db/migrate/**/*.rb"
