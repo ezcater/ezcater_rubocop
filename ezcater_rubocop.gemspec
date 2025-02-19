@@ -52,8 +52,8 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "simplecov"
 
   spec.add_runtime_dependency "parser", ">= 2.6"
-  spec.add_runtime_dependency "rubocop", ">= 1.16.0", "< 2.0"
+  spec.add_runtime_dependency "rubocop", ">= 1.16.0", "< 1.72.0"
   spec.add_runtime_dependency "rubocop-graphql", ">= 0.14.0", "< 1.0"
-  spec.add_runtime_dependency "rubocop-rails", ">= 2.10.1", "< 3.0"
+  spec.add_runtime_dependency "rubocop-rails", ">= 2.10.1", "< 2.28.0"
   spec.add_runtime_dependency "rubocop-rspec", ">= 2.22.0", "< 2.28.0"
 end
