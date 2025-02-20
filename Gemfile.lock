@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    ezcater_rubocop (8.0.0)
+    ezcater_rubocop (8.1.0)
       parser (>= 2.6)
       rubocop (>= 1.16.0, < 1.72.0)
       rubocop-graphql (>= 0.14.0, < 1.0)
