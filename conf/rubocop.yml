@@ -1,5 +1,8 @@
 require: ezcater_rubocop
 
+plugins:
+  - rubocop-rails
+
 AllCops:
   DisplayCopNames: true
   NewCops: disable
