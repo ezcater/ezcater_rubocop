@@ -75,6 +75,12 @@ GraphQL/ExtractInputType:
   Exclude:
     - "**/input_objects/**/*.rb"
 
+Ezcater/RspecNoResolveClassField:
+  Description: "Do not use `resolve_class_field` in spec files."
+  Enabled: true
+  Include:
+    - "**/*_spec.rb"
+
 Ezcater/Migration/BigintForeignKey:
   Description: "Use `bigint` instead of `integer` for all foreign keys."
   Include:
