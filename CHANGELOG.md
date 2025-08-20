@@ -6,6 +6,10 @@ This gem is moving onto its own [Semantic Versioning](https://semver.org/) schem
 
 Prior to v1.0.0 this gem was versioned based on the `MAJOR`.`MINOR` version of RuboCop. The first release of the ezcater_rubocop gem was `v0.49.0`.
 
+## 10.0.0 (August 20, 2025)
+
+- Add `Ezcater/RspecNoResolveClassField` cop, which prevents using the deprecated GraphQL testing interface `resolve_class_field`.
+
 ## 9.0.0 (February 24, 2025)
 
 - Add support for `plugin` architecture in `rubocop >= 1.72.0` and `rubocop-rails >= 2.28.0`
