@@ -32,7 +32,7 @@ RSpec.describe RuboCop::Cop::Ezcater::FeatureFlagNameValid, :config do
           end
         end
 
-        context "with an invalid feature flag name: Foo:::Bar " do
+        context "with an invalid feature flag name: Foo:::Bar" do
           it "reports an offense for triple colon use and whitespace" do
             expect_offense <<~RUBY, suffix: suffix
               SOMETHING#{suffix} = "Foo :::B%ar"

@@ -1,7 +1,12 @@
-require: ezcater_rubocop
+require:
+  - ezcater_rubocop
 
 plugins:
+  - rubocop-capybara
+  - rubocop-factory_bot
+  - rubocop-graphql
   - rubocop-rails
+  - rubocop-rspec
 
 AllCops:
   DisplayCopNames: true
@@ -85,7 +90,7 @@ RSpec/MessageExpectation:
   EnforcedStyle: allow
 
 RSpec/MultipleExpectations:
-  exclude_limit: 5
+  Max: 5
 
 RSpec/NestedGroups:
   Max: 5
@@ -245,7 +250,7 @@ Capybara/CurrentPathExpectation:
 Capybara/VisibilityMatcher:
   Enabled: true
 
-RSpec/Capybara/FeatureMethods:
+RSpec/Dialect:
   Enabled: true
 
 RSpec/EmptyHook:
@@ -264,9 +269,6 @@ RSpec/MultipleMemoizedHelpers:
   Enabled: true
 
 RSpec/NotToNot:
-  Enabled: true
-
-RSpec/Rails/HttpStatus:
   Enabled: true
 
 RSpec/RepeatedIncludeExample:

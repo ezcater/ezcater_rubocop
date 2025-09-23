@@ -192,8 +192,8 @@ module RuboCop
             # There's no hash argument or it has only one pair
             if node.arguments.size == 1 ||
                (node.arguments.size == 2 &&
-                (node.arguments[1].hash_type? &&
-                 node.arguments[1].pairs.size == 1))
+                node.arguments[1].hash_type? &&
+                node.arguments[1].pairs.size == 1)
 
               corrector.replace(
                 range_for_method_and_optional_limit(node),
@@ -223,8 +223,8 @@ module RuboCop
             # There's no hash argument or it has only one pair (:limit)
             if node.arguments.size == 3 ||
                (node.arguments.size == 4 &&
-                (node.arguments[3].hash_type? &&
-                 node.arguments[3].pairs.size == 1))
+                node.arguments[3].hash_type? &&
+                node.arguments[3].pairs.size == 1)
 
               corrector.replace(
                 range_for_method_and_optional_limit(node),

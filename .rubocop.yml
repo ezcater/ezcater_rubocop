@@ -9,7 +9,11 @@ inherit_from:
 RSpec/MultipleExpectations:
   Enabled: false
 
-RSpec/FilePath:
+RSpec/SpecFilePathFormat:
+  Exclude:
+    - spec/rubocop/cop/ezcater/graphql/not_authorized_scalar_field_spec.rb
+
+RSpec/SpecFilePathSuffix:
   Exclude:
     - spec/rubocop/cop/ezcater/graphql/not_authorized_scalar_field_spec.rb
 

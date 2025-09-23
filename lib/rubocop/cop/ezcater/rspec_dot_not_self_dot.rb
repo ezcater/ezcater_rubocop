@@ -25,7 +25,7 @@ module RuboCop
 
       class RspecDotNotSelfDot < Base
         include RuboCop::RSpec::Language
-        extend RuboCop::RSpec::Language::NodePattern
+        extend RuboCop::NodePattern::Macros
         extend RuboCop::Cop::AutoCorrector
 
         RSPEC_EXAMPLE_PREFIXES = ["", "x", "f"].freeze
