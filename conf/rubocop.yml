@@ -244,10 +244,10 @@ Rails/Pick:
 Rails/RedundantForeignKey:
   Enabled: true
 
-Capybara/CurrentPathExpectation:
+Capybara/RSpec/CurrentPathExpectation:
   Enabled: true
 
-Capybara/VisibilityMatcher:
+Capybara/RSpec/VisibilityMatcher:
   Enabled: true
 
 RSpec/Dialect:
