@@ -6,6 +6,13 @@ This gem is moving onto its own [Semantic Versioning](https://semver.org/) schem
 
 Prior to v1.0.0 this gem was versioned based on the `MAJOR`.`MINOR` version of RuboCop. The first release of the ezcater_rubocop gem was `v0.49.0`.
 
+## 11.0.1 (June 5, 2026)
+
+- Fix obsolete Capybara cop references: rename `Capybara/CurrentPathExpectation` → `Capybara/RSpec/CurrentPathExpectation` and `Capybara/VisibilityMatcher` → `Capybara/RSpec/VisibilityMatcher` to match the current `rubocop-capybara` namespace
+- Bump rack from 3.2.1 to 3.2.6
+- Bump activesupport from 7.2.2.2 to 7.2.3.1
+- Bump json from 2.15.0 to 2.15.2.1
+
 ## 11.0.0 (September 23, 2025)
 
 - Update all gem dependencies to the latest version
