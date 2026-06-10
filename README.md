@@ -109,7 +109,13 @@ To install this gem onto your local machine, run `bundle exec rake install`.
 
 ### Releasing a New Version
 
-To release a new version, update the version number in `version.rb`, merge your PR to `main`, and then manually run the "Release Gem" GitHub Action, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+Releases are automated via [release-please](https://github.com/googleapis/release-please-action). When commits following the [Conventional Commits](https://www.conventionalcommits.org/) format are merged to `main`, release-please opens (or updates) a release PR that bumps `version.rb` and updates `CHANGELOG.md` automatically. Merging that PR triggers the `publish-to-rubygems` job, which tags the release and pushes the `.gem` file to [rubygems.org](https://rubygems.org).
+
+You do not need to manually edit `version.rb` or `CHANGELOG.md`. Use the correct commit prefix to drive the version bump:
+
+- `fix:` → patch bump
+- `feat:` → minor bump
+- `feat!:` or `BREAKING CHANGE:` in the body → major bump
 
 ## Contributing
 
@@ -131,30 +137,23 @@ necessary for consistency.
 In addition, you need to:
 
 1. Add the cop to the "Custom Cops" section of this README
-2. Bump the version.
-3. Add a CHANGELOG entry.
+2. Use a conventional commit prefix (`feat:` for a non-breaking new cop, `feat!:` for a breaking one) so release-please bumps the version and updates the CHANGELOG automatically.
 
 
 ### Version Bumps & Changelog Entries
 
-The version for this gem follows [Semantic Versioning]:
+Version bumps and CHANGELOG entries are managed automatically by release-please based on [Conventional Commits]. Use the correct prefix on your PR title (squash-and-merge is required):
 
-1. Bump the MAJOR version for breaking changes. Example: new cop,
-   enabled by default and which cannot be safely autofixed.
+| Commit prefix | Version bump | Example |
+|---|---|---|
+| `fix:` | Patch | `fix: correct typo in cop message` |
+| `feat:` | Minor | `feat: add StyleDig cop` |
+| `feat!:` or `BREAKING CHANGE:` in body | Major | `feat!: enable StyleDig by default` |
+| `chore:`, `docs:`, `ci:` | None | `chore: update CI config` |
 
-2. Bump the MINOR version for new functionality which will not disrupt
-   projects which depend on this gem. Example: new cop, not enabled by
-   default or which can safely be autofixed.
+[Conventional Commits]: https://www.conventionalcommits.org/
 
-3. Bump the PATCH version for backwards compatible bugfixes.
-
-[Semantic Versioning]: https://semver.org/
-
-The version does not need to be bumped and the changelog does not need
-to be updated for chores which do not affect users of this
-gem. Example: updating CI. Omitting these details helps keep the
-signal-to-noise ratio high for people upgrading the gem as these types
-of changes will not affect them.
+`chore:` commits do not trigger a release. This keeps the CHANGELOG focused on changes that affect users of the gem.
 
 ## License
 
