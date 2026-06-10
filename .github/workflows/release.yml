@@ -52,4 +52,4 @@ jobs:
           bundler-cache: true
           ruby-version: ruby
 
-      - uses: rubygems/release-gem@v1
+      - uses: rubygems/release-gem@f0d7faff26625599a847d40d9fa28ace24c2aacc # v1
