@@ -1,3 +1,24 @@
+> [!IMPORTANT]
+> ## ⚠️ This gem is deprecated and this repository is archived
+>
+> `ezcater_rubocop` has been replaced by **`linter`** (repository:
+> [`ezcater/linter-ruby`](https://github.com/ezcater/linter-ruby)), a rewrite
+> built on composable lint profiles. No further releases of `ezcater_rubocop`
+> will be published, and this repository is now read-only.
+>
+> **For ezCater engineers:** migrate to the `linter` gem. See the
+> [`linter-ruby` README](https://github.com/ezcater/linter-ruby) for setup.
+>
+> **For external / public consumers:** the replacement `linter` gem is
+> **internal to ezCater and not publicly available**. We recommend dropping the
+> `ezcater_rubocop` development dependency and vendoring your own RuboCop
+> configuration (copy whichever rules you rely on from this repo's `conf/`
+> directory into a local `.rubocop.yml`).
+>
+> The content below is preserved for historical reference only.
+
+---
+
 # ezcater_rubocop [![CircleCI](https://circleci.com/gh/ezcater/ezcater_rubocop/tree/main.svg?style=svg)](https://circleci.com/gh/ezcater/ezcater_rubocop/tree/main)
 
 ezCater custom cops and shared RuboCop configuration.
