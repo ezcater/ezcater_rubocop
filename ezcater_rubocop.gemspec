@@ -15,6 +15,16 @@ Gem::Specification.new do |spec|
   spec.homepage      = "https://github.com/ezcater/ezcater_rubocop"
   spec.license       = "MIT"
 
+  spec.post_install_message = <<~MSG
+    NOTE: ezcater_rubocop is DEPRECATED and its repository is archived.
+    This is the final release; no further updates will be published.
+
+    It has been replaced by the `linter` gem:
+      - ezCater engineers: migrate to `linter` (https://github.com/ezcater/linter-ruby).
+      - External users: `linter` is internal to ezCater and not public; drop this
+        dependency and vendor your own RuboCop configuration.
+  MSG
+
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
   # to allow pushing to a single host or delete this section to allow pushing to any host.
   if spec.respond_to?(:metadata)
